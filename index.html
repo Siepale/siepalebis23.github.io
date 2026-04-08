@@ -1,35 +1,23 @@
 ﻿<!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Afrik Denou | The Promise</title>
-
-
-
-    <!-- External CSS -->
 
     <link rel="stylesheet" href="css/styles.css">
 
-
-
     <style>
-
         /* --- Dark Mode Variables --- */
-
         :root {
             --bg-color: #ffffff;
             --text-color: #333333;
             --content-bg: #ffffff;
             --header-footer-bg: var(--dark);
+            --gold: #d4af37;
+            --dark: #111;
+            --white: #ffffff;
         }
-
-
 
         [data-theme="dark"] {
             --bg-color: #121212;
@@ -37,32 +25,28 @@
             --content-bg: #1e1e1e;
         }
 
-
-
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
             transition: background-color 0.3s, color 0.3s;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
         }
-
-
 
         .content {
             background-color: var(--content-bg);
             transition: background-color 0.3s;
+            max-width: 900px;
+            margin: auto;
+            padding: 40px 20px;
         }
 
-
-
         /* --- Theme Toggle Button Styling --- */
-
         .theme-toggle-container {
             display: flex;
             align-items: center;
             margin-left: 15px;
         }
-
-
 
         #theme-toggle {
             background: var(--gold);
@@ -74,28 +58,21 @@
             font-size: 1.2rem;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: justify-content: center;
             transition: transform 0.2s;
         }
-
-
 
             #theme-toggle:hover {
                 transform: scale(1.1);
             }
 
-
-
-        /* Ensuring consistency with the app pages */
-
+        /* --- Footer Nav Consistency --- */
         .footer-nav {
             display: flex;
             justify-content: center;
             margin-top: 15px;
             flex-wrap: wrap;
         }
-
-
 
             .footer-nav a, .footer-nav .dropdown > a {
                 color: var(--white);
@@ -105,328 +82,294 @@
                 font-weight: bold;
             }
 
-
-
             .footer-nav .dropdown-content {
                 bottom: 30px;
                 top: auto;
             }
+
+        /* --- Slider Styles --- */
+        .slider-container {
+            position: relative;
+            max-width: 100%;
+            margin: 40px auto;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .slider {
+            position: relative;
+            height: 450px;
+            width: 100%;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+            .slide.active {
+                opacity: 1;
+            }
+
+            .slide img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            font-size: 20px;
+            border-radius: 50%;
+            z-index: 10;
+            transition: background 0.3s;
+        }
+
+            .slider-btn:hover {
+                background: var(--gold);
+            }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .dots-container {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .dot {
+            height: 12px;
+            width: 12px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+            .dot.active {
+                background-color: var(--gold);
+            }
+
+        @media (max-width: 768px) {
+            .slider {
+                height: 300px;
+            }
+        }
     </style>
-
 </head>
-
 <body>
 
-
-
-    <!-- ================= HEADER ================= -->
-
     <header class="top-bar">
-
         <div style="display: flex; align-items: center;">
-
             <img src="images/logo.jpeg" alt="Afrik Denou Logo" class="logo">
-
-
-
-            <!-- Dark Mode Toggle Button -->
-
             <div class="theme-toggle-container">
-
                 <button id="theme-toggle" aria-label="Toggle Dark Mode">
-
                     <span id="theme-icon">🌙</span>
-
                 </button>
-
             </div>
-
         </div>
-
-
 
         <div class="menu-toggle" id="mobile-menu">☰</div>
 
-
-
         <nav class="nav">
-
             <a href="index.html">Home</a>
-
             <div class="dropdown">
-
                 <a href="#">About ▾</a>
-
                 <div class="dropdown-content">
-
                     <a href="about.html">About</a>
-
                     <a href="resume.html">Resume</a>
-
                 </div>
-
             </div>
-
             <div class="dropdown">
-
                 <a href="#">My Apps ▾</a>
-
                 <div class="dropdown-content">
-
                     <a href="task.html">Task Manager</a>
-
                     <a href="ticket.html">Ticket Calculator</a>
-
                     <a href="calculator.html">MPG Calculator</a>
-
                     <a href="form.html">Form Validation</a>
-
                 </div>
-
             </div>
-
             <a href="services.html">Our Services</a>
-
             <a href="gallery.html">Gallery</a>
-
             <a href="contact.html">Contact</a>
-
         </nav>
-
     </header>
 
-
-
-    <!-- ================= HERO ================= -->
-
     <div class="hero">
-
         <img src="images/mypicture.jpeg" alt="Artist portrait" class="hero-image">
-
     </div>
 
-
-
-    <!-- ================= MAIN CONTENT ================= -->
-
     <main class="content">
-
         <h1>The Promise</h1>
-
         <p>
-
             Welcome to the creative universe of La Compagnie Afrik Denou, a space where storytelling, music, theater, and visual art come together to give life to powerful animated narratives inspired by African cultures and imagination.
-
         </p>
-
-
 
         <p>
-
             This website invites you to discover our animated film project, a journey of images, sounds, and emotions that celebrates heritage, creativity, and the transmission of stories across generations.
-
         </p>
-
-
 
         <img src="images/pictureenfant.jpeg" alt="Child illustration from animated project" class="inline-image">
 
-
-
         <p>
-
             More than a film, this project is a meeting point between artistic disciplines: storytelling, theater, music, and puppetry.
-
         </p>
-
-
 
         <p class="highlight">
-
             Enter the world of Afrik Denou — where stories move, voices resonate, and imagination becomes image.
-
         </p>
 
-
-
-        <!-- Bio Section -->
-
         <section class="bio">
-
             <h2>Short Bio</h2>
-
             <p>
-
                 I am Sie L. Pale from Burkina Faso. I am an artist, puppeteer, storyteller, and musician dedicated to bringing stories to life through movement, voice, and sound.
-
             </p>
-
         </section>
 
+        <section class="slider-container">
+            <div class="slider">
+                <div class="slide active"><img src="images/picture4.jpeg" alt="Slide 4"></div>
+                <div class="slide"><img src="images/picture5.jpeg" alt="Slide 5"></div>
+                <div class="slide"><img src="images/picture6.jpg" alt="Slide 6"></div>
+                <div class="slide"><img src="images/picture7.jpg" alt="Slide 7"></div>
+                <div class="slide"><img src="images/picture8.jpg" alt="Slide 8"></div>
+                <div class="slide"><img src="images/picture9.jpg" alt="Slide 9"></div>
 
+                <button class="slider-btn prev" onclick="changeSlide(-1)">&#10094;</button>
+                <button class="slider-btn next" onclick="changeSlide(1)">&#10095;</button>
+            </div>
 
-        <!-- Gallery Preview -->
+            <div class="dots-container">
+                <span class="dot active" onclick="currentSlide(0)"></span>
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
+            </div>
+        </section>
 
         <div class="gallery-preview">
-
             <img src="images/picture1.jpeg" alt="Concept art 1">
-
             <img src="images/picture2.jpg" alt="Concept art 2">
-
             <img src="images/picture3.jpeg" alt="Concept art 3">
-
         </div>
-
     </main>
 
-
-
-    <!-- ================= FOOTER ================= -->
-
     <footer class="footer">
-
         <p>© 2026 Afrik Denou. All Rights Reserved.</p>
-
         <nav class="footer-nav">
-
             <a href="index.html">Home</a>
-
             <div class="dropdown">
-
                 <a href="#">About ▾</a>
-
                 <div class="dropdown-content">
-
                     <a href="about.html">About</a>
-
                     <a href="resume.html">Resume</a>
-
                 </div>
-
             </div>
-
             <div class="dropdown">
-
                 <a href="#">My Apps ▾</a>
-
                 <div class="dropdown-content">
-
                     <a href="task.html">Task Manager</a>
-
                     <a href="ticket.html">Ticket Calculator</a>
-
                     <a href="calculator.html">MPG Calculator</a>
-
                     <a href="form.html">Form Validation</a>
-
                 </div>
-
             </div>
-
             <a href="services.html">Our Services</a>
-
             <a href="gallery.html">Gallery</a>
-
             <a href="contact.html">Contact</a>
-
         </nav>
-
     </footer>
 
-
-
-    <!-- ================= SCRIPTS ================= -->
-
     <script>
-
         // --- Mobile Menu Logic ---
-
         const menu = document.getElementById("mobile-menu");
-
         const nav = document.querySelector(".nav");
-
         const dropdowns = document.querySelectorAll(".dropdown");
 
-
-
         menu.addEventListener("click", () => {
-
             nav.classList.toggle("active");
-
         });
-
-
 
         dropdowns.forEach(drop => {
-
             const link = drop.querySelector("a");
-
             link.addEventListener("click", (e) => {
-
                 if (window.innerWidth <= 768) {
-
-                    e.preventDefault();
-
-                    drop.querySelector(".dropdown-content").classList.toggle("active");
-
+                    const content = drop.querySelector(".dropdown-content");
+                    if (content) {
+                        e.preventDefault();
+                        content.classList.toggle("active");
+                    }
                 }
-
             });
-
         });
-
-
 
         // --- Dark Mode Logic ---
-
         const themeToggle = document.getElementById('theme-toggle');
-
         const themeIcon = document.getElementById('theme-icon');
 
-        const currentTheme = localStorage.getItem('theme');
-
-
-
-        if (currentTheme === 'dark') {
-
-            document.documentElement.setAttribute('data-theme', 'dark');
-
-            themeIcon.innerText = '☀️';
-
-        }
-
-
-
         themeToggle.addEventListener('click', () => {
-
             let theme = document.documentElement.getAttribute('data-theme');
-
-
-
             if (theme === 'dark') {
-
                 document.documentElement.setAttribute('data-theme', 'light');
-
-                localStorage.setItem('theme', 'light');
-
                 themeIcon.innerText = '🌙';
-
             } else {
-
                 document.documentElement.setAttribute('data-theme', 'dark');
-
-                localStorage.setItem('theme', 'dark');
-
                 themeIcon.innerText = '☀️';
-
             }
-
         });
 
+        // --- Slider Logic ---
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        let slideTimer = setInterval(() => changeSlide(1), 5000);
+
+        function showSlides(n) {
+            if (n >= slides.length) slideIndex = 0;
+            if (n < 0) slideIndex = slides.length - 1;
+
+            slides.forEach(s => s.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+
+            slides[slideIndex].classList.add('active');
+            dots[slideIndex].classList.add('active');
+        }
+
+        function changeSlide(n) {
+            slideIndex += n;
+            showSlides(slideIndex);
+            resetTimer();
+        }
+
+        function currentSlide(n) {
+            slideIndex = n;
+            showSlides(slideIndex);
+            resetTimer();
+        }
+
+        function resetTimer() {
+            clearInterval(slideTimer);
+            slideTimer = setInterval(() => changeSlide(1), 5000);
+        }
     </script>
-
-
-
 </body>
-
 </html>
