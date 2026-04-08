@@ -1,6 +1,9 @@
 ﻿/* =========================
+
    COLOR VARIABLES
+
 ========================= */
+
 :root {
     --dark: #111;
     --cream: #f5f1e8;
@@ -10,9 +13,14 @@
     --white: #ffffff;
 }
 
+
+
 /* =========================
+
    GLOBAL STYLES
+
 ========================= */
+
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
@@ -20,23 +28,34 @@ body {
     color: var(--text-dark);
 }
 
+
+
 h1 {
     text-align: center;
     font-size: 42px;
     margin-bottom: 20px;
 }
 
+
+
 h2 {
     margin-top: 0;
 }
+
+
 
 p {
     line-height: 1.7;
 }
 
+
+
 /* =========================
+
    HEADER & NAVIGATION
+
 ========================= */
+
 .top-bar {
     background: var(--dark);
     display: flex;
@@ -46,6 +65,8 @@ p {
     position: relative;
 }
 
+
+
 .logo {
     height: 70px;
     background: var(--white);
@@ -53,13 +74,19 @@ p {
     border-radius: 8px;
 }
 
+
+
 /* Navigation container */
+
 .nav {
     display: flex;
     align-items: center;
 }
 
+
+
     /* Navigation links */
+
     .nav a {
         color: var(--white);
         margin-left: 20px;
@@ -69,7 +96,10 @@ p {
         transition: color 0.3s ease;
     }
 
+
+
         /* Smooth underline rollover effect */
+
         .nav a::after {
             content: "";
             position: absolute;
@@ -81,20 +111,31 @@ p {
             transition: width 0.3s ease;
         }
 
+
+
         .nav a:hover::after {
             width: 100%;
         }
+
+
 
         .nav a:hover {
             color: var(--gold);
         }
 
+
+
 /* =========================
+
    DROPDOWN MENU / FLYOUT
+
 ========================= */
+
 .dropdown {
     position: relative;
 }
+
+
 
 .dropdown-content {
     display: none;
@@ -108,6 +149,8 @@ p {
     flex-direction: column;
 }
 
+
+
     .dropdown-content a {
         color: var(--text-dark);
         padding: 10px;
@@ -115,23 +158,35 @@ p {
         font-weight: normal;
     }
 
+
+
         .dropdown-content a:hover {
             background: var(--soft-beige);
         }
 
+
+
 /* Show dropdown on hover (desktop) */
+
 .dropdown:hover .dropdown-content {
     display: flex;
 }
 
+
+
 /* =========================
+
    HERO SECTION
+
 ========================= */
+
 .hero {
     text-align: center;
     background: linear-gradient(to bottom, var(--soft-beige), transparent);
     padding: 40px 20px;
 }
+
+
 
 .hero-image {
     width: 220px;
@@ -140,18 +195,27 @@ p {
     transition: transform 0.4s ease;
 }
 
+
+
     .hero-image:hover {
         transform: scale(1.05);
     }
 
+
+
 /* =========================
+
    MAIN CONTENT
+
 ========================= */
+
 .content {
     max-width: 900px;
     margin: auto;
     padding: 40px 20px;
 }
+
+
 
 .inline-image {
     display: block;
@@ -159,6 +223,8 @@ p {
     max-width: 320px;
     border-radius: 12px;
 }
+
+
 
 .highlight {
     font-style: italic;
@@ -168,9 +234,14 @@ p {
     font-weight: 600;
 }
 
+
+
 /* =========================
+
    BIO SECTION
+
 ========================= */
+
 .bio {
     background: #fff8ef;
     padding: 25px;
@@ -179,9 +250,14 @@ p {
     border-left: 5px solid var(--gold);
 }
 
+
+
 /* =========================
+
    GALLERY PREVIEW GRID
+
 ========================= */
+
 .gallery-preview {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -189,20 +265,29 @@ p {
     margin-top: 40px;
 }
 
+
+
     .gallery-preview img {
         width: 100%;
         border-radius: 10px;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
+
+
         .gallery-preview img:hover {
             transform: scale(1.05);
             box-shadow: 0 10px 25px rgba(0,0,0,0.25);
         }
 
+
+
 /* =========================
+
    FOOTER
+
 ========================= */
+
 .footer {
     background: var(--dark);
     color: var(--white);
@@ -212,6 +297,8 @@ p {
     font-size: 14px;
 }
 
+
+
 .footer-links a {
     color: var(--white);
     margin: 0 10px;
@@ -219,13 +306,20 @@ p {
     transition: color 0.3s ease;
 }
 
+
+
     .footer-links a:hover {
         color: var(--gold);
     }
 
+
+
 /* =========================
+
    MOBILE MENU TOGGLE
+
 ========================= */
+
 .menu-toggle {
     display: none;
     font-size: 26px;
@@ -233,10 +327,17 @@ p {
     cursor: pointer;
 }
 
+
+
 /* =========================
+
    RESPONSIVE DESIGN
+
 ========================= */
+
 @media (max-width: 768px) {
+
+
 
     .nav {
         display: none;
@@ -250,13 +351,19 @@ p {
         border-radius: 8px;
     }
 
+
+
         .nav.active {
             display: flex;
         }
 
+
+
         .nav a {
             margin: 10px 0;
         }
+
+
 
     .dropdown-content {
         position: static;
@@ -264,20 +371,118 @@ p {
         background: var(--cream);
     }
 
+
+
         .dropdown-content.active {
             display: flex;
             flex-direction: column;
         }
 
+
+
     .menu-toggle {
         display: block;
     }
+
+
 
     h1 {
         font-size: 32px;
     }
 
+
+
     .hero-image {
         width: 180px;
     }
 }
+
+
+
+/* =========================
+
+   MY APPS STYLING
+
+========================= */
+
+.app-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 25px;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+
+
+    .app-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: var(--dark);
+    }
+
+
+
+    .app-container input,
+    .app-container textarea,
+    .app-container select {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+    }
+
+
+
+    .app-container textarea {
+        min-height: 120px;
+        resize: vertical;
+    }
+
+
+
+    .app-container button {
+        width: 100%;
+        padding: 12px;
+        background: var(--gold);
+        color: var(--white);
+        border: none;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+
+
+        .app-container button:hover {
+            background: #b8962e;
+        }
+
+
+
+    .app-container ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 15px;
+    }
+
+
+
+    .app-container li {
+        background: var(--soft-beige);
+        padding: 10px;
+        margin-top: 8px;
+        border-radius: 6px;
+        transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+
+
+        .app-container li:hover {
+            transform: scale(1.02);
+            background: #ddd2b8;
+        }

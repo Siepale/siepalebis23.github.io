@@ -3,79 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MPG Calculator - Sie L Pale</title>
+    <title>MPG Calculator | Afrik Denou</title>
 
-    <!-- External CSS -->
     <link rel="stylesheet" href="css/styles.css">
 
-    <!-- Additional CSS for MPG Calculator -->
     <style>
-        /* Calculator container styling */
+        /* --- Dark Mode Variables --- */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --content-bg: #ffffff;
+            --calc-card-bg: #fff8ef;
+            --info-bar-bg: #000000;
+            --info-bar-text: #ffffff;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --content-bg: #1e1e1e;
+            --calc-card-bg: #2a2a2a;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* --- Theme Toggle Button --- */
+        .theme-toggle-container {
+            display: flex;
+            align-items: center;
+            margin-left: 15px;
+        }
+
+        #theme-toggle {
+            background: var(--gold);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
+
+        /* --- Calculator Styling --- */
         .calculator-container {
             max-width: 400px;
             margin: 60px auto;
-            padding: 25px;
-            background: #fff8ef;
+            background: var(--calc-card-bg);
             border-radius: 12px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             text-align: center;
             border-left: 5px solid var(--gold);
+            overflow: hidden; /* Ensures the black bar follows border radius */
+            transition: background 0.3s;
         }
 
-            .calculator-container h2 {
-                margin-bottom: 5px;
-                color: var(--dark);
-            }
+        .calc-body {
+            padding: 25px;
+        }
 
-            .calculator-container h3 {
-                margin-top: 0;
-                margin-bottom: 20px;
-                color: var(--text-dark);
-                font-weight: 500;
-            }
+        .calculator-container input {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            background: var(--bg-color);
+            color: var(--text-color);
+        }
 
-            .calculator-container input {
-                width: 90%;
-                padding: 10px;
-                margin: 10px 0;
-                border: 1px solid #ccc;
-                border-radius: 6px;
-                font-size: 16px;
-            }
-
-            .calculator-container button {
-                padding: 10px 20px;
-                background: var(--gold);
-                color: var(--dark);
-                border: none;
-                border-radius: 6px;
-                font-weight: bold;
-                cursor: pointer;
-                transition: background 0.3s ease;
-            }
-
-                .calculator-container button:hover {
-                    background: #b8932a;
-                }
+        .calculator-container button {
+            padding: 12px 25px;
+            background: var(--gold);
+            color: var(--dark);
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 95%;
+            margin-top: 10px;
+        }
 
         #result {
             margin-top: 20px;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 1.2rem;
+            color: var(--gold);
         }
 
-        .calculator-logo {
-            width: 80px;
-            margin-bottom: 10px;
+        /* --- Black Info Bar --- */
+        .info-bar {
+            background-color: var(--info-bar-bg);
+            color: var(--info-bar-text);
+            padding: 15px;
+            font-size: 0.9rem;
+            margin-top: 20px;
         }
+
+        /* --- Bottom Navigation Menu Bar --- */
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+            .footer-nav a, .footer-nav .dropdown > a {
+                color: var(--white);
+                margin: 5px 10px;
+                text-decoration: none;
+                font-size: 14px;
+                font-weight: bold;
+            }
+
+            .footer-nav .dropdown-content {
+                bottom: 30px;
+                top: auto;
+            }
     </style>
 </head>
 <body>
-
     <!-- ================= HEADER ================= -->
+
     <header class="top-bar">
-        <img src="images/logo.jpeg" alt="Afrik Denou Logo" class="logo">
+
+        <div style="display: flex; align-items: center;">
+
+            <img src="images/logo.jpeg" alt="Afrik Denou Logo" class="logo">
+
+
+
+            <!-- Dark Mode Toggle Button -->
+
+            <div class="theme-toggle-container">
+
+                <button id="theme-toggle" aria-label="Toggle Dark Mode">
+
+                    <span id="theme-icon">🌙</span>
+
+                </button>
+            </div>
+        </div>
+
         <div class="menu-toggle" id="mobile-menu">☰</div>
+
         <nav class="nav">
             <a href="index.html">Home</a>
             <div class="dropdown">
@@ -85,80 +163,116 @@
                     <a href="resume.html">Resume</a>
                 </div>
             </div>
-            <a href="services.html">Our Service</a>
-            <a href="calculator.html">MPG Calculator</a>
+            <div class="dropdown">
+                <a href="#">My Apps ▾</a>
+                <div class="dropdown-content">
+                    <a href="task.html">Task Manager</a>
+                    <a href="ticket.html">Ticket Calculator</a>
+                    <a href="calculator.html">MPG Calculator</a>
+                    <a href="form.html">Form Validation</a>
+                </div>
+            </div>
+            <a href="services.html">Our Services</a>
             <a href="gallery.html">Gallery</a>
             <a href="contact.html">Contact</a>
         </nav>
     </header>
 
-    <!-- ================= MAIN CONTENT ================= -->
     <main class="content">
-        <h1>MPG Calculator</h1>
+        <h1 style="text-align: center; margin-top: 40px;">MPG Calculator</h1>
 
         <div class="calculator-container">
-            <img src="images/calculator.png" alt="Calculator Logo" class="calculator-logo">
-            <h2>Sie L Pale</h2>
-            <h3>Fuel Efficiency Tool</h3>
+            <div class="calc-body">
+                <img src="images/calculator.png" alt="Calculator" style="width: 60px; margin-bottom: 10px;">
+                <h2>Sie L Pale</h2>
+                <h3>Fuel Efficiency Tool</h3>
 
-            <input type="number" id="miles" placeholder="Miles Traveled">
-            <input type="number" id="gallons" placeholder="Gallons Used">
+                <input type="number" id="miles" placeholder="Miles Traveled">
+                <input type="number" id="gallons" placeholder="Gallons Used">
 
-            <button onclick="calculateMPG()">Calculate MPG</button>
+                <button onclick="calculateMPG()">Calculate MPG</button>
 
-            <div id="result"></div>
+                <div id="result"></div>
+            </div>
 
-            <p class="footer">Enter miles and gallons to calculate fuel efficiency</p>
+            <div class="info-bar">
+                Enter miles and gallons to calculate fuel efficiency.
+            </div>
         </div>
     </main>
 
-    <!-- ================= FOOTER ================= -->
     <footer class="footer">
         <p>© 2026 Afrik Denou. All Rights Reserved.</p>
-        <div class="footer-links">
+
+        <nav class="footer-nav">
             <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="resume.html">Resume</a>
-            <a href="services.html">Our Service</a>
+
+            <div class="dropdown">
+                <a href="#">About ▾</a>
+                <div class="dropdown-content">
+                    <a href="about.html">About</a>
+                    <a href="resume.html">Resume</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <a href="#">My Apps ▾</a>
+                <div class="dropdown-content">
+                    <a href="task.html">Task Manager</a>
+                    <a href="ticket.html">Ticket Calculator</a>
+                    <a href="calculator.html">MPG Calculator</a>
+                    <a href="form.html">Form Validation</a>
+                </div>
+            </div>
+
+            <a href="services.html">Our Services</a>
             <a href="gallery.html">Gallery</a>
             <a href="contact.html">Contact</a>
-        </div>
+        </nav>
     </footer>
 
-    <!-- ================= MOBILE MENU SCRIPT ================= -->
     <script>
         const menu = document.getElementById("mobile-menu");
         const nav = document.querySelector(".nav");
-        const dropdowns = document.querySelectorAll(".dropdown");
+        menu.addEventListener("click", () => nav.classList.toggle("active"));
 
-        menu.addEventListener("click", () => {
-            nav.classList.toggle("active");
+        // --- Dark Mode Logic ---
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const currentTheme = localStorage.getItem('theme');
+
+        if (currentTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeIcon.innerText = '☀️';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            let theme = document.documentElement.getAttribute('data-theme');
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+                themeIcon.innerText = '🌙';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.innerText = '☀️';
+            }
         });
 
-        dropdowns.forEach(drop => {
-            const link = drop.querySelector("a");
-            link.addEventListener("click", (e) => {
-                if (window.innerWidth <= 768) {
-                    e.preventDefault();
-                    drop.querySelector(".dropdown-content").classList.toggle("active");
-                }
-            });
-        });
-
-        // ================= MPG Calculator Script =================
+        // --- MPG Calculation ---
         function calculateMPG() {
             let miles = document.getElementById("miles").value;
             let gallons = document.getElementById("gallons").value;
+            let resultDiv = document.getElementById("result");
 
-            if (miles === "" || gallons === "") {
-                document.getElementById("result").innerHTML = "Please enter both values.";
+            if (miles <= 0 || gallons <= 0) {
+                resultDiv.innerHTML = "Please enter valid numbers.";
                 return;
             }
 
             let mpg = miles / gallons;
-            document.getElementById("result").innerHTML = "Miles Per Gallon: " + mpg.toFixed(2);
+            resultDiv.innerHTML = `Efficiency: ${mpg.toFixed(2)} MPG`;
         }
     </script>
-
 </body>
 </html>

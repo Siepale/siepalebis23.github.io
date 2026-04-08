@@ -1,43 +1,27 @@
 ﻿<!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Afrik Denou | The Promise</title>
-
-
-
-    <!-- External CSS -->
+    <title>Gallery | Afrik Denou</title>
 
     <link rel="stylesheet" href="css/styles.css">
 
-
-
     <style>
-
         /* --- Dark Mode Variables --- */
-
         :root {
             --bg-color: #ffffff;
             --text-color: #333333;
             --content-bg: #ffffff;
-            --header-footer-bg: var(--dark);
+            --caption-bg: #f9f9f9;
         }
-
-
 
         [data-theme="dark"] {
             --bg-color: #121212;
             --text-color: #e0e0e0;
             --content-bg: #1e1e1e;
+            --caption-bg: #252525;
         }
-
-
 
         body {
             background-color: var(--bg-color);
@@ -45,24 +29,12 @@
             transition: background-color 0.3s, color 0.3s;
         }
 
-
-
-        .content {
-            background-color: var(--content-bg);
-            transition: background-color 0.3s;
-        }
-
-
-
-        /* --- Theme Toggle Button Styling --- */
-
+        /* --- Theme Toggle --- */
         .theme-toggle-container {
             display: flex;
             align-items: center;
             margin-left: 15px;
         }
-
-
 
         #theme-toggle {
             background: var(--gold);
@@ -71,31 +43,70 @@
             height: 40px;
             border-radius: 50%;
             cursor: pointer;
-            font-size: 1.2rem;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: transform 0.2s;
         }
 
-
-
             #theme-toggle:hover {
                 transform: scale(1.1);
             }
 
+        /* --- Gallery Styling --- */
+        .slideshow-container {
+            max-width: 800px;
+            position: relative;
+            margin: 40px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            background: var(--content-bg);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
 
+        .mySlides {
+            display: none;
+        }
 
-        /* Ensuring consistency with the app pages */
+            .mySlides img {
+                width: 100%;
+                height: 500px;
+                object-fit: cover;
+                display: block;
+            }
 
+        .caption {
+            padding: 20px;
+            background: var(--caption-bg);
+            color: var(--text-color);
+            text-align: left;
+            font-size: 1.1rem;
+            border-top: 2px solid var(--gold);
+            line-height: 1.5;
+        }
+
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes fade {
+            from {
+                opacity: .4
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        /* Bottom Menu Adjustment */
         .footer-nav {
             display: flex;
             justify-content: center;
             margin-top: 15px;
             flex-wrap: wrap;
         }
-
-
 
             .footer-nav a, .footer-nav .dropdown > a {
                 color: var(--white);
@@ -105,20 +116,13 @@
                 font-weight: bold;
             }
 
-
-
             .footer-nav .dropdown-content {
                 bottom: 30px;
                 top: auto;
             }
     </style>
-
 </head>
-
 <body>
-
-
-
     <!-- ================= HEADER ================= -->
 
     <header class="top-bar">
@@ -138,295 +142,159 @@
                     <span id="theme-icon">🌙</span>
 
                 </button>
-
             </div>
-
         </div>
-
-
-
         <div class="menu-toggle" id="mobile-menu">☰</div>
-
-
-
         <nav class="nav">
-
             <a href="index.html">Home</a>
-
             <div class="dropdown">
-
                 <a href="#">About ▾</a>
-
                 <div class="dropdown-content">
-
                     <a href="about.html">About</a>
-
                     <a href="resume.html">Resume</a>
-
                 </div>
-
             </div>
-
             <div class="dropdown">
-
                 <a href="#">My Apps ▾</a>
-
                 <div class="dropdown-content">
-
                     <a href="task.html">Task Manager</a>
-
                     <a href="ticket.html">Ticket Calculator</a>
-
                     <a href="calculator.html">MPG Calculator</a>
-
                     <a href="form.html">Form Validation</a>
-
                 </div>
-
             </div>
-
             <a href="services.html">Our Services</a>
-
             <a href="gallery.html">Gallery</a>
-
             <a href="contact.html">Contact</a>
-
         </nav>
-
     </header>
 
-
-
-    <!-- ================= HERO ================= -->
-
     <div class="hero">
-
-        <img src="images/mypicture.jpeg" alt="Artist portrait" class="hero-image">
-
+        <img src="images/p8.jpg" alt="Cinema Hero" class="hero-image">
     </div>
 
-
-
-    <!-- ================= MAIN CONTENT ================= -->
-
     <main class="content">
+        <h1>Visual Journey</h1>
+        <p style="text-align: center;">Encounters, Faces, Cinematic Moments.</p>
 
-        <h1>The Promise</h1>
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <img src="images/p1.jpg" alt="Mohamed Said Ouma">
+                <div class="caption">
+                    <strong>Mohamed Said Ouma</strong><br>
+                    Director of Documentary Africa (DocA), fostering growth in African cinema.
+                </div>
+            </div>
 
-        <p>
+            <div class="mySlides fade">
+                <img src="images/p2.jpeg" alt="Cinema theater">
+                <div class="caption">
+                    <strong>Cinema Theater</strong><br>
+                    The sacred space where stories come to life on the big screen.
+                </div>
+            </div>
 
-            Welcome to the creative universe of La Compagnie Afrik Denou, a space where storytelling, music, theater, and visual art come together to give life to powerful animated narratives inspired by African cultures and imagination.
+            <div class="mySlides fade">
+                <img src="images/p3.jpeg" alt="David Silverman">
+                <div class="caption">
+                    <strong>David Silverman</strong><br>
+                    Renowned animator and director, known for his work on The Simpsons.
+                </div>
+            </div>
 
-        </p>
+            <div class="mySlides fade">
+                <img src="images/p4.jpeg" alt="Jean-François Laguionie">
+                <div class="caption">
+                    <strong>Jean-François Laguionie</strong><br>
+                    A master of French animation, creator of "The Painting."
+                </div>
+            </div>
 
+            <div class="mySlides fade">
+                <img src="images/p5.jpeg" alt="Claude Barras">
+                <div class="caption">
+                    <strong>Claude Barras</strong><br>
+                    Director of the Academy Award-nominated "My Life as a Zucchini."
+                </div>
+            </div>
 
-
-        <p>
-
-            This website invites you to discover our animated film project, a journey of images, sounds, and emotions that celebrates heritage, creativity, and the transmission of stories across generations.
-
-        </p>
-
-
-
-        <img src="images/pictureenfant.jpeg" alt="Child illustration from animated project" class="inline-image">
-
-
-
-        <p>
-
-            More than a film, this project is a meeting point between artistic disciplines: storytelling, theater, music, and puppetry.
-
-        </p>
-
-
-
-        <p class="highlight">
-
-            Enter the world of Afrik Denou — where stories move, voices resonate, and imagination becomes image.
-
-        </p>
-
-
-
-        <!-- Bio Section -->
-
-        <section class="bio">
-
-            <h2>Short Bio</h2>
-
-            <p>
-
-                I am Sie L. Pale from Burkina Faso. I am an artist, puppeteer, storyteller, and musician dedicated to bringing stories to life through movement, voice, and sound.
-
-            </p>
-
-        </section>
-
-
-
-        <!-- Gallery Preview -->
-
-        <div class="gallery-preview">
-
-            <img src="images/picture1.jpeg" alt="Concept art 1">
-
-            <img src="images/picture2.jpg" alt="Concept art 2">
-
-            <img src="images/picture3.jpeg" alt="Concept art 3">
-
+            <div class="mySlides fade">
+                <img src="images/p6.jpeg" alt="Sie L. Pale">
+                <div class="caption">
+                    <strong>Sie L. Pale</strong><br>
+                    Artist and visionary behind the Afrik Denou creative universe.
+                </div>
+            </div>
         </div>
-
     </main>
 
-
-
-    <!-- ================= FOOTER ================= -->
-
     <footer class="footer">
-
         <p>© 2026 Afrik Denou. All Rights Reserved.</p>
-
         <nav class="footer-nav">
-
             <a href="index.html">Home</a>
-
             <div class="dropdown">
-
                 <a href="#">About ▾</a>
-
                 <div class="dropdown-content">
-
                     <a href="about.html">About</a>
-
                     <a href="resume.html">Resume</a>
-
                 </div>
-
             </div>
-
             <div class="dropdown">
-
                 <a href="#">My Apps ▾</a>
-
                 <div class="dropdown-content">
-
                     <a href="task.html">Task Manager</a>
-
                     <a href="ticket.html">Ticket Calculator</a>
-
                     <a href="calculator.html">MPG Calculator</a>
-
                     <a href="form.html">Form Validation</a>
-
                 </div>
-
             </div>
-
             <a href="services.html">Our Services</a>
-
             <a href="gallery.html">Gallery</a>
-
             <a href="contact.html">Contact</a>
-
         </nav>
-
     </footer>
 
-
-
-    <!-- ================= SCRIPTS ================= -->
-
     <script>
+        let slideIndex = 0;
+        showSlides();
 
-        // --- Mobile Menu Logic ---
-
-        const menu = document.getElementById("mobile-menu");
-
-        const nav = document.querySelector(".nav");
-
-        const dropdowns = document.querySelectorAll(".dropdown");
-
-
-
-        menu.addEventListener("click", () => {
-
-            nav.classList.toggle("active");
-
-        });
-
-
-
-        dropdowns.forEach(drop => {
-
-            const link = drop.querySelector("a");
-
-            link.addEventListener("click", (e) => {
-
-                if (window.innerWidth <= 768) {
-
-                    e.preventDefault();
-
-                    drop.querySelector(".dropdown-content").classList.toggle("active");
-
-                }
-
-            });
-
-        });
-
-
-
-        // --- Dark Mode Logic ---
-
-        const themeToggle = document.getElementById('theme-toggle');
-
-        const themeIcon = document.getElementById('theme-icon');
-
-        const currentTheme = localStorage.getItem('theme');
-
-
-
-        if (currentTheme === 'dark') {
-
-            document.documentElement.setAttribute('data-theme', 'dark');
-
-            themeIcon.innerText = '☀️';
-
+        function showSlides() {
+            let slides = document.getElementsByClassName("mySlides");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 4000);
         }
 
+        // Mobile Menu Logic
+        const menu = document.getElementById("mobile-menu");
+        const nav = document.querySelector(".nav");
+        menu.addEventListener("click", () => nav.classList.toggle("active"));
 
+        // Dark Mode Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeIcon.innerText = '☀️';
+        }
 
         themeToggle.addEventListener('click', () => {
-
             let theme = document.documentElement.getAttribute('data-theme');
-
-
-
             if (theme === 'dark') {
-
                 document.documentElement.setAttribute('data-theme', 'light');
-
                 localStorage.setItem('theme', 'light');
-
                 themeIcon.innerText = '🌙';
-
             } else {
-
                 document.documentElement.setAttribute('data-theme', 'dark');
-
                 localStorage.setItem('theme', 'dark');
-
                 themeIcon.innerText = '☀️';
-
             }
-
         });
-
     </script>
-
-
-
 </body>
-
 </html>
