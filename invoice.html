@@ -54,7 +54,9 @@
             transition: transform 0.2s;
         }
 
-           
+            #theme-toggle:hover {
+                transform: scale(1.1);
+            }
         /* Footer Nav Mirroring Header */
         .footer-nav {
             display: flex;
@@ -172,7 +174,7 @@
         /* --- Table Styling --- */
 
         .totals-table {
-            width: 300px;
+            width: 100px;
             margin-left: auto;
             margin-top: 20px;
             border-collapse: collapse;
@@ -370,7 +372,7 @@
 
     <main class="content">
         <div class="invoice-container">
-            <div class="header-section">
+            <div class="header-section"></div>
                 <div class="company-info">
                     <h1>Afrik Denou</h1>
                     <p>1309 Clinton Ave</p>
@@ -383,21 +385,21 @@
                     </span>
                 </div>
             </div>
-        </div>
-            <div class="bill-for-grid">
+     
+        <div class="bill-for-grid"></div>
                 <div class="field-group">
                     <label>Bill To:</label>
-                    <textarea rows="3" placeholder="Client Name & Address"></textarea>
                 </div>
+                    <textarea rows="3" placeholder="Client Name & Address"></textarea>
+               
                 <div class="field-group">
                     <label>For:</label>
                     <input type="text" placeholder="Service/Project Name">
                     <label style="margin-top:10px;">Date:</label>
                     <input type="date" id="invDate">
                 </div>
-            </div>
-
-      
+          
+            <div class="table-responsive">
                 <table>
                     <thead>
                         <tr>
@@ -434,7 +436,7 @@
                         </tr>
                     </tbody>
                 </table>
-              
+                <div/>
 
                 <table class="totals-table">
                     <tr>
