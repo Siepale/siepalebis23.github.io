@@ -324,49 +324,47 @@
             input, textarea {
                 border: none !important;
             }
-
-            /* --- Responsive Footer (Mobile, Tablet, Laptop) --- */
-            .footer {
-                text-align: center;
-                padding: 20px 10px;
-            }
-
-            /* Tablet */
-            @media (max-width: 992px) {
-                .footer-nav {
-                    gap: 15px;
-                }
-
-                    .footer-nav a {
-                        font-size: 13px;
-                    }
-            }
-
-            /* Mobile */
-            @media (max-width: 600px) {
-                .footer {
-                    padding: 15px 5px;
-                }
-
-                .footer-nav {
-                    flex-direction: column;
-                    gap: 10px;
-                }
-
-                    .footer-nav a,
-                    .footer-nav .dropdown > a {
-                        font-size: 14px;
-                        display: block;
-                        padding: 5px 0;
-                    }
-
-                .footer .dropdown-content {
-                    position: static;
-                    margin: 5px 0;
-                }
-            }
+        }
+        /* --- Responsive Footer (Mobile, Tablet, Laptop) --- */
+        .footer {
+            text-align: center;
+            padding: 20px 10px;
         }
 
+        /* Tablet */
+        @media (max-width: 992px) {
+            .footer-nav {
+                gap: 15px;
+            }
+
+                .footer-nav a {
+                    font-size: 13px;
+                }
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            .footer {
+                padding: 15px 5px;
+            }
+
+            .footer-nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+                .footer-nav a,
+                .footer-nav .dropdown > a {
+                    font-size: 14px;
+                    display: block;
+                    padding: 5px 0;
+                }
+
+            .footer .dropdown-content {
+                position: static;
+                margin: 5px 0;
+            }
+        }
     </style>
 </head>
 <body>
