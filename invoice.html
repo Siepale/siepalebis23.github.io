@@ -89,7 +89,7 @@
             border-top: 5px solid var(--gold);
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             max-width: 850px;
-            margin: 40px auto;
+            margin: 10px auto;
             flex: 1;
         }
 
@@ -97,6 +97,7 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 40px;
+            align-items: flex-start;
         }
 
         .company-info h1 {
@@ -147,6 +148,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 30px;
             margin-bottom: 30px;
+            margin-top: 5px;
         }
 
         .field-group {
@@ -372,19 +374,25 @@
 
     <main class="content">
         <div class="invoice-container">
-            <div class="header-section"></div>
+            <div class="header-section">
+
+                <!-- TOP LEFT -->
                 <div class="company-info">
                     <h1>Afrik Denou</h1>
                     <p>1309 Clinton Ave</p>
                     <p>Bronx, NY 10456</p>
                 </div>
+
+                <!-- TOP RIGHT -->
                 <div class="invoice-title-area">
                     <h2>INVOICE</h2>
                     <span class="invoice-num">
                         <input type="text" class="invoice-num-input" value="INV-2026-001">
                     </span>
                 </div>
+
             </div>
+        </div>
      
         <div class="bill-for-grid"></div>
                 <div class="field-group">
@@ -399,83 +407,95 @@
                     <input type="date" id="invDate">
                 </div>
           
-            <div class="table-responsive">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Description</th>
-                            <th style="width: 120px;">Price ($)</th>
-                            <th style="width: 80px;">Qty</th>
-                            <th style="width: 120px;">Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="item-row">
-                            <td><input type="text" placeholder="Service/Item description"></td>
-                            <td><input type="number" class="price" oninput="calculate()"></td>
-                            <td><input type="number" class="qty" oninput="calculate()"></td>
-                            <td class="row-total">$0.00</td>
-                        </tr>
-                        <tr class="item-row">
-                            <td><input type="text" placeholder="Service/Item description"></td>
-                            <td><input type="number" class="price" oninput="calculate()"></td>
-                            <td><input type="number" class="qty" oninput="calculate()"></td>
-                            <td class="row-total">$0.00</td>
-                        </tr>
-                        <tr class="item-row">
-                            <td><input type="text" placeholder="Service/Item description"></td>
-                            <td><input type="number" class="price" oninput="calculate()"></td>
-                            <td><input type="number" class="qty" oninput="calculate()"></td>
-                            <td class="row-total">$0.00</td>
-                        </tr>
-                        <tr class="item-row">
-                            <td><input type="text" placeholder="Service/Item description"></td>
-                            <td><input type="number" class="price" oninput="calculate()"></td>
-                            <td><input type="number" class="qty" oninput="calculate()"></td>
-                            <td class="row-total">$0.00</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div/>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th style="width: 120px;">Price ($)</th>
+                                <th style="width: 80px;">Qty</th>
+                                <th style="width: 120px;">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="item-row">
+                                <td><input type="text" placeholder="Service/Item description"></td>
+                                <td><input type="number" class="price" oninput="calculate()"></td>
+                                <td><input type="number" class="qty" oninput="calculate()"></td>
+                                <td class="row-total">$0.00</td>
+                            </tr>
+                            <tr class="item-row">
+                                <td><input type="text" placeholder="Service/Item description"></td>
+                                <td><input type="number" class="price" oninput="calculate()"></td>
+                                <td><input type="number" class="qty" oninput="calculate()"></td>
+                                <td class="row-total">$0.00</td>
+                            </tr>
+                            <tr class="item-row">
+                                <td><input type="text" placeholder="Service/Item description"></td>
+                                <td><input type="number" class="price" oninput="calculate()"></td>
+                                <td><input type="number" class="qty" oninput="calculate()"></td>
+                                <td class="row-total">$0.00</td>
+                            </tr>
+                            <tr class="item-row">
+                                <td><input type="text" placeholder="Service/Item description"></td>
+                                <td><input type="number" class="price" oninput="calculate()"></td>
+                                <td><input type="number" class="qty" oninput="calculate()"></td>
+                                <td class="row-total">$0.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div />
 
-                <table class="totals-table">
-                    <tr>
-                        <td>Subtotal</td>
-                        <td class="center">$<span id="sub">0.00</span></td>
-                    </tr>
-                    <tr>
-                        <td>Tax Rate (%)</td>
-                        <td class="center">
-                            <input type="number" id="taxRate" value="0" oninput="calculate()">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Other Costs ($)</td>
-                        <td class="center">
-                            <input type="number" id="otherCosts" value="0" oninput="calculate()">
-                        </td>
-                    </tr>
-                    <tr class="grand-total-row">
-                        <td><strong>Total</strong></td>
-                        <td class="center"><strong>$<span id="total">0.00</span></strong></td>
-                    </tr>
-                </table>
-                <button class="print-btn" onclick="window.print()">🖨 Print</button>
+<div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 20px;">
 
-                <div class="invoice-footer">
-                    <div class="contact-info">
-                        <p>Make all checks payable to <strong>Afrik Denou</strong>.</p>
-                        <p>
-                            <strong>Contact Name:</strong> Sie L Pale<br>
-                            <strong>Phone:</strong> (+1) 646 724 3703<br>
-                            <strong>Email:</strong> afrikdenou@gmail.com
-                        </p>
-                    </div>
-                    <div class="thanks-note">
-                        Thank you for your business!
+    <!-- Buttons on the LEFT -->
+    <div style="display: flex; gap: 10px;">
+        <button class="print-btn" onclick="addRow()">➕ Add Row</button>
+        <button class="print-btn" onclick="clearInvoice()">🧹 Clear</button>
+        <button class="print-btn" onclick="window.print()">🖨 Print</button>
+    </div>
+
+    <!-- Totals on the RIGHT -->
+    <table class="totals-table">
+        <tr>
+            <td>Subtotal</td>
+            <td class="center">$<span id="sub">0.00</span></td>
+        </tr>
+        <tr>
+            <td>Tax Rate (%)</td>
+            <td class="center">
+                <input type="number" id="taxRate" value="0" oninput="calculate()">
+            </td>
+        </tr>
+        <tr>
+            <td>Other Costs ($)</td>
+            <td class="center">
+                <input type="number" id="otherCosts" value="0" oninput="calculate()">
+            </td>
+        </tr>
+        <tr class="grand-total-row">
+            <td><strong>Total</strong></td>
+            <td class="center"><strong>$<span id="total">0.00</span></strong></td>
+        </tr>
+    </table>
+
+</div>
+
+
+                    <div class="invoice-footer">
+                        <div class="contact-info">
+                            <p>Make all checks payable to <strong>Afrik Denou</strong>.</p>
+                            <p>
+                                <strong>Contact Name:</strong> Sie L Pale<br>
+                                <strong>Phone:</strong> (+1) 646 724 3703<br>
+                                <strong>Email:</strong> afrikdenou@gmail.com
+                            </p>
+                        </div>
+                        <div class="thanks-note">
+                            Thank you for your business!
+                        </div>
                     </div>
                 </div>
-            </div>
 </main>
 
     <footer class="footer">
@@ -511,6 +531,47 @@
         menu.addEventListener("click", () => nav.classList.toggle("active"));
 
         document.getElementById('invDate').valueAsDate = new Date();
+
+
+        function clearInvoice() {
+            // Clear all text inputs and textareas
+            document.querySelectorAll("input, textarea").forEach(input => {
+                if (input.type === "date") {
+                    input.valueAsDate = new Date();
+                } else {
+                    input.value = "";
+                }
+            });
+
+            // Reset tax & other costs
+            document.getElementById("taxRate").value = 0;
+            document.getElementById("otherCosts").value = 0;
+
+            // Reset totals
+            document.querySelectorAll(".row-total").forEach(el => el.innerText = "$0.00");
+            document.getElementById("sub").innerText = "0.00";
+            document.getElementById("total").innerText = "0.00";
+
+            // Recalculate to ensure everything updates
+            calculate();
+        }
+
+
+        function addRow() {
+            const tableBody = document.querySelector("tbody");
+
+            const newRow = document.createElement("tr");
+            newRow.classList.add("item-row");
+
+            newRow.innerHTML = `
+        <td><input type="text" placeholder="Service/Item description"></td>
+        <td><input type="number" class="price" oninput="calculate()"></td>
+        <td><input type="number" class="qty" oninput="calculate()"></td>
+        <td class="row-total">$0.00</td>
+    `;
+
+            tableBody.appendChild(newRow);
+        }
 
         function calculate() {
             let subtotal = 0;
