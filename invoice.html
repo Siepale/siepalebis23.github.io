@@ -81,6 +81,13 @@
         }
 
 
+
+
+
+
+
+
+
         /* --- Invoice Main Content --- */
         .invoice-container {
             background: var(--card-bg, #fff);
@@ -331,6 +338,113 @@
                 border: none !important;
             }
         }
+
+
+
+
+        /* =========================
+   DROPDOWN MENU STYLES
+========================= */
+
+        /* Base Dropdown Container */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+            /* Show dropdown on hover OR when .open is active */
+            .dropdown:hover .dropdown-content,
+            .dropdown.open .dropdown-content {
+                display: block;
+            }
+
+        /* Dropdown Menu Box */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #222;
+            color: #fff;
+            min-width: 160px;
+            padding: 8px 0;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            z-index: 1000;
+        }
+
+        /* =========================
+   TOP NAVIGATION DROPDOWN
+========================= */
+
+        .nav .dropdown-content {
+            top: 100%;
+            left: 0;
+        }
+
+        /* =========================
+   FOOTER DROPDOWN FIX
+========================= */
+
+        .footer-nav .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+            /* Keep dropdown open on hover */
+            .footer-nav .dropdown:hover .dropdown-content,
+            .footer-nav .dropdown.open .dropdown-content {
+                display: block;
+            }
+
+        /* Footer dropdown menu */
+        .footer-nav .dropdown-content {
+            display: none;
+            position: absolute;
+            bottom: 100%; /* Opens upward */
+            left: 50%;
+            transform: translateX(-50%);
+            background: #111;
+            min-width: 160px;
+            padding: 8px 0;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            z-index: 1000;
+            margin-bottom: 0; /* IMPORTANT */
+        }
+
+
+        /* =========================
+   DROPDOWN LINKS
+========================= */
+
+        .dropdown-content a {
+            color: #fff !important;
+            padding: 10px 15px;
+            display: block;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+            /* Hover effect inside dropdown */
+            .dropdown-content a:hover {
+                background: #444;
+            }
+
+        /* =========================
+   NAVIGATION HOVER COLORS
+========================= */
+
+        .nav a:hover,
+        .footer-nav a:hover,
+        .nav .dropdown > a:hover,
+        .footer-nav .dropdown > a:hover {
+            color: var(--gold) !important;
+        }
+
+
+
+
+
+
     </style>
 </head>
 <body>
@@ -348,6 +462,7 @@
             </div>
         </div>
         <div class="menu-toggle" id="mobile-menu">☰</div>
+
         <nav class="nav">
             <a href="index.html">Home</a>
             <div class="dropdown">
@@ -358,12 +473,13 @@
                 </div>
             </div>
             <div class="dropdown">
-                <a href="#">My Apps ▾</a>
+                <a href="#">BIS 23 901D ▾</a>
                 <div class="dropdown-content">
-                    <a href="calculator.html">MPG Calculator</a>
                     <a href="task.html">Task Manager</a>
                     <a href="invoice.html">Invoice</a>
+                    <a href="calculator.html">MPG Calculator</a>
                     <a href="form.html">Form Validation</a>
+                    <a href="workstation.html">Work Station</a>
                 </div>
             </div>
             <a href="services.html">Our Services</a>
@@ -488,8 +604,10 @@
 
     <footer class="footer">
         <p>© 2026 Afrik Denou. All Rights Reserved.</p>
+
         <nav class="footer-nav">
             <a href="index.html">Home</a>
+
             <div class="dropdown">
                 <a href="#">About ▾</a>
                 <div class="dropdown-content">
@@ -497,15 +615,18 @@
                     <a href="resume.html">Resume</a>
                 </div>
             </div>
+
             <div class="dropdown">
-                <a href="#">My Apps ▾</a>
+                <a href="#">BIS 23 901D ▾</a>
                 <div class="dropdown-content">
-                    <a href="calculator.html">MPG Calculator</a>
                     <a href="task.html">Task Manager</a>
                     <a href="invoice.html">Invoice</a>
+                    <a href="calculator.html">MPG Calculator</a>
                     <a href="form.html">Form Validation</a>
+                    <a href="workstation.html">Work Station</a>
                 </div>
             </div>
+
             <a href="services.html">Our Services</a>
             <a href="gallery.html">Gallery</a>
             <a href="contact.html">Contact</a>
@@ -530,6 +651,50 @@
                     input.value = "";
                 }
             });
+           
+           
+
+
+
+
+            // Dropdown menu behavior
+            document.querySelectorAll('.dropdown').forEach(dropdown => {
+
+                // Open on hover
+                dropdown.addEventListener('mouseenter', () => {
+                    dropdown.classList.add('open');
+                });
+
+                // Close when mouse leaves
+                dropdown.addEventListener('mouseleave', () => {
+                    dropdown.classList.remove('open');
+                });
+
+                // Mobile click support
+                const trigger = dropdown.querySelector('a');
+
+                trigger.addEventListener('click', function (e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        dropdown.classList.toggle('open');
+                    }
+                });
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             // Reset tax & other costs
             document.getElementById("taxRate").value = 0;
@@ -580,8 +745,8 @@
             const tax = subtotal * (taxRate / 100);
             const total = subtotal + tax + otherCosts;
 
-            document.getElementById('sub').innerText = '$' + subtotal.toFixed(2);
-            document.getElementById('total').innerText = '$' + total.toFixed(2);
+            document.getElementById('sub').innerText =  subtotal.toFixed(2);
+            document.getElementById('total').innerText = total.toFixed(2);
         }
 
         const toggle = document.getElementById('theme-toggle');

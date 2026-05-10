@@ -144,6 +144,105 @@
             top: auto;
             margin-bottom: 10px;
         }
+
+
+
+
+        /* =========================
+   DROPDOWN MENUS
+========================= */
+
+        /* Dropdown container */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Dropdown menu */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #222;
+            color: #fff;
+            min-width: 160px;
+            padding: 8px 0;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            z-index: 999;
+        }
+
+        /* SHOW DROPDOWN ON HOVER */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Dropdown links */
+        .dropdown-content a {
+            color: #fff !important;
+            padding: 10px 15px;
+            display: block;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+            /* Hover effect inside dropdown */
+            .dropdown-content a:hover {
+                background: #444;
+            }
+
+        /* =========================
+   TOP NAV DROPDOWN
+========================= */
+
+        .nav .dropdown-content {
+            top: 100%;
+            left: 0;
+        }
+
+        /* =========================
+   FOOTER DROPDOWN
+========================= */
+
+        .footer-nav .dropdown {
+            position: relative;
+        }
+
+        /* Opens upward */
+        .footer-nav .dropdown-content {
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #111;
+            margin-bottom: 0;
+        }
+
+        /* Invisible hover bridge */
+        .footer-nav .dropdown::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 100%;
+            width: 100%;
+            height: 15px;
+        }
+
+        /* =========================
+   GOLD HOVER EFFECT
+========================= */
+
+        .nav a:hover,
+        .footer-nav a:hover,
+        .nav .dropdown > a:hover,
+        .footer-nav .dropdown > a:hover {
+            color: var(--gold) !important;
+        }
+
+
+
+
+
+
+
     </style>
 </head>
 <body>
@@ -181,12 +280,13 @@
                 </div>
             </div>
             <div class="dropdown">
-                <a href="#">My Apps ▾</a>
+                <a href="#">BIS 23 901D ▾</a>
                 <div class="dropdown-content">
                     <a href="task.html">Task Manager</a>
                     <a href="invoice.html">Invoice</a>
                     <a href="calculator.html">MPG Calculator</a>
                     <a href="form.html">Form Validation</a>
+                    <a href="workstation.html">Work Station</a>
                 </div>
             </div>
             <a href="services.html">Our Services</a>
@@ -221,12 +321,13 @@
                 </div>
             </div>
             <div class="dropdown">
-                <a href="#">My Apps ▾</a>
+                <a href="#">BIS 23 901D ▾</a>
                 <div class="dropdown-content">
                     <a href="task.html">Task Manager</a>
                     <a href="invoice.html">Invoice</a>
                     <a href="calculator.html">MPG Calculator</a>
                     <a href="form.html">Form Validation</a>
+                    <a href="workstation.html">Work Station</a>
                 </div>
             </div>
             <a href="services.html">Our Services</a>
@@ -271,6 +372,7 @@
             document.documentElement.setAttribute('data-theme', 'dark');
             themeIcon.innerText = '☀️';
         }
+
     </script>
 </body>
 </html>
