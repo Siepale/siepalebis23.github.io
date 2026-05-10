@@ -382,7 +382,69 @@
         }
 
 
+        /* =========================
+   MOBILE NAVIGATION
+========================= */
 
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+
+            /* Show hamburger */
+            .menu-toggle {
+                display: block;
+            }
+
+            /* Hide nav initially */
+            .nav {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: rgba(20,20,20,0.98);
+                flex-direction: column;
+                padding: 20px;
+                z-index: 9999;
+            }
+
+                /* SHOW when active */
+                .nav.active {
+                    display: flex;
+                }
+
+                /* Mobile links */
+                .nav a {
+                    padding: 14px 0;
+                    width: 100%;
+                    border-bottom: 1px solid rgba(255,255,255,0.08);
+                }
+
+            /* Dropdown fixes */
+            .dropdown {
+                width: 100%;
+            }
+
+            .dropdown-content {
+                position: static;
+                display: none;
+                background: #111;
+                box-shadow: none;
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            /* Tap-friendly dropdown */
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+        }
 
 
 

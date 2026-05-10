@@ -269,6 +269,76 @@
 
 
 
+        /* =========================
+   MOBILE NAV FIX
+========================= */
+
+        @media (max-width: 768px) {
+
+            .menu-toggle {
+                display: block;
+                font-size: 2rem;
+                cursor: pointer;
+                z-index: 99999;
+            }
+
+            .nav {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: #111;
+                flex-direction: column;
+                padding: 20px;
+                z-index: 9999;
+            }
+
+                .nav.active {
+                    display: flex;
+                }
+
+                .nav a {
+                    padding: 15px 0;
+                    width: 100%;
+                }
+
+            .dropdown {
+                width: 100%;
+            }
+
+            .dropdown-content {
+                position: static;
+                display: none;
+                width: 100%;
+                background: #1a1a1a;
+                margin-top: 10px;
+                box-shadow: none;
+            }
+
+                .dropdown-content.active {
+                    display: block;
+                }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     </style>
@@ -405,7 +475,11 @@
     </footer>
 
     <script>
-        // --- Mobile Menu Logic ---
+
+        // =========================
+        // MOBILE MENU
+        // =========================
+
         const menu = document.getElementById("mobile-menu");
         const nav = document.querySelector(".nav");
         const dropdowns = document.querySelectorAll(".dropdown");
@@ -414,71 +488,59 @@
             nav.classList.toggle("active");
         });
 
+        // =========================
+        // MOBILE DROPDOWNS
+        // =========================
+
         dropdowns.forEach(drop => {
+
             const link = drop.querySelector("a");
+
             link.addEventListener("click", (e) => {
+
                 if (window.innerWidth <= 768) {
-                    const content = drop.querySelector(".dropdown-content");
+
+                    const content =
+                        drop.querySelector(".dropdown-content");
+
                     if (content) {
+
                         e.preventDefault();
+
                         content.classList.toggle("active");
                     }
                 }
             });
         });
 
-       
+        // =========================
+        // THEME TOGGLE
+        // =========================
 
+        const toggle = document.getElementById('theme-toggle');
+        const icon = document.getElementById('theme-icon');
 
+        toggle.addEventListener('click', () => {
 
-        // --- Dark Mode Logic ---
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
+            const isDark =
+                document.documentElement.getAttribute('data-theme') === 'dark';
 
-        themeToggle.addEventListener('click', () => {
-            let theme = document.documentElement.getAttribute('data-theme');
-            if (theme === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'light');
-                themeIcon.innerText = '🌙';
-            } else {
-                document.documentElement.setAttribute('data-theme', 'dark');
-                themeIcon.innerText = '☀️';
-            }
+            const theme = isDark ? 'light' : 'dark';
+
+            document.documentElement.setAttribute('data-theme', theme);
+
+            localStorage.setItem('theme', theme);
+
+            icon.innerText = theme === 'dark' ? '☀️' : '🌙';
         });
 
-        // --- Slider Logic ---
-        let slideIndex = 0;
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.dot');
-        let slideTimer = setInterval(() => changeSlide(1), 5000);
+        if (localStorage.getItem('theme') === 'dark') {
 
-        function showSlides(n) {
-            if (n >= slides.length) slideIndex = 0;
-            if (n < 0) slideIndex = slides.length - 1;
+            document.documentElement.setAttribute('data-theme', 'dark');
 
-            slides.forEach(s => s.classList.remove('active'));
-            dots.forEach(d => d.classList.remove('active'));
-
-            slides[slideIndex].classList.add('active');
-            dots[slideIndex].classList.add('active');
+            icon.innerText = '☀️';
         }
 
-        function changeSlide(n) {
-            slideIndex += n;
-            showSlides(slideIndex);
-            resetTimer();
-        }
-
-        function currentSlide(n) {
-            slideIndex = n;
-            showSlides(slideIndex);
-            resetTimer();
-        }
-
-        function resetTimer() {
-            clearInterval(slideTimer);
-            slideTimer = setInterval(() => changeSlide(1), 5000);
-        }
     </script>
 </body>
 </html>
