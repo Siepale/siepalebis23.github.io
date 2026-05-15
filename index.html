@@ -175,6 +175,34 @@
 
 
 
+        /* --- Bottom Navigation Menu Bar --- */
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+            .footer-nav a, .footer-nav .dropdown > a {
+                color: var(--white);
+                margin: 5px 10px;
+                text-decoration: none;
+                font-size: 14px;
+                font-weight: bold;
+            }
+
+            .footer-nav .dropdown-content {
+                bottom: 30px;
+                top: auto;
+            }
+
+
+
+
+
+
+
+
 
 
         /* =========================
@@ -269,61 +297,6 @@
 
 
 
-        /* =========================
-   MOBILE NAV FIX
-========================= */
-
-        @media (max-width: 768px) {
-
-            .menu-toggle {
-                display: block;
-                font-size: 2rem;
-                cursor: pointer;
-                z-index: 99999;
-            }
-
-            .nav {
-                display: none;
-                position: absolute;
-                top: 80px;
-                left: 0;
-                width: 100%;
-                background: #111;
-                flex-direction: column;
-                padding: 20px;
-                z-index: 9999;
-            }
-
-                .nav.active {
-                    display: flex;
-                }
-
-                .nav a {
-                    padding: 15px 0;
-                    width: 100%;
-                }
-
-            .dropdown {
-                width: 100%;
-            }
-
-            .dropdown-content {
-                position: static;
-                display: none;
-                width: 100%;
-                background: #1a1a1a;
-                margin-top: 10px;
-                box-shadow: none;
-            }
-
-                .dropdown-content.active {
-                    display: block;
-                }
-        }
-
-
-
-
 
 
 
@@ -374,6 +347,7 @@
                     <a href="calculator.html">MPG Calculator</a>
                     <a href="form.html">Form Validation</a>
                     <a href="workstation.html">Work Station</a>
+                    <a href="mortgage.html">Mortgage</a>
                 </div>
             </div>
             <a href="services.html">Our Services</a>
@@ -465,6 +439,7 @@
                     <a href="calculator.html">MPG Calculator</a>
                     <a href="form.html">Form Validation</a>
                     <a href="workstation.html">Work Station</a>
+                    <a href="mortgage.html">Mortgage</a>
                 </div>
             </div>
 
@@ -474,71 +449,155 @@
         </nav>
     </footer>
 
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+
     <script>
 
         // =========================
         // MOBILE MENU
         // =========================
 
-        const menu = document.getElementById("mobile-menu");
-        const nav = document.querySelector(".nav");
-        const dropdowns = document.querySelectorAll(".dropdown");
+        // ORIGINAL JAVASCRIPT
+        // const menu = document.getElementById("mobile-menu");
+        // const nav = document.querySelector(".nav");
 
-        menu.addEventListener("click", () => {
-            nav.classList.toggle("active");
+        // JQUERY SELECTORS
+        const menu = $("#mobile-menu");
+        const nav = $(".nav");
+
+        // ORIGINAL JAVASCRIPT
+        // menu.addEventListener("click", () => {
+        //     nav.classList.toggle("active");
+        // });
+
+        // JQUERY EVENT + CSS CLASS METHOD
+        menu.on("click", function () {
+            nav.toggleClass("active");
+        });
+
+        // =========================
+        // CLOSE MENU WHEN CLICKING OUTSIDE
+        // =========================
+
+        // ORIGINAL JAVASCRIPT
+        /*
+        document.addEventListener("click", (e) => {
+
+            if (
+            !nav.contains(e.target) &&
+            !menu.contains(e.target)
+            ) {
+                nav.classList.remove("active");
+            }
+        });
+            */
+
+        // JQUERY VERSION
+        $(document).on("click", function (e) {
+
+            if (
+                !$(e.target).closest(".nav").length &&
+                !$(e.target).closest("#mobile-menu").length
+            ) {
+                nav.removeClass("active");
+            }
         });
 
         // =========================
         // MOBILE DROPDOWNS
         // =========================
 
-        dropdowns.forEach(drop => {
+        // ORIGINAL JAVASCRIPT
+        // const dropdowns = document.querySelectorAll(".dropdown");
 
-            const link = drop.querySelector("a");
+        // JQUERY SELECTOR
+        const dropdowns = $(".dropdown");
 
-            link.addEventListener("click", (e) => {
+        dropdowns.each(function () {
 
-                if (window.innerWidth <= 768) {
+            // ORIGINAL JAVASCRIPT
+            // const link = drop.querySelector("a");
+            // const content = drop.querySelector(".dropdown-content");
 
-                    const content =
-                        drop.querySelector(".dropdown-content");
+            // JQUERY DOM TRAVERSAL
+            const link = $(this).children("a");
+            const content = $(this).children(".dropdown-content");
 
-                    if (content) {
+            if (content.length) {
+
+                // ORIGINAL JAVASCRIPT
+                /*
+                link.addEventListener("click", (e) => {
+
+                    if (window.innerWidth <= 768) {
 
                         e.preventDefault();
 
                         content.classList.toggle("active");
                     }
-                }
-            });
+                });
+                */
+
+                // JQUERY VERSION
+                link.on("click", function (e) {
+
+                    if ($(window).width() <= 768) {
+
+                        e.preventDefault();
+
+                        content.toggleClass("active");
+                    }
+                });
+            }
         });
 
         // =========================
         // THEME TOGGLE
         // =========================
 
-        const toggle = document.getElementById('theme-toggle');
-        const icon = document.getElementById('theme-icon');
+        // ORIGINAL JAVASCRIPT
+        // const toggle = document.getElementById('theme-toggle');
+        // const icon = document.getElementById('theme-icon');
 
-        toggle.addEventListener('click', () => {
+        // JQUERY SELECTORS
+        const toggle = $('#theme-toggle');
+        const icon = $('#theme-icon');
+
+        toggle.on('click', function () {
 
             const isDark =
-                document.documentElement.getAttribute('data-theme') === 'dark';
+                $('html').attr('data-theme') === 'dark';
 
             const theme = isDark ? 'light' : 'dark';
 
-            document.documentElement.setAttribute('data-theme', theme);
+            // ORIGINAL JAVASCRIPT
+            // document.documentElement.setAttribute('data-theme', theme);
+
+            // JQUERY ATTRIBUTE METHOD
+            $('html').attr('data-theme', theme);
 
             localStorage.setItem('theme', theme);
 
-            icon.innerText = theme === 'dark' ? '☀️' : '🌙';
+            // ORIGINAL JAVASCRIPT
+            // icon.innerText = theme === 'dark' ? '☀️' : '🌙';
+
+            // JQUERY TEXT METHOD
+            icon.text(theme === 'dark' ? '☀️' : '🌙');
         });
 
         if (localStorage.getItem('theme') === 'dark') {
 
-            document.documentElement.setAttribute('data-theme', 'dark');
+            // ORIGINAL JAVASCRIPT
+            // document.documentElement.setAttribute('data-theme', 'dark');
 
-            icon.innerText = '☀️';
+            $('html').attr('data-theme', 'dark');
+
+            // ORIGINAL JAVASCRIPT
+            // icon.innerText = '☀️';
+
+            icon.text('☀️');
         }
 
     </script>

@@ -1,0 +1,790 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPG Calculator | Afrik Denou</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+        /* --- Dark Mode Variables --- */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --content-bg: #ffffff;
+            --calc-card-bg: #fff8ef;
+            --info-bar-bg: #000000;
+            --info-bar-text: #ffffff;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --content-bg: #1e1e1e;
+            --calc-card-bg: #2a2a2a;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* --- Theme Toggle Button --- */
+        .theme-toggle-container {
+            display: flex;
+            align-items: center;
+            margin-left: 15px;
+        }
+
+        #theme-toggle {
+            background: var(--gold);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
+
+
+
+
+
+
+        /* --- Bottom Navigation Menu Bar --- */
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+            .footer-nav a, .footer-nav .dropdown > a {
+                color: var(--white);
+                margin: 5px 10px;
+                text-decoration: none;
+                font-size: 14px;
+                font-weight: bold;
+            }
+
+            .footer-nav .dropdown-content {
+                bottom: 30px;
+                top: auto;
+            }
+
+
+
+
+
+
+
+
+
+
+        /* =========================
+   DROPDOWN MENUS
+========================= */
+
+        /* Dropdown container */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Dropdown menu */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #222;
+            color: #fff;
+            min-width: 160px;
+            padding: 8px 0;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            z-index: 999;
+        }
+
+        /* SHOW DROPDOWN ON HOVER */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Dropdown links */
+        .dropdown-content a {
+            color: #fff !important;
+            padding: 10px 15px;
+            display: block;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+            /* Hover effect inside dropdown */
+            .dropdown-content a:hover {
+                background: #444;
+            }
+
+        /* =========================
+   TOP NAV DROPDOWN
+========================= */
+
+        .nav .dropdown-content {
+            top: 100%;
+            left: 0;
+        }
+
+        /* =========================
+   FOOTER DROPDOWN
+========================= */
+
+        .footer-nav .dropdown {
+            position: relative;
+        }
+
+        /* Opens upward */
+        .footer-nav .dropdown-content {
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #111;
+            margin-bottom: 0;
+        }
+
+        /* Invisible hover bridge */
+        .footer-nav .dropdown::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 100%;
+            width: 100%;
+            height: 15px;
+        }
+
+        /* =========================
+   GOLD HOVER EFFECT
+========================= */
+
+        .nav a:hover,
+        .footer-nav a:hover,
+        .nav .dropdown > a:hover,
+        .footer-nav .dropdown > a:hover {
+            color: var(--gold) !important;
+        }
+
+
+
+
+
+
+
+
+        /* =========================
+   ASSIGNMENTS PAGE
+========================= */
+
+        .assignments-hero {
+            text-align: center;
+            padding: 60px 20px 30px;
+        }
+
+            .assignments-hero h1 {
+                font-size: 3rem;
+                margin-bottom: 20px;
+                color: var(--gold);
+            }
+
+            .assignments-hero p {
+                max-width: 750px;
+                margin: auto;
+                line-height: 1.8;
+                font-size: 1.05rem;
+            }
+
+        .assignments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1300px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .assignment-card {
+            background: var(--calc-card-bg);
+            border-radius: 18px;
+            padding: 30px;
+            border-top: 5px solid var(--gold);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+            transition: 0.3s ease;
+        }
+
+            .assignment-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 15px 35px rgba(0,0,0,0.18);
+            }
+
+        .assignment-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .assignment-card h2 {
+            margin-bottom: 15px;
+            color: var(--gold);
+        }
+
+        .assignment-card p {
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .assignment-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+            .assignment-buttons a {
+                background: var(--gold);
+                color: #111;
+                text-decoration: none;
+                padding: 12px 18px;
+                border-radius: 8px;
+                font-weight: bold;
+                transition: 0.3s;
+            }
+
+                .assignment-buttons a:hover {
+                    opacity: 0.85;
+                }
+
+        .status {
+            display: inline-block;
+            margin-bottom: 18px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+            .status.due {
+                background: crimson;
+                color: white;
+            }
+
+        /* =========================
+   MOBILE
+========================= */
+
+        @media (max-width: 768px) {
+
+            .assignments-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .assignment-buttons {
+                flex-direction: column;
+            }
+
+                .assignment-buttons a {
+                    text-align: center;
+                }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <!-- ================= HEADER ================= -->
+
+    <header class="top-bar">
+
+        <div style="display: flex; align-items: center;">
+
+            <img src="images/logo.jpeg" alt="Afrik Denou Logo" class="logo">
+
+
+
+            <!-- Dark Mode Toggle Button -->
+
+            <div class="theme-toggle-container">
+
+                <button id="theme-toggle" aria-label="Toggle Dark Mode">
+
+                    <span id="theme-icon">🌙</span>
+
+                </button>
+            </div>
+        </div>
+
+        <div class="menu-toggle" id="mobile-menu">☰</div>
+
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <div class="dropdown">
+                <a href="#">About ▾</a>
+                <div class="dropdown-content">
+                    <a href="about.html">About</a>
+                    <a href="resume.html">Resume</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#">BIS 23 901D ▾</a>
+                <div class="dropdown-content">
+                    <a href="task.html">Task Manager</a>
+                    <a href="invoice.html">Invoice</a>
+                    <a href="calculator.html">MPG Calculator</a>
+                    <a href="form.html">Form Validation</a>
+                    <a href="workstation.html">Work Station</a>
+                    <a href="mortgage.html">Mortgage</a>
+                </div>
+            </div>
+            <a href="services.html">Our Services</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <!-- =========================
+     ASSIGNMENTS SHOWCASE PAGE
+========================= -->
+
+<main class="content">
+
+    <!-- HERO -->
+    <section class="assignments-hero">
+
+        <h1>BIS 23 901D Assignment Portfolio</h1>
+
+        <p>
+            Welcome to my academic portfolio showcasing coursework,
+            technical assignments, project documents,
+            quizzes, presentations, and development exercises
+            completed throughout the Web Technologies course.
+        </p>
+
+    </section>
+
+    <!-- ASSIGNMENTS GRID -->
+    <section class="assignments-grid">
+
+        <!-- EQUIPMENT BUDGET -->
+        <div class="assignment-card">
+
+            <div class="assignment-icon">💻</div>
+
+            <h2>Equipment Budget</h2>
+
+            <p>
+                Professional workstation equipment proposal
+                for gaming, content creation,
+                streaming, and multimedia production.
+            </p>
+
+            <a href="equipment-budget.html"
+               class="assignment-link">
+
+                Open Assignment Page →
+
+            </a>
+
+            <div class="assignment-buttons">
+
+                <a href="documents/equipment-budget.pdf"
+                   download>
+
+                    Download PDF
+
+                </a>
+
+                <a href="documents/equipment-budget.docx"
+                   download>
+
+                    Download Word
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- WEB TECHNOLOGIES -->
+        <div class="assignment-card">
+
+            <div class="assignment-icon">🌐</div>
+
+            <h2>Web Technologies Series Assignments</h2>
+
+            <p>
+                Collection of HTML, CSS, JavaScript,
+                responsive web design,
+                and frontend development exercises.
+            </p>
+
+            <a href="web-technologies.html"
+               class="assignment-link">
+
+                Open Assignment Page →
+
+            </a>
+
+            <div class="assignment-buttons">
+
+                <a href="documents/web-tech-series.pdf"
+                   download>
+
+                    Download PDF
+
+                </a>
+
+                <a href="documents/web-tech-series.docx"
+                   download>
+
+                    Download Word
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- REQUIREMENTS -->
+        <div class="assignment-card">
+
+            <div class="assignment-icon">📝</div>
+
+            <h2>Requirements Document</h2>
+
+            <p>
+                Project planning documentation,
+                technical specifications,
+                workflow diagrams,
+                and requirement analysis.
+            </p>
+
+            <a href="requirements.html"
+               class="assignment-link">
+
+                Open Assignment Page →
+
+            </a>
+
+            <div class="assignment-buttons">
+
+                <a href="documents/requirements-document.pdf"
+                   download>
+
+                    Download PDF
+
+                </a>
+
+                <a href="documents/requirements-document.docx"
+                   download>
+
+                    Download Word
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- DEBUGGING -->
+        <div class="assignment-card">
+
+            <div class="assignment-icon">🛠️</div>
+
+            <h2>Debugging and Pseudo Coding</h2>
+
+            <p>
+                Algorithm design,
+                debugging exercises,
+                logical workflows,
+                and pseudo code development.
+            </p>
+
+            <a href="debugging.html"
+               class="assignment-link">
+
+                Open Assignment Page →
+
+            </a>
+
+            <div class="assignment-buttons">
+
+                <a href="documents/debugging.pdf"
+                   download>
+
+                    Download PDF
+
+                </a>
+
+                <a href="documents/debugging.docx"
+                   download>
+
+                    Download Word
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- JS PRESENTATION -->
+        <div class="assignment-card">
+
+            <div class="assignment-icon">🎤</div>
+
+            <h2>JS Presentation Assignment</h2>
+
+            <p>
+                JavaScript concepts,
+                DOM manipulation,
+                event handling,
+                and classroom presentation materials.
+            </p>
+
+            <a href="js-presentation.html"
+               class="assignment-link">
+
+                Open Assignment Page →
+
+            </a>
+
+            <div class="assignment-buttons">
+
+                <a href="documents/js-presentation.pdf"
+                   download>
+
+                    Download PDF
+
+                </a>
+
+                <a href="documents/js-presentation.pptx"
+                   download>
+
+                    Download PowerPoint
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- W3SCHOOLS QUIZ -->
+        <div class="assignment-card">
+
+            <div class="assignment-icon">📚</div>
+
+            <h2>W3Schools Quiz Submissions</h2>
+
+            <p>
+                Quiz completion reports,
+                certification exercises,
+                and frontend programming assessments.
+            </p>
+
+            <a href="w3schools.html"
+               class="assignment-link">
+
+                Open Assignment Page →
+
+            </a>
+
+            <div class="assignment-buttons">
+
+                <a href="documents/w3schools.pdf"
+                   download>
+
+                    Download PDF
+
+                </a>
+
+                <a href="documents/w3schools.docx"
+                   download>
+
+                    Download Word
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- RISEN -->
+        <div class="assignment-card">
+
+            <div class="assignment-icon">🤖</div>
+
+            <h2>Using AI RISEN Framework to Write Code</h2>
+
+            <p>
+                AI-assisted development techniques,
+                structured prompting,
+                and RISEN framework implementation.
+            </p>
+
+            <a href="risen-framework.html"
+               class="assignment-link">
+
+                Open Assignment Page →
+
+            </a>
+
+            <div class="assignment-buttons">
+
+                <a href="documents/risen-framework.pdf"
+                   download>
+
+                    Download PDF
+
+                </a>
+
+                <a href="documents/risen-framework.docx"
+                   download>
+
+                    Download Word
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- JQUERY -->
+        <div class="assignment-card">
+
+            <div class="assignment-icon">⚡</div>
+
+            <h2>W3Schools jQuery Quiz</h2>
+
+            <p>
+                jQuery fundamentals,
+                interactive webpage scripting,
+                selectors,
+                animations,
+                and quiz exercises.
+            </p>
+
+            <a href="jqueryquiz.html"
+               class="assignment-link">
+
+                Open Assignment Page →
+
+            </a>
+
+            <div class="assignment-buttons">
+
+                <a href="documents/jqueryquiz.pdf"
+                   download>
+
+                    Download PDF
+
+                </a>
+
+                <a href="documents/jqueryquiz.docx"
+                   download>
+
+                    Download Word
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+    <footer class="footer">
+        <p>© 2026 Afrik Denou. All Rights Reserved.</p>
+
+        <nav class="footer-nav">
+            <a href="index.html">Home</a>
+
+            <div class="dropdown">
+                <a href="#">About ▾</a>
+                <div class="dropdown-content">
+                    <a href="about.html">About</a>
+                    <a href="resume.html">Resume</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <a href="#">BIS 23 901D ▾</a>
+                <div class="dropdown-content">
+                    <a href="task.html">Task Manager</a>
+                    <a href="invoice.html">Invoice</a>
+                    <a href="calculator.html">MPG Calculator</a>
+                    <a href="form.html">Form Validation</a>
+                    <a href="workstation.html">Work Station</a>
+                    <a href="mortgage.html">Mortgage</a>
+                </div>
+            </div>
+
+            <a href="services.html">Our Services</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </footer>
+
+    <script>
+        const menu = document.getElementById("mobile-menu");
+        const nav = document.querySelector(".nav");
+        menu.addEventListener("click", () => nav.classList.toggle("active"));
+
+
+
+
+
+
+        // --- Dark Mode Logic ---
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const currentTheme = localStorage.getItem('theme');
+
+        if (currentTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeIcon.innerText = '☀️';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            let theme = document.documentElement.getAttribute('data-theme');
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+                themeIcon.innerText = '🌙';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.innerText = '☀️';
+            }
+        });
+
+    </script>
+</body>
+</html>

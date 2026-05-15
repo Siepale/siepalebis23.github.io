@@ -480,6 +480,7 @@
                     <a href="calculator.html">MPG Calculator</a>
                     <a href="form.html">Form Validation</a>
                     <a href="workstation.html">Work Station</a>
+                    <a href="mortgage.html">Mortgage</a>
                 </div>
             </div>
             <a href="services.html">Our Services</a>
@@ -509,98 +510,100 @@
 
             </div>
         </div>
-     
+
         <div class="bill-for-grid"></div>
-                <div class="field-group">
-                    <label>Bill To:</label>
-                </div>
-                    <textarea rows="3" placeholder="Client Name & Address"></textarea>
-               
-                <div class="field-group">
-                    <label>For:</label>
-                    <input type="text" placeholder="Service/Project Name">
-                    <label style="margin-top:10px;">Date:</label>
-                    <input type="date" id="invDate">
-                </div>
-          
-                <div class="table-responsive">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Description</th>
-                                <th style="width: 120px;">Price ($)</th>
-                                <th style="width: 80px;">Qty</th>
-                                <th style="width: 120px;">Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="item-row">
-                                <td><input type="text" placeholder="Service/Item description"></td>
-                                <td><input type="number" class="price" oninput="calculate()"></td>
-                                <td><input type="number" class="qty" oninput="calculate()"></td>
-                                <td class="row-total">$0.00</td>
-                            </tr>
-                            <tr class="item-row">
-                                <td><input type="text" placeholder="Service/Item description"></td>
-                                <td><input type="number" class="price" oninput="calculate()"></td>
-                                <td><input type="number" class="qty" oninput="calculate()"></td>
-                                <td class="row-total">$0.00</td>
-                            </tr>                        
-                        </tbody>
-                    </table>
-                    <div />
+        <div class="field-group">
+            <label>Bill To:</label>
+        </div>
+        <textarea rows="3" placeholder="Client Name & Address"></textarea>
 
-<div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 20px;">
+        <div class="field-group">
+            <label>For:</label>
+            <input type="text" placeholder="Service/Project Name">
+            <label style="margin-top:10px;">Date:</label>
+            <input type="date" id="invDate">
+        </div>
 
-    <!-- Buttons on the LEFT -->
-    <div style="display: flex; gap: 10px;">
-        <button class="print-btn" onclick="addRow()">➕ Add Row</button>
-        <button class="print-btn" onclick="clearInvoice()">🧹 Clear</button>
-        <button class="print-btn" onclick="window.print()">🖨 Print</button>
-    </div>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th style="width: 120px;">Price ($)</th>
+                        <th style="width: 80px;">Qty</th>
+                        <th style="width: 120px;">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="item-row">
+                        <td><input type="text" placeholder="Service/Item description"></td>
+                        <td><input type="number" class="price" oninput="calculate()"></td>
+                        <td><input type="number" class="qty" oninput="calculate()"></td>
+                        <td class="row-total">$0.00</td>
+                    </tr>
+                    <tr class="item-row">
+                        <td><input type="text" placeholder="Service/Item description"></td>
+                        <td><input type="number" class="price" oninput="calculate()"></td>
+                        <td><input type="number" class="qty" oninput="calculate()"></td>
+                        <td class="row-total">$0.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-    <!-- Totals on the RIGHT -->
-    <table class="totals-table">
-        <tr>
-            <td>Subtotal</td>
-            <td class="center">$<span id="sub">0.00</span></td>
-        </tr>
-        <tr>
-            <td>Tax Rate (%)</td>
-            <td class="center">
-                <input type="number" id="taxRate" value="0" oninput="calculate()">
-            </td>
-        </tr>
-        <tr>
-            <td>Other Costs ($)</td>
-            <td class="center">
-                <input type="number" id="otherCosts" value="0" oninput="calculate()">
-            </td>
-        </tr>
-        <tr class="grand-total-row">
-            <td><strong>Total</strong></td>
-            <td class="center"><strong>$<span id="total">0.00</span></strong></td>
-        </tr>
-    </table>
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 20px;">
 
-</div>
+            <!-- Buttons on the LEFT -->
+            <div style="display: flex; gap: 10px;">
+                <button class="print-btn" onclick="addRow()">➕ Add Row</button>
+                <button class="print-btn" onclick="clearInvoice()">🧹 Clear</button>
+                <button class="print-btn" onclick="window.print()">🖨 Print</button>
+            </div>
+
+            <!-- Totals on the RIGHT -->
+            <table class="totals-table">
+                <tr>
+                    <td>Subtotal</td>
+                    <td class="center">$<span id="sub">0.00</span></td>
+                </tr>
+                <tr>
+                    <td>Tax Rate (%)</td>
+                    <td class="center">
+                        <input type="number" id="taxRate" value="0" oninput="calculate()">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Other Costs ($)</td>
+                    <td class="center">
+                        <input type="number" id="otherCosts" value="0" oninput="calculate()">
+                    </td>
+                </tr>
+                <tr class="grand-total-row">
+                    <td><strong>Total</strong></td>
+                    <td class="center"><strong>$<span id="total">0.00</span></strong></td>
+                </tr>
+            </table>
+
+        </div>
 
 
-                    <div class="invoice-footer">
-                        <div class="contact-info">
-                            <p>Make all checks payable to <strong>Afrik Denou</strong>.</p>
-                            <p>
-                                <strong>Contact Name:</strong> Sie L Pale<br>
-                                <strong>Phone:</strong> (+1) 646 724 3703<br>
-                                <strong>Email:</strong> afrikdenou@gmail.com
-                            </p>
-                        </div>
-                        <div class="thanks-note">
-                            Thank you for your business!
-                        </div>
-                    </div>
-                </div>
-</main>
+        <div class="invoice-footer">
+            <div class="contact-info">
+                <p>Make all checks payable to <strong>Afrik Denou</strong>.</p>
+                <p>
+                    <strong>Contact Name:</strong> Sie L Pale<br>
+                    <strong>Phone:</strong> (+1) 646 724 3703<br>
+                    <strong>Email:</strong> afrikdenou@gmail.com
+                </p>
+            </div>
+            <div class="thanks-note">
+                Thank you for your business!
+            </div>
+        </div>
+
+
+
+    </main>
 
     <footer class="footer">
         <p>© 2026 Afrik Denou. All Rights Reserved.</p>
@@ -624,6 +627,7 @@
                     <a href="calculator.html">MPG Calculator</a>
                     <a href="form.html">Form Validation</a>
                     <a href="workstation.html">Work Station</a>
+                    <a href="mortgage.html">Mortgage</a>
                 </div>
             </div>
 
@@ -633,17 +637,48 @@
         </nav>
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
     <script>
-        // Navigation
-        const menu = document.getElementById("mobile-menu");
-        const nav = document.querySelector(".nav");
-        menu.addEventListener("click", () => nav.classList.toggle("active"));
 
-        document.getElementById('invDate').valueAsDate = new Date();
+        // =========================
+        // NAVIGATION
+        // =========================
 
+        // ORIGINAL JAVASCRIPT
+        // const menu = document.getElementById("mobile-menu");
+        // const nav = document.querySelector(".nav");
+
+        // JQUERY SELECTORS
+        const menu = $("#mobile-menu");
+        const nav = $(".nav");
+
+        // ORIGINAL JAVASCRIPT
+        // menu.addEventListener("click", () => nav.classList.toggle("active"));
+
+        // JQUERY EVENT + CSS CLASS METHOD
+        menu.on("click", function () {
+            nav.toggleClass("active");
+        });
+
+        // =========================
+        // SET TODAY'S DATE
+        // =========================
+
+        // ORIGINAL JAVASCRIPT
+        // document.getElementById('invDate').valueAsDate = new Date();
+
+        // JQUERY VERSION
+        $("#invDate").val(new Date().toISOString().split("T")[0]);
+
+        // =========================
+        // CLEAR INVOICE FUNCTION
+        // =========================
 
         function clearInvoice() {
-            // Clear all text inputs and textareas
+
+            // ORIGINAL JAVASCRIPT
+            /*
             document.querySelectorAll("input, textarea").forEach(input => {
                 if (input.type === "date") {
                     input.valueAsDate = new Date();
@@ -651,118 +686,223 @@
                     input.value = "";
                 }
             });
-           
-           
+            */
 
+            // JQUERY VERSION
+            $("input, textarea").each(function () {
 
+                if ($(this).attr("type") === "date") {
 
+                    $(this).val(new Date().toISOString().split("T")[0]);
 
-            // Dropdown menu behavior
-            document.querySelectorAll('.dropdown').forEach(dropdown => {
+                } else {
 
-                // Open on hover
-                dropdown.addEventListener('mouseenter', () => {
-                    dropdown.classList.add('open');
-                });
-
-                // Close when mouse leaves
-                dropdown.addEventListener('mouseleave', () => {
-                    dropdown.classList.remove('open');
-                });
-
-                // Mobile click support
-                const trigger = dropdown.querySelector('a');
-
-                trigger.addEventListener('click', function (e) {
-                    if (window.innerWidth <= 768) {
-                        e.preventDefault();
-                        dropdown.classList.toggle('open');
-                    }
-                });
+                    $(this).val("");
+                }
             });
 
+            // Reset tax and other costs
+            $("#taxRate").val(0);
+            $("#otherCosts").val(0);
 
+            // ORIGINAL JAVASCRIPT
+            // document.querySelectorAll(".row-total").forEach(el => el.innerText = "$0.00");
 
+            // JQUERY VERSION
+            $(".row-total").text("$0.00");
 
+            // ORIGINAL JAVASCRIPT
+            // document.getElementById("sub").innerText = "0.00";
+            // document.getElementById("total").innerText = "0.00";
 
+            // JQUERY VERSION
+            $("#sub").text("0.00");
+            $("#total").text("0.00");
 
-
-
-
-
-
-
-
-
-
-
-            // Reset tax & other costs
-            document.getElementById("taxRate").value = 0;
-            document.getElementById("otherCosts").value = 0;
-
-            // Reset totals
-            document.querySelectorAll(".row-total").forEach(el => el.innerText = "$0.00");
-            document.getElementById("sub").innerText = "0.00";
-            document.getElementById("total").innerText = "0.00";
-
-            // Recalculate to ensure everything updates
             calculate();
         }
 
+        // =========================
+        // ADD NEW ROW
+        // =========================
 
         function addRow() {
-            const tableBody = document.querySelector("tbody");
 
-            const newRow = document.createElement("tr");
-            newRow.classList.add("item-row");
+            // ORIGINAL JAVASCRIPT
+            // const tableBody = document.querySelector("tbody");
 
-            newRow.innerHTML = `
-        <td><input type="text" placeholder="Service/Item description"></td>
-        <td><input type="number" class="price" oninput="calculate()"></td>
-        <td><input type="number" class="qty" oninput="calculate()"></td>
-        <td class="row-total">$0.00</td>
-    `;
+            // JQUERY SELECTOR
+            const tableBody = $(".table-responsive table tbody");
 
-            tableBody.appendChild(newRow);
+            const newRow = `
+            <tr class="item-row">
+                <td><input type="text" placeholder="Service/Item description"></td>
+                <td><input type="number" class="price"></td>
+                <td><input type="number" class="qty"></td>
+                <td class="row-total">$0.00</td>
+            </tr>
+            `
+
+            // JQUERY APPEND METHOD
+            tableBody.append(newRow);
         }
 
+        // =========================
+        // CALCULATE TOTALS
+        // =========================
+
         function calculate() {
+
             let subtotal = 0;
 
+            // ORIGINAL JAVASCRIPT
+            /*
             document.querySelectorAll('.item-row').forEach(row => {
                 const price = parseFloat(row.querySelector('.price').value) || 0;
                 const qty = parseFloat(row.querySelector('.qty').value) || 0;
+            });
+            */
+
+            // JQUERY VERSION
+            $(".item-row").each(function () {
+
+                // JQUERY DOM TRAVERSAL
+                const price = parseFloat($(this).find(".price").val()) || 0;
+                const qty = parseFloat($(this).find(".qty").val()) || 0;
 
                 const rowTotal = price * qty;
-                row.querySelector('.row-total').innerText = '$' + rowTotal.toFixed(2);
+
+                // ORIGINAL JAVASCRIPT
+                // row.querySelector('.row-total').innerText = '$' + rowTotal.toFixed(2);
+
+                // JQUERY TEXT METHOD
+                $(this).find(".row-total").text("$" + rowTotal.toFixed(2));
 
                 subtotal += rowTotal;
             });
 
-            const taxRate = parseFloat(document.getElementById('taxRate').value) || 0;
-            const otherCosts = parseFloat(document.getElementById('otherCosts').value) || 0;
+            // ORIGINAL JAVASCRIPT
+            // const taxRate = parseFloat(document.getElementById('taxRate').value) || 0;
+            // const otherCosts = parseFloat(document.getElementById('otherCosts').value) || 0;
+
+            // JQUERY SELECTORS
+            const taxRate = parseFloat($("#taxRate").val()) || 0;
+            const otherCosts = parseFloat($("#otherCosts").val()) || 0;
 
             const tax = subtotal * (taxRate / 100);
             const total = subtotal + tax + otherCosts;
 
-            document.getElementById('sub').innerText =  subtotal.toFixed(2);
-            document.getElementById('total').innerText = total.toFixed(2);
+            // ORIGINAL JAVASCRIPT
+            // document.getElementById('sub').innerText = subtotal.toFixed(2);
+            // document.getElementById('total').innerText = total.toFixed(2);
+
+            // JQUERY TEXT METHOD
+            $("#sub").text(subtotal.toFixed(2));
+            $("#total").text(total.toFixed(2));
         }
 
-        const toggle = document.getElementById('theme-toggle');
-        const icon = document.getElementById('theme-icon');
-        toggle.addEventListener('click', () => {
-            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-            const theme = isDark ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-            icon.innerText = theme === 'dark' ? '☀️' : '🌙';
+        // =========================
+        // AUTO CALCULATE WHEN TYPING
+        // =========================
+
+        // JQUERY EVENT DELEGATION
+        $(document).on("input", ".price, .qty, #taxRate, #otherCosts", function () {
+            calculate();
         });
 
-        if (localStorage.getItem('theme') === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            icon.innerText = '☀️';
+        // =========================
+        // DROPDOWN MENUS
+        // =========================
+
+        // ORIGINAL JAVASCRIPT
+        /*
+        document.querySelectorAll('.dropdown').forEach(dropdown => {
+
+            dropdown.addEventListener('mouseenter', () => {
+                dropdown.classList.add('open');
+            });
+
+            dropdown.addEventListener('mouseleave', () => {
+                dropdown.classList.remove('open');
+            });
+        });
+        */
+
+        // JQUERY VERSION
+        $(".dropdown").hover(
+            function () {
+                $(this).addClass("open");
+            },
+            function () {
+                $(this).removeClass("open");
+            }
+        );
+
+        // MOBILE DROPDOWN SUPPORT
+        $(".dropdown > a").on("click", function (e) {
+
+            if ($(window).width() <= 768) {
+
+                e.preventDefault();
+
+                $(this).parent().toggleClass("open");
+            }
+        });
+
+        // =========================
+        // THEME TOGGLE
+        // =========================
+
+        // ORIGINAL JAVASCRIPT
+        // const toggle = document.getElementById('theme-toggle');
+        // const icon = document.getElementById('theme-icon');
+
+        // JQUERY SELECTORS
+        const toggle = $("#theme-toggle");
+        const icon = $("#theme-icon");
+
+        // ORIGINAL JAVASCRIPT
+        /*
+        toggle.addEventListener('click', () => {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        });
+        */
+
+        // JQUERY VERSION
+        toggle.on("click", function () {
+
+            const isDark = $("html").attr("data-theme") === "dark";
+
+            const theme = isDark ? "light" : "dark";
+
+            // ORIGINAL JAVASCRIPT
+            // document.documentElement.setAttribute('data-theme', theme);
+
+            // JQUERY ATTRIBUTE METHOD
+            $("html").attr("data-theme", theme);
+
+            localStorage.setItem("theme", theme);
+
+            // ORIGINAL JAVASCRIPT
+            // icon.innerText = theme === 'dark' ? '☀️' : '🌙';
+
+            // JQUERY TEXT METHOD
+            icon.text(theme === "dark" ? "☀️" : "🌙");
+        });
+
+        if (localStorage.getItem("theme") === "dark") {
+
+            // ORIGINAL JAVASCRIPT
+            // document.documentElement.setAttribute('data-theme', 'dark');
+
+            $("html").attr("data-theme", "dark");
+
+            // ORIGINAL JAVASCRIPT
+            // icon.innerText = '☀️';
+
+            icon.text("☀️");
         }
+
     </script>
 </body>
 </html>

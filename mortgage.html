@@ -1,0 +1,650 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mortgage | Afrik Denou</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+                /* --- Dark Mode Variables --- */
+                :root {
+                    --bg-color: #ffffff;
+                    --text-color: #333333;
+                    --content-bg: #ffffff;
+                    --caption-bg: #f9f9f9;
+                }
+
+                [data-theme="dark"] {
+                    --bg-color: #121212;
+                    --text-color: #e0e0e0;
+                    --content-bg: #1e1e1e;
+                    --caption-bg: #252525;
+                }
+
+                body {
+                    background-color: var(--bg-color);
+                    color: var(--text-color);
+                    transition: background-color 0.3s, color 0.3s;
+                    font-family: Arial, Helvetica, sans-serif;
+                }
+
+                /* --- Theme Toggle --- */
+                .theme-toggle-container {
+                    display: flex;
+                    align-items: center;
+                    margin-left: 15px;
+                }
+
+                #theme-toggle {
+                    background: var(--gold);
+                    border: none;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: transform 0.2s;
+                }
+
+                    #theme-toggle:hover {
+                        transform: scale(1.1);
+                    }
+
+
+                {
+                    box-sizing: border-box;
+                }
+
+                /* TITLE */
+                h1 {
+                    width: 100%;
+                    max-width: 720px;
+                    text-align: center;
+                    color: #666666;
+                    font-size: 3rem; /* Adjusted for better mobile scaling */
+                    margin: 20px auto;
+                }
+
+                /* MAIN CALCULATOR CONTAINER (Replaces mainTable) */
+                .calc-container {
+                    display: flex;
+                    flex-direction: row;
+                    width: 100%;
+                    max-width: 720px;
+                    margin: 0 auto;
+                    border: 1px solid #666;
+                    background-color: #CCFFCC;
+                    border-collapse: collapse;
+                }
+
+                .infoCell {
+                    width: 70%;
+                    padding: 25px 28px;
+                    background-color: #CCFFCC;
+                    color: #447744;
+                    font-family: Georgia, Times, serif;
+                    text-align: justify;
+                    line-height: 1.45;
+                    font-size: 1.5rem;
+                    vertical-align: middle;
+                    border-right: 1px solid #666;
+                }
+
+                .calcCell {
+                    flex: 1;
+                    padding: 20px 20px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: 12px;
+                }
+
+                /* Mobile Stacking for Calculator */
+                @media screen and (max-width: 600px) {
+                    .calc-container {
+                        flex-direction: column;
+                    }
+
+                    .infoCell {
+                        border-right: none;
+                        border-bottom: 1px solid #666;
+                    }
+
+                    h1 {
+                        font-size: 1.5rem;
+                    }
+                }
+
+                .calcBox {
+                    width: 100%;
+                    max-width: 320px;
+                    padding: 15px 10px;
+                    border: 2px solid #8C8C8C;
+                    background-color: #555555;
+                }
+
+                /* Form Table styling for responsiveness */
+                .formTable {
+                    width: 100%;
+                    color: white;
+                }
+
+                    .formTable td {
+                        padding: 2px 5px;
+                    }
+
+                        .formTable td:first-child {
+                            white-space: nowrap;
+                            text-align: left;
+                        }
+
+                input[type="text"], select {
+                    width: 100%;
+                    height: 30px;
+                    padding: 0 5px;
+                }
+
+                .button-group {
+                    display: flex;
+                    justify-content: space-between;
+                    gap: 10px;
+                    padding: 0 28px;
+                }
+
+                .buttonStyle {
+                    width: 80px;
+                    height: 28px;
+                    border: 1px solid #000;
+                    background-color: #FFFFFF;
+                    cursor: pointer;
+                    font-size: 0.85rem;
+                }
+
+                .center-btn {
+                    text-align: center;
+                }
+
+                .res-text {
+                    font-size: 0.9rem;
+                }
+
+                /* YEARS DROPDOWN */
+
+                select {
+                    width: 60px;
+                    height: 24px;
+                    background-color: #FFFFFF;
+                    border: 1px solid #000;
+                    /* Makes arrow appear inside square area */
+                    padding-left: 5px;
+                    padding-right: 22px;
+                    appearance: none;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    background-image: linear-gradient(45deg, transparent 50%, black 50%), linear-gradient(135deg, black 50%, transparent 50%), linear-gradient(to left, #D9D9D9 28px, transparent 28px);
+                    background-position: calc(100% - 12px) 9px, calc(100% - 7px) 9px, 100% 0;
+                    background-size: 5px 5px, 5px 5px, 28px 100%;
+                    background-repeat: no-repeat;
+                }
+
+                /* BUTTONS */
+
+                .buttonStyle {
+                    width: 80px;
+                    height: 28px;
+                    border: 1px solid #000;
+                    /* Slight gray effect */
+                    background-color: #E0E0E0;
+                    cursor: pointer;
+                    font-size: 0.85rem;
+                    /* Optional subtle depth */
+                    box-shadow: inset 0 0 2px #999;
+                }
+
+                    .buttonStyle:hover {
+                        background-color: #D3D3D3;
+                    }
+
+
+                /* Bottom Menu Adjustment */
+                .footer-nav {
+                    display: flex;
+                    justify-content: center;
+                    margin-top: 15px;
+                    flex-wrap: wrap;
+                }
+
+                    .footer-nav a, .footer-nav .dropdown > a {
+                        color: var(--white);
+                        margin: 5px 10px;
+                        text-decoration: none;
+                        font-size: 14px;
+                        font-weight: bold;
+                    }
+
+                    .footer-nav .dropdown-content {
+                        bottom: 30px;
+                        top: auto;
+                    }
+
+                /* =========================
+           DROPDOWN MENUS
+        ========================= */
+
+                /* Dropdown container */
+                .dropdown {
+                    position: relative;
+                    display: inline-block;
+                }
+
+                /* Dropdown menu */
+                .dropdown-content {
+                    display: none;
+                    position: absolute;
+                    background: #222;
+                    color: #fff;
+                    min-width: 160px;
+                    padding: 8px 0;
+                    border-radius: 6px;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+                    z-index: 999;
+                }
+
+                /* SHOW DROPDOWN ON HOVER */
+                .dropdown:hover .dropdown-content {
+                    display: block;
+                }
+
+                /* Dropdown links */
+                .dropdown-content a {
+                    color: #fff !important;
+                    padding: 10px 15px;
+                    display: block;
+                    text-decoration: none;
+                    font-size: 14px;
+                }
+
+                    /* Hover effect inside dropdown */
+                    .dropdown-content a:hover {
+                        background: #444;
+                    }
+
+                /* =========================
+           TOP NAV DROPDOWN
+        ========================= */
+
+                .nav .dropdown-content {
+                    top: 100%;
+                    left: 0;
+                }
+
+                /* =========================
+           FOOTER DROPDOWN
+        ========================= */
+
+                .footer-nav .dropdown {
+                    position: relative;
+                }
+
+                /* Opens upward */
+                .footer-nav .dropdown-content {
+                    bottom: 100%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: #111;
+                    margin-bottom: 0;
+                }
+
+                /* Invisible hover bridge */
+                .footer-nav .dropdown::after {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    bottom: 100%;
+                    width: 100%;
+                    height: 15px;
+                }
+
+                /* =========================
+           GOLD HOVER EFFECT
+        ========================= */
+
+                .nav a:hover,
+                .footer-nav a:hover,
+                .nav .dropdown > a:hover,
+                .footer-nav .dropdown > a:hover {
+                    color: var(--gold) !important;
+                }
+    </style>
+</head>
+<body>
+    <header class="top-bar">
+
+        <div style="display: flex; align-items: center;">
+
+            <img src="images/logo.jpeg" alt="Afrik Denou Logo" class="logo">
+
+
+
+            <div class="theme-toggle-container">
+
+                <button id="theme-toggle" aria-label="Toggle Dark Mode">
+
+                    <span id="theme-icon">🌙</span>
+
+                </button>
+            </div>
+        </div>
+        <div class="menu-toggle" id="mobile-menu">☰</div>
+
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <div class="dropdown">
+                <a href="#">About ▾</a>
+                <div class="dropdown-content">
+                    <a href="about.html">About</a>
+                    <a href="resume.html">Resume</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#">BIS 23 901D ▾</a>
+                <div class="dropdown-content">
+                    <a href="task.html">Task Manager</a>
+                    <a href="invoice.html">Invoice</a>
+                    <a href="calculator.html">MPG Calculator</a>
+                    <a href="form.html">Form Validation</a>
+                    <a href="workstation.html">Work Station</a>
+                    <a href="mortgage.html">Mortgage</a>
+                </div>
+            </div>
+            <a href="services.html">Our Services</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <pre>
+
+
+
+
+</pre>
+
+
+    <h1>Home Mortgage Calculator</h1>
+    <!-- Use DIV instead of TABLE for the outer structure -->
+    <div class="calc-container">
+        <!-- LEFT SIDE -->
+        <div class="infoCell">
+            To use the Home Mortgage Calculator enter the amount of the mortgage, the interest of the loan, and the number of years. Then click on the "Calculate" button to see an estimate of your monthly payment.
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="calcCell">
+            <div class="calcBox">
+                <form name="Form1">
+
+
+                    <table class="formTable">
+                        <tr>
+                            <td>Mortgage:</td>
+                            <td><input type="text" name="Amount"></td>
+                        </tr>
+                        <tr>
+                            <td>Interest (e.g. 7.9):</td>
+                            <td><input type="text" name="Rate"></td>
+                        </tr>
+                        <tr>
+                            <td>Years:</td>
+                            <td>
+                                <select name="Years">
+                                    <option value="30">30</option>
+                                    <option value="25">25</option>
+                                    <option value="20">20</option>
+                                    <option value="15">15</option>
+                                    <option value="10">10</option>
+                                    <option value="5">5</option>
+                                    <option value="0" selected>0</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td class="center-btn">
+
+                                <input type="button"
+                                       class="buttonStyle"
+                                       value="Calculate"
+                                       onclick="mortCalc(Form1)">
+
+                            </td>
+
+                            <td>
+
+                                <input type="reset"
+                                       class="buttonStyle"
+                                       value="Reset">
+
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td> Your monthly payment:</td>
+                            <td><input type="text" name="Payment" readonly></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2026 Afrik Denou. All Rights Reserved.</p>
+
+        <nav class="footer-nav">
+            <a href="index.html">Home</a>
+
+            <div class="dropdown">
+                <a href="#">About ▾</a>
+                <div class="dropdown-content">
+                    <a href="about.html">About</a>
+                    <a href="resume.html">Resume</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <a href="#">BIS 23 901D ▾</a>
+                <div class="dropdown-content">
+                    <a href="task.html">Task Manager</a>
+                    <a href="invoice.html">Invoice</a>
+                    <a href="calculator.html">MPG Calculator</a>
+                    <a href="form.html">Form Validation</a>
+                    <a href="workstation.html">Work Station</a>
+                    <a href="mortgage.html">Mortgage</a>
+                </div>
+            </div>
+
+            <a href="services.html">Our Services</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+
+
+        // =========================
+        // MOBILE MENU
+        // =========================
+
+        // ORIGINAL JAVASCRIPT
+        // const menu = document.getElementById("mobile-menu");
+        // const nav = document.querySelector(".nav");
+
+        // JQUERY SELECTORS
+        const menu = $("#mobile-menu");
+        const nav = $(".nav");
+
+        // ORIGINAL JAVASCRIPT
+        // menu.addEventListener("click", () => {
+        //     nav.classList.toggle("active");
+        // });
+
+        // JQUERY EVENT + CSS CLASS METHOD
+        menu.on("click", function () {
+            nav.toggleClass("active");
+        });
+
+        // =========================
+        // CLOSE MENU WHEN CLICKING OUTSIDE
+        // =========================
+
+        // ORIGINAL JAVASCRIPT
+        /*
+        document.addEventListener("click", (e) => {
+
+            if (
+                !nav.contains(e.target) &&
+                !menu.contains(e.target)
+            ) {
+                nav.classList.remove("active");
+            }
+        });
+        */
+
+        // JQUERY VERSION
+        $(document).on("click", function (e) {
+
+            if (
+                !$(e.target).closest(".nav").length &&
+                !$(e.target).closest("#mobile-menu").length
+            ) {
+                nav.removeClass("active");
+            }
+        });
+
+        // =========================
+        // MOBILE DROPDOWNS
+        // =========================
+
+        // ORIGINAL JAVASCRIPT
+        // const dropdowns = document.querySelectorAll(".dropdown");
+
+        // JQUERY SELECTOR
+        const dropdowns = $(".dropdown");
+
+        dropdowns.each(function () {
+
+            // ORIGINAL JAVASCRIPT
+            // const link = drop.querySelector("a");
+            // const content = drop.querySelector(".dropdown-content");
+
+            // JQUERY DOM TRAVERSAL
+            const link = $(this).children("a");
+            const content = $(this).children(".dropdown-content");
+
+            if (content.length) {
+
+                // ORIGINAL JAVASCRIPT
+                /*
+                link.addEventListener("click", (e) => {
+
+                    if (window.innerWidth <= 768) {
+
+                        e.preventDefault();
+
+                        content.classList.toggle("active");
+                    }
+                });
+                */
+
+                // JQUERY VERSION
+                link.on("click", function (e) {
+
+                    if ($(window).width() <= 768) {
+
+                        e.preventDefault();
+
+                        content.toggleClass("active");
+                    }
+                });
+            }
+        });
+
+        // =========================
+        // THEME TOGGLE
+        // =========================
+
+        // ORIGINAL JAVASCRIPT
+        // const toggle = document.getElementById('theme-toggle');
+        // const icon = document.getElementById('theme-icon');
+
+        // JQUERY SELECTORS
+        const toggle = $('#theme-toggle');
+        const icon = $('#theme-icon');
+
+        toggle.on('click', function () {
+
+            const isDark =
+                $('html').attr('data-theme') === 'dark';
+
+            const theme = isDark ? 'light' : 'dark';
+
+            // ORIGINAL JAVASCRIPT
+            // document.documentElement.setAttribute('data-theme', theme);
+
+            // JQUERY ATTRIBUTE METHOD
+            $('html').attr('data-theme', theme);
+
+            localStorage.setItem('theme', theme);
+
+            // ORIGINAL JAVASCRIPT
+            // icon.innerText = theme === 'dark' ? '☀️' : '🌙';
+
+            // JQUERY TEXT METHOD
+            icon.text(theme === 'dark' ? '☀️' : '🌙');
+        });
+
+        if (localStorage.getItem('theme') === 'dark') {
+
+            // ORIGINAL JAVASCRIPT
+            // document.documentElement.setAttribute('data-theme', 'dark');
+
+            $('html').attr('data-theme', 'dark');
+
+            // ORIGINAL JAVASCRIPT
+            // icon.innerText = '☀️';
+
+            icon.text('☀️');
+        }
+
+
+
+        // Existing logic for calculator
+        function mortCalc(Form1) {
+            let principal = parseFloat(Form1.Amount.value);
+            let yearlyRate = parseFloat(Form1.Rate.value);
+            let years = parseInt(Form1.Years.value);
+
+            if (isNaN(principal) || isNaN(yearlyRate) || years <= 0) {
+                alert("Please enter valid numeric values.");
+                return;
+            }
+
+            let monthlyRate = (yearlyRate / 100) / 12;
+            let totalPayments = years * 12;
+            let x = Math.pow(1 + monthlyRate, totalPayments);
+            let monthlyPayment = (principal * x * monthlyRate) / (x - 1);
+
+            Form1.Payment.value = !isNaN(monthlyPayment) && monthlyPayment !== Infinity ?
+                "$" + monthlyPayment.toFixed(2) : "Error";
+        }
+
+    </script>
+</body>
+</html>

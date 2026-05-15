@@ -278,6 +278,7 @@
                     <a href="calculator.html">MPG Calculator</a>
                     <a href="form.html">Form Validation</a>
                     <a href="workstation.html">Work Station</a>
+                    <a href="mortgage.html">Mortgage</a>
                 </div>
             </div>
             <a href="services.html">Our Services</a>
@@ -331,6 +332,7 @@
                     <a href="calculator.html">MPG Calculator</a>
                     <a href="form.html">Form Validation</a>
                     <a href="workstation.html">Work Station</a>
+                    <a href="mortgage.html">Mortgage</a>
                 </div>
             </div>
 
@@ -340,47 +342,164 @@
         </nav>
     </footer>
 
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
     <script>
-        const menu = document.getElementById("mobile-menu");
-        const nav = document.querySelector(".nav");
-        menu.addEventListener("click", () => nav.classList.toggle("active"));
 
+        // =========================
+        // MOBILE MENU
+        // =========================
 
+        // ORIGINAL JAVASCRIPT
+        // const menu = document.getElementById("mobile-menu");
+        // const nav = document.querySelector(".nav");
 
+        // JQUERY SELECTORS
+        const menu = $("#mobile-menu");
+        const nav = $(".nav");
 
+        // ORIGINAL JAVASCRIPT
+        // menu.addEventListener("click", () => {
+        //     nav.classList.toggle("active");
+        // });
 
+        // JQUERY EVENT + CSS CLASS METHOD
+        menu.on("click", function () {
+            nav.toggleClass("active");
+        });
 
+        // =========================
+        // CLOSE MENU WHEN CLICKING OUTSIDE
+        // =========================
 
+        // ORIGINAL JAVASCRIPT
+        /*
+        document.addEventListener("click", (e) => {
 
+            if (
+                !nav.contains(e.target) &&
+                !menu.contains(e.target)
+            ) {
+                nav.classList.remove("active");
+            }
+        });
+        */
 
+        // JQUERY VERSION
+        $(document).on("click", function (e) {
 
-
-
-        // --- Dark Mode Logic ---
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        const currentTheme = localStorage.getItem('theme');
-
-        if (currentTheme === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            themeIcon.innerText = '☀️';
-        }
-
-        themeToggle.addEventListener('click', () => {
-            let theme = document.documentElement.getAttribute('data-theme');
-            if (theme === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'light');
-                localStorage.setItem('theme', 'light');
-                themeIcon.innerText = '🌙';
-            } else {
-                document.documentElement.setAttribute('data-theme', 'dark');
-                localStorage.setItem('theme', 'dark');
-                themeIcon.innerText = '☀️';
+            if (
+                !$(e.target).closest(".nav").length &&
+                !$(e.target).closest("#mobile-menu").length
+            ) {
+                nav.removeClass("active");
             }
         });
 
-        // --- MPG Calculation ---
+        // =========================
+        // MOBILE DROPDOWNS
+        // =========================
+
+        // ORIGINAL JAVASCRIPT
+        // const dropdowns = document.querySelectorAll(".dropdown");
+
+        // JQUERY SELECTOR
+        const dropdowns = $(".dropdown");
+
+        dropdowns.each(function () {
+
+            // ORIGINAL JAVASCRIPT
+            // const link = drop.querySelector("a");
+            // const content = drop.querySelector(".dropdown-content");
+
+            // JQUERY DOM TRAVERSAL
+            const link = $(this).children("a");
+            const content = $(this).children(".dropdown-content");
+
+            if (content.length) {
+
+                // ORIGINAL JAVASCRIPT
+                /*
+                link.addEventListener("click", (e) => {
+
+                    if (window.innerWidth <= 768) {
+
+                        e.preventDefault();
+
+                        content.classList.toggle("active");
+                    }
+                });
+                */
+
+                // JQUERY VERSION
+                link.on("click", function (e) {
+
+                    if ($(window).width() <= 768) {
+
+                        e.preventDefault();
+
+                        content.toggleClass("active");
+                    }
+                });
+            }
+        });
+
+        // =========================
+        // THEME TOGGLE
+        // =========================
+
+        // ORIGINAL JAVASCRIPT
+        // const toggle = document.getElementById('theme-toggle');
+        // const icon = document.getElementById('theme-icon');
+
+        // JQUERY SELECTORS
+        const toggle = $('#theme-toggle');
+        const icon = $('#theme-icon');
+
+        toggle.on('click', function () {
+
+            const isDark =
+                $('html').attr('data-theme') === 'dark';
+
+            const theme = isDark ? 'light' : 'dark';
+
+            // ORIGINAL JAVASCRIPT
+            // document.documentElement.setAttribute('data-theme', theme);
+
+            // JQUERY ATTRIBUTE METHOD
+            $('html').attr('data-theme', theme);
+
+            localStorage.setItem('theme', theme);
+
+            // ORIGINAL JAVASCRIPT
+            // icon.innerText = theme === 'dark' ? '☀️' : '🌙';
+
+            // JQUERY TEXT METHOD
+            icon.text(theme === 'dark' ? '☀️' : '🌙');
+        });
+
+        if (localStorage.getItem('theme') === 'dark') {
+
+            // ORIGINAL JAVASCRIPT
+            // document.documentElement.setAttribute('data-theme', 'dark');
+
+            $('html').attr('data-theme', 'dark');
+
+            // ORIGINAL JAVASCRIPT
+            // icon.innerText = '☀️';
+
+            icon.text('☀️');
+        }
+
+        // =========================
+        // MPG CALCULATOR
+        // =========================
+
+        // ORIGINAL JAVASCRIPT
+        /*
         function calculateMPG() {
+
             let miles = document.getElementById("miles").value;
             let gallons = document.getElementById("gallons").value;
             let resultDiv = document.getElementById("result");
@@ -391,8 +510,45 @@
             }
 
             let mpg = miles / gallons;
-            resultDiv.innerHTML = `Efficiency: ${mpg.toFixed(2)} MPG`;
+
+            resultDiv.innerHTML =
+                `Efficiency: ${mpg.toFixed(2)} MPG`;
         }
+        */
+
+        // JQUERY VERSION
+        function calculateMPG() {
+
+            // JQUERY SELECTORS
+            const miles = $("#miles").val();
+            const gallons = $("#gallons").val();
+            const resultDiv = $("#result");
+
+            // VALIDATION
+            if (miles <= 0 || gallons <= 0 || miles === "" || gallons === "") {
+
+                // JQUERY HTML METHOD
+                resultDiv.html("Please enter valid numbers.");
+
+                // JQUERY CSS METHOD
+                resultDiv.css("color", "red");
+
+                return;
+            }
+
+            // CALCULATION
+            const mpg = miles / gallons;
+
+            // DISPLAY RESULT
+            resultDiv.html(
+                `Efficiency: ${mpg.toFixed(2)} MPG`
+            );
+
+            // JQUERY CSS METHOD
+            resultDiv.css("color", "black");
+        }
+
+
     </script>
 </body>
 </html>
