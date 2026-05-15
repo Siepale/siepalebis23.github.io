@@ -53,28 +53,41 @@
             font-size: 1.2rem;
             transition: transform 0.2s;
         }
-        /* Footer Nav Mirroring Header */
+
+
+
+
+
+        /* --- Black Info Bar --- */
+        .info-bar {
+            background-color: var(--info-bar-bg);
+            color: var(--info-bar-text);
+            padding: 15px;
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+
+        /* --- Bottom Navigation Menu Bar --- */
         .footer-nav {
             display: flex;
             justify-content: center;
-            align-items: center;
-            gap: 15px;
             margin-top: 15px;
             flex-wrap: wrap;
         }
 
             .footer-nav a, .footer-nav .dropdown > a {
                 color: var(--white);
+                margin: 5px 10px;
                 text-decoration: none;
-                font-weight: bold;
                 font-size: 14px;
+                font-weight: bold;
             }
 
-        .footer .dropdown-content {
-            bottom: 100%;
-            top: auto;
-            margin-bottom: 10px;
-        }
+            .footer-nav .dropdown-content {
+                bottom: 30px;
+                top: auto;
+            }
+
 
 
 
@@ -382,51 +395,65 @@
         }
 
 
+
+
+
+
+
+
+
         /* =========================
-   MOBILE NAVIGATION
+   MOBILE MENU
 ========================= */
 
         .menu-toggle {
             display: none;
-            font-size: 2rem;
-            cursor: pointer;
-            color: var(--text-color);
         }
 
-        /* Mobile Styles */
+        /* MOBILE VIEW */
         @media (max-width: 768px) {
 
-            /* Show hamburger */
+            /* Show hamburger icon */
             .menu-toggle {
                 display: block;
+                font-size: 2rem;
+                color: white;
+                cursor: pointer;
+                z-index: 9999;
             }
 
-            /* Hide nav initially */
+            /* Hide menu initially */
             .nav {
                 display: none;
                 position: absolute;
                 top: 80px;
-                left: 0;
-                width: 100%;
-                background: rgba(20,20,20,0.98);
-                flex-direction: column;
+                right: 10px;
+                width: 200px;
+                background: #111;
                 padding: 20px;
+                border-radius: 12px;
+                
+                align-items: flex-end;
+                text-align: right;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.4);
                 z-index: 9999;
             }
 
-                /* SHOW when active */
+                /* SHOW MENU WHEN ACTIVE */
                 .nav.active {
                     display: flex;
                 }
 
-                /* Mobile links */
+                /* Links */
                 .nav a {
-                    padding: 14px 0;
+                    color: white;
+                    text-decoration: none;
+                    padding: 12px 0;
                     width: 100%;
-                    border-bottom: 1px solid rgba(255,255,255,0.08);
+                    text-align: right;
                 }
 
-            /* Dropdown fixes */
+            /* Dropdowns */
             .dropdown {
                 width: 100%;
             }
@@ -434,17 +461,21 @@
             .dropdown-content {
                 position: static;
                 display: none;
-                background: #111;
-                box-shadow: none;
                 width: 100%;
-                margin-top: 10px;
+                background: #1a1a1a;
+                margin-top: 5px;
+                border-radius: 8px;
+                box-shadow: none;
             }
 
-            /* Tap-friendly dropdown */
-            .dropdown:hover .dropdown-content {
-                display: block;
-            }
         }
+
+
+
+
+
+
+
 
 
 
@@ -463,6 +494,8 @@
 
 
 
+            <!-- Dark Mode Toggle Button -->
+
             <div class="theme-toggle-container">
 
                 <button id="theme-toggle" aria-label="Toggle Dark Mode">
@@ -472,6 +505,7 @@
                 </button>
             </div>
         </div>
+
         <div class="menu-toggle" id="mobile-menu">☰</div>
 
         <nav class="nav">
@@ -498,7 +532,6 @@
             <a href="contact.html">Contact</a>
         </nav>
     </header>
-
 
 
 
@@ -768,27 +801,30 @@
 
 
 
+        // --- Dark Mode Logic ---
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const currentTheme = localStorage.getItem('theme');
 
+        if (currentTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeIcon.innerText = '☀️';
+        }
 
-
-
-
-
-
-        const toggle = document.getElementById('theme-toggle');
-        const icon = document.getElementById('theme-icon');
-        toggle.addEventListener('click', () => {
-            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-            const theme = isDark ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-            icon.innerText = theme === 'dark' ? '☀️' : '🌙';
+        themeToggle.addEventListener('click', () => {
+            let theme = document.documentElement.getAttribute('data-theme');
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+                themeIcon.innerText = '🌙';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.innerText = '☀️';
+            }
         });
 
-        if (localStorage.getItem('theme') === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            icon.innerText = '☀️';
-        }
+
     </script>
 </body>
 </html>

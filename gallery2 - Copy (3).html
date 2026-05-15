@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MPG Calculator | Afrik Denou</title>
+    <title>Gallery | Afrik Denou</title>
 
     <link rel="stylesheet" href="css/styles.css">
 
@@ -13,16 +13,14 @@
             --bg-color: #ffffff;
             --text-color: #333333;
             --content-bg: #ffffff;
-            --calc-card-bg: #fff8ef;
-            --info-bar-bg: #000000;
-            --info-bar-text: #ffffff;
+            --caption-bg: #f9f9f9;
         }
 
         [data-theme="dark"] {
             --bg-color: #121212;
             --text-color: #e0e0e0;
             --content-bg: #1e1e1e;
-            --calc-card-bg: #2a2a2a;
+            --caption-bg: #252525;
         }
 
         body {
@@ -31,7 +29,7 @@
             transition: background-color 0.3s, color 0.3s;
         }
 
-        /* --- Theme Toggle Button --- */
+        /* --- Theme Toggle --- */
         .theme-toggle-container {
             display: flex;
             align-items: center;
@@ -45,69 +43,38 @@
             height: 40px;
             border-radius: 50%;
             cursor: pointer;
-            font-size: 1.2rem;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: transform 0.2s;
         }
 
-        /* --- Calculator Styling --- */
-        .calculator-container {
-            max-width: 400px;
-            margin: 60px auto;
-            background: var(--calc-card-bg);
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            text-align: center;
-            border-left: 5px solid var(--gold);
-            overflow: hidden; /* Ensures the black bar follows border radius */
-            transition: background 0.3s;
-        }
+            #theme-toggle:hover {
+                transform: scale(1.1);
+            }
 
-        .calc-body {
-            padding: 25px;
-        }
+      
 
-        .calculator-container input {
-            width: 90%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            background: var(--bg-color);
-            color: var(--text-color);
-        }
 
-        .calculator-container button {
-            padding: 12px 25px;
-            background: var(--gold);
-            color: var(--dark);
-            border: none;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-            width: 95%;
-            margin-top: 10px;
-        }
 
-        #result {
-            margin-top: 20px;
-            font-weight: bold;
-            font-size: 1.2rem;
-            color: var(--gold);
-        }
 
-        /* --- Black Info Bar --- */
-        .info-bar {
-            background-color: var(--info-bar-bg);
-            color: var(--info-bar-text);
-            padding: 15px;
-            font-size: 0.9rem;
-            margin-top: 20px;
-        }
 
-        /* --- Bottom Navigation Menu Bar --- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* Bottom Menu Adjustment */
         .footer-nav {
             display: flex;
             justify-content: center;
@@ -127,15 +94,6 @@
                 bottom: 30px;
                 top: auto;
             }
-
-
-
-
-
-
-
-
-
 
         /* =========================
    DROPDOWN MENUS
@@ -231,14 +189,9 @@
 
 
 
-
-
-
     </style>
 </head>
 <body>
-    <!-- ================= HEADER ================= -->
-
     <header class="top-bar">
 
         <div style="display: flex; align-items: center;">
@@ -246,8 +199,6 @@
             <img src="images/logo.jpeg" alt="Afrik Denou Logo" class="logo">
 
 
-
-            <!-- Dark Mode Toggle Button -->
 
             <div class="theme-toggle-container">
 
@@ -258,7 +209,6 @@
                 </button>
             </div>
         </div>
-
         <div class="menu-toggle" id="mobile-menu">☰</div>
 
         <nav class="nav">
@@ -287,28 +237,20 @@
         </nav>
     </header>
 
-    <main class="content">
-        <h1 style="text-align: center; margin-top: 40px;">MPG Calculator</h1>
+ 
 
-        <div class="calculator-container">
-            <div class="calc-body">
-                <img src="images/calculator.png" alt="Calculator" style="width: 60px; margin-bottom: 10px;">
-                <h2>Sie L Pale</h2>
-                <h3>Fuel Efficiency Tool</h3>
 
-                <input type="number" id="miles" placeholder="Miles Traveled">
-                <input type="number" id="gallons" placeholder="Gallons Used">
 
-                <button onclick="calculateMPG()">Calculate MPG</button>
 
-                <div id="result"></div>
-            </div>
 
-            <div class="info-bar">
-                Enter miles and gallons to calculate fuel efficiency.
-            </div>
-        </div>
-    </main>
+
+
+
+
+
+
+
+
 
     <footer class="footer">
         <p>© 2026 Afrik Denou. All Rights Reserved.</p>
@@ -492,61 +434,19 @@
             icon.text('☀️');
         }
 
-        // =========================
-        // MPG CALCULATOR
-        // =========================
 
-        // ORIGINAL JAVASCRIPT
-        /*
-        function calculateMPG() {
 
-            let miles = document.getElementById("miles").value;
-            let gallons = document.getElementById("gallons").value;
-            let resultDiv = document.getElementById("result");
 
-            if (miles <= 0 || gallons <= 0) {
-                resultDiv.innerHTML = "Please enter valid numbers.";
-                return;
-            }
 
-            let mpg = miles / gallons;
 
-            resultDiv.innerHTML =
-                `Efficiency: ${mpg.toFixed(2)} MPG`;
-        }
-        */
 
-        // JQUERY VERSION
-        function calculateMPG() {
 
-            // JQUERY SELECTORS
-            const miles = $("#miles").val();
-            const gallons = $("#gallons").val();
-            const resultDiv = $("#result");
 
-            // VALIDATION
-            if (miles <= 0 || gallons <= 0 || miles === "" || gallons === "") {
 
-                // JQUERY HTML METHOD
-                resultDiv.html("Please enter valid numbers.");
 
-                // JQUERY CSS METHOD
-                resultDiv.css("color", "red");
 
-                return;
-            }
 
-            // CALCULATION
-            const mpg = miles / gallons;
 
-            // DISPLAY RESULT
-            resultDiv.html(
-                `Efficiency: ${mpg.toFixed(2)} MPG`
-            );
-
-            // JQUERY CSS METHOD
-            resultDiv.css("color", "black");
-        }
 
 
     </script>

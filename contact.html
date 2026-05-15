@@ -27,6 +27,7 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             transition: background-color 0.3s, color 0.3s;
+               font-family: Arial, Helvetica, sans-serif;
         }
 
         /* --- Theme Toggle --- */
@@ -53,53 +54,26 @@
                 transform: scale(1.1);
             }
 
-        /* --- Gallery Styling --- */
-        .slideshow-container {
-            max-width: 800px;
-            position: relative;
-            margin: 40px auto;
-            border-radius: 15px;
-            overflow: hidden;
-            background: var(--content-bg);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
+      
 
-        .mySlides {
-            display: none;
-            width: 100%;
-        }
 
-            .mySlides img {
-                width: 100%;
-                height: 500px;
-                object-fit: cover;
-                display: block;
-            }
 
-        .caption {
-            padding: 20px;
-            background: var(--caption-bg);
-            color: var(--text-color);
-            text-align: left;
-            font-size: 1.1rem;
-            border-top: 2px solid var(--gold);
-            line-height: 1.5;
-        }
 
-        .fade {
-            animation-name: fade;
-            animation-duration: 1.5s;
-        }
 
-        @keyframes fade {
-            from {
-                opacity: .4
-            }
 
-            to {
-                opacity: 1
-            }
-        }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         /* Bottom Menu Adjustment */
         .footer-nav {
@@ -121,13 +95,6 @@
                 bottom: 30px;
                 top: auto;
             }
-
-
-
-
-
-
-
 
         /* =========================
    DROPDOWN MENUS
@@ -271,88 +238,429 @@
         </nav>
     </header>
 
-    <div class="hero">
-        <img src="images/p8.jpg" alt="Cinema Hero" class="hero-image">
-    </div>
 
-    <main class="content">
-        <h1>Visual Journey</h1>
-        <p style="text-align: center;">Encounters, Faces, Cinematic Moments.</p>
 
-        <div class="slideshow-container">
-            <div class="mySlides fade">
-                <img src="images/p1.jpg" alt="Mohamed Said Ouma">
-                <div class="caption">
-                    <strong>Mohamed Said Ouma</strong><br>
-                    Director of Documentary Africa (DocA), fostering growth in African cinema.
+
+
+
+
+
+
+    <!-- =========================
+    CONTACT PAGE SECTION
+    Insert this between </header> and <footer>
+    ========================= -->
+
+    <style>
+
+            /* =========================
+           CONTACT PAGE
+        ========================= */
+
+           .contact-hero {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+
+    padding: 80px 20px;
+
+    background:
+        linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+        url('images/logo.jpeg');
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    text-align: center;
+    color: white;
+
+    box-sizing: border-box;
+}
+
+                .contact-hero h1 {
+                    font-size: 52px;
+                    margin-bottom: 15px;
+                    letter-spacing: 2px;
+                }
+
+                .contact-hero p {
+                    max-width: 800px;
+                    margin: auto;
+                    font-size: 18px;
+                    line-height: 1.8;
+                    color: #f0f0f0;
+                }
+
+            .contact-container {
+                width: 95%;
+                max-width: 1400px;
+                margin: 60px auto;
+                display: grid;
+                grid-template-columns: 1fr 1.2fr;
+                gap: 40px;
+            }
+
+            .contact-card,
+            .contact-form-container {
+                background: var(--content-bg);
+                border-radius: 18px;
+                padding: 40px;
+                box-shadow: 0 10px 35px rgba(0,0,0,0.12);
+                transition: 0.3s;
+            }
+
+                .contact-card:hover,
+                .contact-form-container:hover {
+                    transform: translateY(-5px);
+                }
+
+            .contact-title {
+                font-size: 34px;
+                margin-bottom: 30px;
+                color: var(--gold);
+                position: relative;
+            }
+
+                .contact-title::after {
+                    content: "";
+                    width: 80px;
+                    height: 4px;
+                    background: var(--gold);
+                    position: absolute;
+                    left: 0;
+                    bottom: -10px;
+                    border-radius: 10px;
+                }
+
+            .contact-info {
+                margin-top: 40px;
+            }
+
+            .info-box {
+                display: flex;
+                align-items: flex-start;
+                gap: 18px;
+                margin-bottom: 35px;
+            }
+
+            .info-icon {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                background: var(--gold);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 28px;
+                color: #111;
+                flex-shrink: 0;
+            }
+
+            .info-content h3 {
+                margin: 0 0 8px;
+                font-size: 22px;
+            }
+
+            .info-content p,
+            .info-content a {
+                margin: 0;
+                color: var(--text-color);
+                text-decoration: none;
+                line-height: 1.8;
+                font-size: 16px;
+            }
+
+                .info-content a:hover {
+                    color: var(--gold);
+                }
+
+            .social-links {
+                margin-top: 40px;
+                display: flex;
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+
+                .social-links a {
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    background: var(--gold);
+                    color: #111;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 22px;
+                    text-decoration: none;
+                    transition: 0.3s;
+                }
+
+                    .social-links a:hover {
+                        transform: scale(1.12);
+                        background: #d4af37;
+                    }
+
+            /* =========================
+           FORM
+        ========================= */
+
+            .contact-form {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                margin-top: 35px;
+            }
+
+                .contact-form input,
+                .contact-form textarea {
+                    width: 100%;
+                    padding: 18px;
+                    border-radius: 12px;
+                    border: 1px solid #ccc;
+                    background: transparent;
+                    color: var(--text-color);
+                    font-size: 16px;
+                    outline: none;
+                    transition: 0.3s;
+                }
+
+                    .contact-form input:focus,
+                    .contact-form textarea:focus {
+                        border-color: var(--gold);
+                        box-shadow: 0 0 10px rgba(212,175,55,0.4);
+                    }
+
+                .contact-form textarea {
+                    min-height: 170px;
+                    resize: vertical;
+                }
+
+            .contact-btn {
+                background: var(--gold);
+                color: #111;
+                border: none;
+                padding: 18px;
+                border-radius: 12px;
+                font-size: 18px;
+                font-weight: bold;
+                cursor: pointer;
+                transition: 0.3s;
+            }
+
+                .contact-btn:hover {
+                    background: #d4af37;
+                    transform: translateY(-2px);
+                }
+
+            /* =========================
+           MAP
+        ========================= */
+
+            .map-section {
+                width: 95%;
+                max-width: 1400px;
+                margin: 0 auto 70px;
+            }
+
+            .map-container {
+                overflow: hidden;
+                border-radius: 20px;
+                box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+            }
+
+                .map-container iframe {
+                    width: 100%;
+                    height: 500px;
+                    border: 0;
+                }
+
+            /* =========================
+           RESPONSIVE
+        ========================= */
+
+            @media (max-width: 992px) {
+
+                .contact-container {
+                    grid-template-columns: 1fr;
+                }
+
+                .contact-hero h1 {
+                    font-size: 38px;
+                }
+            }
+
+            @media (max-width: 600px) {
+
+                .contact-card,
+                .contact-form-container {
+                    padding: 25px;
+                }
+
+                .contact-hero {
+                    padding: 60px 20px;
+                }
+
+                    .contact-hero h1 {
+                        font-size: 30px;
+                    }
+            }
+    </style>
+
+    <!-- =========================
+    HERO SECTION
+    ========================= -->
+
+    <section class="contact-hero">
+
+        <h1>Contact Afrik Denou</h1>
+
+        <p>
+            We would love to hear from you. Whether you have a question,
+            a project idea, a collaboration opportunity, or simply want to connect,
+            Afrik Denou is always ready to assist you with professionalism and care.
+        </p>
+
+    </section>
+
+    <!-- =========================
+    CONTACT SECTION
+    ========================= -->
+
+    <section class="contact-container">
+
+        <!-- LEFT SIDE -->
+        <div class="contact-card">
+
+            <h2 class="contact-title">Get In Touch</h2>
+
+            <div class="contact-info">
+
+                <div class="info-box">
+
+                    <div class="info-icon">👤</div>
+
+                    <div class="info-content">
+                        <h3>Contact Name</h3>
+                        <p>Sie L Pale</p>
+                    </div>
+
                 </div>
+
+                <div class="info-box">
+
+                    <div class="info-icon">📞</div>
+
+                    <div class="info-content">
+                        <h3>Phone Number</h3>
+                        <a href="tel:+16467243703">
+                            (+1) 646 724 3703
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="info-box">
+
+                    <div class="info-icon">✉️</div>
+
+                    <div class="info-content">
+                        <h3>Email Address</h3>
+                        <a href="mailto:afrikdenou@gmail.com">
+                            afrikdenou@gmail.com
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="info-box">
+
+                    <div class="info-icon">📍</div>
+
+                    <div class="info-content">
+                        <h3>Office Address</h3>
+                        <p>
+                            1309 Clinton Avenue<br>
+                            Bronx, NY 10456<br>
+                            United States
+                        </p>
+                    </div>
+
+                </div>
+
             </div>
 
-            <div class="mySlides fade">
-                <img src="images/p2.jpeg" alt="Cinema theater">
-                <div class="caption">
-                    <strong>Cinema Theater</strong><br>
-                    The sacred space where stories come to life on the big screen.
-                </div>
+            <!-- SOCIAL LINKS -->
+            <div class="social-links">
+
+                <a href="#">🌐</a>
+                <a href="#">📘</a>
+                <a href="#">📸</a>
+                <a href="#">💼</a>
+
             </div>
 
-            <div class="mySlides fade">
-                <img src="images/p3.jpeg" alt="David Silverman">
-                <div class="caption">
-                    <strong>David Silverman</strong><br>
-                    Renowned animator and director, known for his work on The Simpsons.
-                </div>
-            </div>
-
-            <div class="mySlides fade">
-                <img src="images/p4.jpeg" alt="Jean-François Laguionie">
-                <div class="caption">
-                    <strong>Jean-François Laguionie</strong><br>
-                    A master of French animation, creator of "The Painting."
-                </div>
-            </div>
-
-            <div class="mySlides fade">
-                <img src="images/p5.jpeg" alt="Claude Barras">
-                <div class="caption">
-                    <strong>Claude Barras</strong><br>
-                    Director of the Academy Award-nominated "My Life as a Zucchini."
-                </div>
-            </div>
-
-            <div class="mySlides fade">
-                <img src="images/p6.jpeg" alt="Sie L. Pale">
-                <div class="caption">
-                    <strong>Sie L. Pale</strong><br>
-                    Artist and visionary behind the Afrik Denou creative universe.
-                </div>
-            </div>
-
-            <div class="mySlides fade">
-                <img src="images/p9.jpg" alt="Gaston Kaboré">
-                <div class="caption">
-                    <strong>Gaston Kaboré</strong><br>
-                    Burkinabé filmmaker and director of the acclaimed film "Wend Kuuni."
-                </div>
-            </div>
-
-            <div class="mySlides fade">
-                <img src="images/p10.jpg" alt="Isao Takahata">
-                <div class="caption">
-                    <strong>Isao Takahata</strong><br>
-                    Co-founder of Studio Ghibli and director of "Grave of the Fireflies."
-                </div>
-            </div>
-
-            <div class="mySlides fade">
-                <img src="images/p11.jpg" alt="Moustapha Alassane">
-                <div class="caption">
-                    <strong>Moustapha Alassane</strong><br>
-                    Pioneer of Nigerien cinema and African animation.
-                </div>
-            </div>
         </div>
-    </main>
+
+        <!-- RIGHT SIDE -->
+        <div class="contact-form-container">
+
+            <h2 class="contact-title">Send Us A Message</h2>
+
+            <form class="contact-form">
+
+                <input type="text"
+                       placeholder="Your Full Name"
+                       required>
+
+                <input type="email"
+                       placeholder="Your Email Address"
+                       required>
+
+                <input type="text"
+                       placeholder="Subject">
+
+                <textarea placeholder="Write your message here..."
+                          required></textarea>
+
+                <button type="submit" class="contact-btn">
+                    Send Message
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+    MAP SECTION
+    ========================= -->
+
+    <section class="map-section">
+
+        <div class="map-container">
+
+            <iframe src="https://www.google.com/maps?q=1309+Clinton+Avenue+Bronx+NY+10456&output=embed"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
 
     <footer class="footer">
         <p>© 2026 Afrik Denou. All Rights Reserved.</p>
@@ -536,36 +844,19 @@
             icon.text('☀️');
         }
 
-        // =========================
-        // AUTOMATIC IMAGE SLIDESHOW
-        // =========================
 
-        let slideIndex = 0;
 
-        function showSlides() {
 
-            let slides = $(".mySlides");
 
-            // Hide all slides
-            slides.css("display", "none");
 
-            // Increase slide index
-            slideIndex++;
 
-            // Restart slideshow
-            if (slideIndex > slides.length) {
-                slideIndex = 1;
-            }
 
-            // Show current slide
-            slides.eq(slideIndex - 1).css("display", "block");
 
-            // Change image every 4 seconds
-            setTimeout(showSlides, 4000);
-        }
 
-        // Start slideshow
-        showSlides();
+
+
+
+
 
 
     </script>
