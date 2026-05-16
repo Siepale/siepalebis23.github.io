@@ -3,489 +3,386 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ticket Calculator | Afrik Denou</title>
+    <title>Work Station | Afrik Denou</title>
 
     <link rel="stylesheet" href="css/styles.css">
 
     <style>
-        /* --- Dark Mode Support --- */
-        :root {
-            --bg-color: #ffffff;
-            --text-color: #333333;
-            --content-bg: #ffffff;
-            --input-border: #e2e2e2;
-        }
+                /* --- Dark Mode Variables --- */
+                :root {
+                    --bg-color: #ffffff;
+                    --text-color: #333333;
+                    --content-bg: #ffffff;
+                    --caption-bg: #f9f9f9;
+                }
 
-        [data-theme="dark"] {
-            --bg-color: #121212;
-            --text-color: #e0e0e0;
-            --card-bg: #1e1e1e;
-            --input-border: #444;
-        }
+                [data-theme="dark"] {
+                    --bg-color: #121212;
+                    --text-color: #e0e0e0;
+                    --content-bg: #1e1e1e;
+                    --caption-bg: #252525;
+                }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: background-color 0.3s, color 0.3s;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            font-family: Arial, sans-serif;
-        }
+                body {
+                    background-color: var(--bg-color);
+                    color: var(--text-color);
+                    transition: background-color 0.3s, color 0.3s;
+                }
 
-        /* --- Theme Toggle Button --- */
-        .theme-toggle-container {
-            display: flex;
-            align-items: center;
-            margin-left: 15px;
-        }
+                /* --- Theme Toggle --- */
+                .theme-toggle-container {
+                    display: flex;
+                    align-items: center;
+                    margin-left: 15px;
+                }
 
-        #theme-toggle {
-            background: var(--gold);
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
+                #theme-toggle {
+                    background: var(--gold);
+                    border: none;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: transform 0.2s;
+                }
+
+                    #theme-toggle:hover {
+                        transform: scale(1.1);
+                    }
+
+
+
+
+
+                /* --- Black Info Bar --- */
+                .info-bar {
+                    background-color: var(--info-bar-bg);
+                    color: var(--info-bar-text);
+                    padding: 15px;
+                    font-size: 0.9rem;
+                    margin-top: 20px;
+                }
+
+                /* --- Bottom Navigation Menu Bar --- */
+                .footer-nav {
+                    display: flex;
+                    justify-content: center;
+                    margin-top: 15px;
+                    flex-wrap: wrap;
+                }
+
+                    .footer-nav a, .footer-nav .dropdown > a {
+                        color: var(--white);
+                        margin: 5px 10px;
+                        text-decoration: none;
+                        font-size: 14px;
+                        font-weight: bold;
+                    }
+
+                    .footer-nav .dropdown-content {
+                        bottom: 30px;
+                        top: auto;
+                    }
+
+
+                /* Bottom Menu Adjustment */
+                .footer-nav {
+                    display: flex;
+                    justify-content: center;
+                    margin-top: 15px;
+                    flex-wrap: wrap;
+                }
+
+                    .footer-nav a, .footer-nav .dropdown > a {
+                        color: var(--white);
+                        margin: 5px 10px;
+                        text-decoration: none;
+                        font-size: 14px;
+                        font-weight: bold;
+                    }
+
+                    .footer-nav .dropdown-content {
+                        bottom: 30px;
+                        top: auto;
+                    }
+
+
+
+
+
+
+                /* =========================
+           DROPDOWN MENUS
+        ========================= */
+
+                /* Dropdown container */
+                .dropdown {
+                    position: relative;
+                    display: inline-block;
+                }
+
+                /* Dropdown menu */
+                .dropdown-content {
+                    display: none;
+                    position: absolute;
+                    background: #222;
+                    color: #fff;
+                    min-width: 160px;
+                    padding: 8px 0;
+                    border-radius: 6px;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+                    z-index: 999;
+                }
+
+                /* SHOW DROPDOWN ON HOVER */
+                .dropdown:hover .dropdown-content {
+                    display: block;
+                }
+
+                /* Dropdown links */
+                .dropdown-content a {
+                    color: #fff !important;
+                    padding: 10px 15px;
+                    display: block;
+                    text-decoration: none;
+                    font-size: 14px;
+                }
+
+                    /* Hover effect inside dropdown */
+                    .dropdown-content a:hover {
+                        background: #444;
+                    }
+
+                /* =========================
+           TOP NAV DROPDOWN
+        ========================= */
+
+                .nav .dropdown-content {
+                    top: 100%;
+                    left: 0;
+                }
+
+                /* =========================
+           FOOTER DROPDOWN
+        ========================= */
+
+                .footer-nav .dropdown {
+                    position: relative;
+                }
+
+                /* Opens upward */
+                .footer-nav .dropdown-content {
+                    bottom: 100%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: #111;
+                    margin-bottom: 0;
+                }
+
+                /* Invisible hover bridge */
+                .footer-nav .dropdown::after {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    bottom: 100%;
+                    width: 100%;
+                    height: 15px;
+                }
+
+                /* =========================
+           GOLD HOVER EFFECT
+        ========================= */
+
+                .nav a:hover,
+                .footer-nav a:hover,
+                .nav .dropdown > a:hover,
+                .footer-nav .dropdown > a:hover {
+                    color: var(--gold) !important;
+                }
+
+
+
+
+        /* =========================
+                   HERO SECTION
+                ========================= */
+
+        .hero-section {
+            position: relative;
+            height: 55vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
-            transition: transform 0.2s;
+            text-align: center;
+            overflow: hidden;
+            background: radial-gradient(circle at top left, #d4af37 0%, transparent 30%), radial-gradient(circle at bottom right, #222 0%, #000 60%);
         }
 
-
-
-
-
-        /* --- Black Info Bar --- */
-        .info-bar {
-            background-color: var(--info-bar-bg);
-            color: var(--info-bar-text);
-            padding: 15px;
-            font-size: 0.9rem;
-            margin-top: 20px;
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient( 135deg, rgba(255,255,255,0.05), rgba(255,255,255,0) );
+            backdrop-filter: blur(2px);
         }
 
-        /* --- Bottom Navigation Menu Bar --- */
-        .footer-nav {
-            display: flex;
-            justify-content: center;
-            margin-top: 15px;
-            flex-wrap: wrap;
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 20px;
         }
 
-            .footer-nav a, .footer-nav .dropdown > a {
-                color: var(--white);
-                margin: 5px 10px;
-                text-decoration: none;
-                font-size: 14px;
+            .hero-content h1 {
+                font-size: 4rem;
+                color: white;
+                margin-bottom: 20px;
+            }
+
+            .hero-content p {
+                color: #ddd;
+                line-height: 1.8;
+                font-size: 1.1rem;
+            }
+
+        .budget-total {
+            margin-top: 30px;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+            .budget-total span {
+                color: gold;
                 font-weight: bold;
             }
 
-            .footer-nav .dropdown-content {
-                bottom: 30px;
-                top: auto;
-            }
+        /* =========================
+                   BUDGET WRAPPER
+                ========================= */
 
-
-
-
-
-
+        .budget-wrapper {
+            max-width: 1200px;
+            margin: auto;
+            padding: 60px 20px;
+        }
 
         /* =========================
-   HERO SECTION
-========================= */
+                   CARD DESIGN
+                ========================= */
 
-.hero-section {
-    position: relative;
-    height: 55vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    overflow: hidden;
-
-    background:
-        radial-gradient(circle at top left, #d4af37 0%, transparent 30%),
-        radial-gradient(circle at bottom right, #222 0%, #000 60%);
-}
-
-.hero-overlay {
-    position: absolute;
-    inset: 0;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,0.05),
-            rgba(255,255,255,0)
-        );
-
-    backdrop-filter: blur(2px);
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 800px;
-    padding: 20px;
-}
-
-.hero-content h1 {
-    font-size: 4rem;
-    color: white;
-    margin-bottom: 20px;
-}
-
-.hero-content p {
-    color: #ddd;
-    line-height: 1.8;
-    font-size: 1.1rem;
-}
-
-.budget-total {
-    margin-top: 30px;
-    font-size: 1.5rem;
-    color: white;
-}
-
-.budget-total span {
-    color: gold;
-    font-weight: bold;
-}
-
-/* =========================
-   BUDGET WRAPPER
-========================= */
-
-.budget-wrapper {
-    max-width: 1200px;
-    margin: auto;
-    padding: 60px 20px;
-}
-
-/* =========================
-   CARD DESIGN
-========================= */
-
-.budget-card {
-    position: relative;
-
-    display: flex;
-    gap: 30px;
-
-    margin-bottom: 40px;
-
-    padding: 30px;
-
-    border-radius: 24px;
-
-    overflow: hidden;
-
-    background: rgba(255,255,255,0.08);
-
-    backdrop-filter: blur(12px);
-
-    border: 1px solid rgba(255,255,255,0.08);
-
-    transition: 0.4s ease;
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,0.2);
-}
-
-/* Glow Hover */
-.budget-card:hover {
-    transform: translateY(-8px);
-
-    box-shadow:
-        0 0 25px rgba(212,175,55,0.4),
-        0 15px 40px rgba(0,0,0,0.35);
-}
-
-/* Animated Light */
-.card-light {
-    position: absolute;
-
-    width: 200px;
-    height: 200px;
-
-    background: radial-gradient(
-        circle,
-        rgba(212,175,55,0.35),
-        transparent 70%
-    );
-
-    top: -60px;
-    right: -60px;
-
-    animation: floatLight 6s ease-in-out infinite;
-}
-
-@keyframes floatLight {
-    0% {
-        transform: translateY(0px);
-    }
-
-    50% {
-        transform: translateY(20px);
-    }
-
-    100% {
-        transform: translateY(0px);
-    }
-}
-
-/* =========================
-   IMAGE
-========================= */
-
-.budget-image {
-    flex: 0 0 340px;
-}
-
-.budget-image img {
-    width: 100%;
-    border-radius: 18px;
-
-    transition: 0.4s ease;
-}
-
-.budget-card:hover img {
-    transform: scale(1.04);
-}
-
-/* =========================
-   TEXT
-========================= */
-
-.budget-info {
-    flex: 1;
-}
-
-.budget-info h2 {
-    color: gold;
-    margin-bottom: 15px;
-}
-
-.budget-info ul {
-    padding-left: 20px;
-    line-height: 1.9;
-}
-
-.price {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 15px;
-    color: gold;
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 900px) {
-
-    .budget-card {
-        flex-direction: column;
-    }
-
-    .budget-image {
-        width: 100%;
-    }
-
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-}
-
-
-
-
-
-        /* =========================
-   DROPDOWN MENUS
-========================= */
-
-        /* Dropdown container */
-        .dropdown {
+        .budget-card {
             position: relative;
-            display: inline-block;
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+            padding: 30px;
+            border-radius: 24px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
-        /* Dropdown menu */
-        .dropdown-content {
-            display: none;
+            /* Glow Hover */
+            .budget-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 0 25px rgba(212,175,55,0.4), 0 15px 40px rgba(0,0,0,0.35);
+            }
+
+        /* Animated Light */
+        .card-light {
             position: absolute;
-            background: #222;
-            color: #fff;
-            min-width: 160px;
-            padding: 8px 0;
-            border-radius: 6px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-            z-index: 999;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient( circle, rgba(212,175,55,0.35), transparent 70% );
+            top: -60px;
+            right: -60px;
+            animation: floatLight 6s ease-in-out infinite;
         }
 
-        /* SHOW DROPDOWN ON HOVER */
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        /* Dropdown links */
-        .dropdown-content a {
-            color: #fff !important;
-            padding: 10px 15px;
-            display: block;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-            /* Hover effect inside dropdown */
-            .dropdown-content a:hover {
-                background: #444;
+        @keyframes floatLight {
+            0% {
+                transform: translateY(0px);
             }
 
-        /* =========================
-   TOP NAV DROPDOWN
-========================= */
-
-        .nav .dropdown-content {
-            top: 100%;
-            left: 0;
-        }
-
-        /* =========================
-   FOOTER DROPDOWN
-========================= */
-
-        .footer-nav .dropdown {
-            position: relative;
-        }
-
-        /* Opens upward */
-        .footer-nav .dropdown-content {
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #111;
-            margin-bottom: 0;
-        }
-
-        /* Invisible hover bridge */
-        .footer-nav .dropdown::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: 100%;
-            width: 100%;
-            height: 15px;
-        }
-
-        /* =========================
-   GOLD HOVER EFFECT
-========================= */
-
-        .nav a:hover,
-        .footer-nav a:hover,
-        .nav .dropdown > a:hover,
-        .footer-nav .dropdown > a:hover {
-            color: var(--gold) !important;
-        }
-
-
-
-
-
-
-
-
-
-        /* =========================
-   MOBILE MENU
-========================= */
-
-        .menu-toggle {
-            display: none;
-        }
-
-        /* MOBILE VIEW */
-        @media (max-width: 768px) {
-
-            /* Show hamburger icon */
-            .menu-toggle {
-                display: block;
-                font-size: 2rem;
-                color: white;
-                cursor: pointer;
-                z-index: 9999;
+            50% {
+                transform: translateY(20px);
             }
 
-            /* Hide menu initially */
-            .nav {
-                display: none;
-                position: absolute;
-                top: 80px;
-                right: 10px;
-                width: 200px;
-                background: #111;
-                padding: 20px;
-                border-radius: 12px;
-                
-                align-items: flex-end;
-                text-align: right;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-                z-index: 9999;
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* =========================
+                   IMAGE
+                ========================= */
+
+        .budget-image {
+            flex: 0 0 340px;
+        }
+
+            .budget-image img {
+                width: 100%;
+                border-radius: 18px;
+                transition: 0.4s ease;
             }
 
-                /* SHOW MENU WHEN ACTIVE */
-                .nav.active {
-                    display: flex;
-                }
+        .budget-card:hover img {
+            transform: scale(1.04);
+        }
 
-                /* Links */
-                .nav a {
-                    color: white;
-                    text-decoration: none;
-                    padding: 12px 0;
-                    width: 100%;
-                    text-align: right;
-                }
+        /* =========================
+                   TEXT
+                ========================= */
 
-            /* Dropdowns */
-            .dropdown {
+        .budget-info {
+            flex: 1;
+        }
+
+            .budget-info h2 {
+                color: gold;
+                margin-bottom: 15px;
+            }
+
+            .budget-info ul {
+                padding-left: 20px;
+                line-height: 1.9;
+            }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: gold;
+        }
+
+        /* =========================
+                   RESPONSIVE
+                ========================= */
+
+        @media (max-width: 900px) {
+
+            .budget-card {
+                flex-direction: column;
+            }
+
+            .budget-image {
                 width: 100%;
             }
 
-            .dropdown-content {
-                position: static;
-                display: none;
-                width: 100%;
-                background: #1a1a1a;
-                margin-top: 5px;
-                border-radius: 8px;
-                box-shadow: none;
+            .hero-content h1 {
+                font-size: 2.5rem;
             }
-
         }
-
-
-
-
-
-
-
-
-
-
-
-
 
     </style>
 </head>
 <body>
-
     <header class="top-bar">
 
         <div style="display: flex; align-items: center;">
@@ -493,8 +390,6 @@
             <img src="images/logo.jpeg" alt="Afrik Denou Logo" class="logo">
 
 
-
-            <!-- Dark Mode Toggle Button -->
 
             <div class="theme-toggle-container">
 
@@ -505,7 +400,6 @@
                 </button>
             </div>
         </div>
-
         <div class="menu-toggle" id="mobile-menu">☰</div>
 
         <nav class="nav">
@@ -520,11 +414,12 @@
             <div class="dropdown">
                 <a href="#">BIS 23 901D ▾</a>
                 <div class="dropdown-content">
-                    <a href="task.html">Task Manager</a>
-                    <a href="invoice.html">Invoice</a>
-                    <a href="calculator.html">MPG Calculator</a>
                     <a href="form.html">Form Validation</a>
+                    <a href="calculator.html">MPG Calculator</a>
+                    <a href="task.html">Task Manager</a>
                     <a href="workstation.html">Work Station</a>
+                    <a href="mortgage.html">Mortgage</a>
+                    <a href="invoice.html">Invoice</a>
                 </div>
             </div>
             <a href="services.html">Our Services</a>
@@ -532,9 +427,6 @@
             <a href="contact.html">Contact</a>
         </nav>
     </header>
-
-
-
 
 
     <section class="hero-section">
@@ -753,12 +645,6 @@
 
     </main>
 
-
-
-
-
-
-
     <footer class="footer">
         <p>© 2026 Afrik Denou. All Rights Reserved.</p>
 
@@ -776,11 +662,12 @@
             <div class="dropdown">
                 <a href="#">BIS 23 901D ▾</a>
                 <div class="dropdown-content">
-                    <a href="task.html">Task Manager</a>
-                    <a href="invoice.html">Invoice</a>
-                    <a href="calculator.html">MPG Calculator</a>
                     <a href="form.html">Form Validation</a>
+                    <a href="calculator.html">MPG Calculator</a>
+                    <a href="task.html">Task Manager</a>
                     <a href="workstation.html">Work Station</a>
+                    <a href="mortgage.html">Mortgage</a>
+                    <a href="invoice.html">Invoice</a>
                 </div>
             </div>
 
@@ -790,39 +677,136 @@
         </nav>
     </footer>
 
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
     <script>
-        // Navigation
-        const menu = document.getElementById("mobile-menu");
-        const nav = document.querySelector(".nav");
-        menu.addEventListener("click", () => nav.classList.toggle("active"));
 
+        // =========================
+        // MOBILE MENU
+        // =========================
 
+        // ORIGINAL JAVASCRIPT
+        // const menu = document.getElementById("mobile-menu");
+        // const nav = document.querySelector(".nav");
 
+        // JQUERY SELECTORS
+        const menu = $("#mobile-menu");
+        const nav = $(".nav");
 
+        // ORIGINAL JAVASCRIPT
+        // menu.addEventListener("click", () => {
+        //     nav.classList.toggle("active");
+        // });
 
+        // JQUERY EVENT + CSS CLASS METHOD
+        menu.on("click", function () {
+            nav.toggleClass("active");
+        });
 
-        // --- Dark Mode Logic ---
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        const currentTheme = localStorage.getItem('theme');
+        // =========================
+        // CLOSE MENU WHEN CLICKING OUTSIDE
+        // =========================
 
-        if (currentTheme === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            themeIcon.innerText = '☀️';
-        }
+        // ORIGINAL JAVASCRIPT
+        /*
+        document.addEventListener("click", (e) => {
 
-        themeToggle.addEventListener('click', () => {
-            let theme = document.documentElement.getAttribute('data-theme');
-            if (theme === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'light');
-                localStorage.setItem('theme', 'light');
-                themeIcon.innerText = '🌙';
-            } else {
-                document.documentElement.setAttribute('data-theme', 'dark');
-                localStorage.setItem('theme', 'dark');
-                themeIcon.innerText = '☀️';
+            if (
+                !nav.contains(e.target) &&
+                !menu.contains(e.target)
+            ) {
+                nav.classList.remove("active");
             }
         });
+        */
+
+        // JQUERY VERSION
+        $(document).on("click", function (e) {
+
+            if (
+                !$(e.target).closest(".nav").length &&
+                !$(e.target).closest("#mobile-menu").length
+            ) {
+                nav.removeClass("active");
+            }
+        });
+
+        // =========================
+        // MOBILE DROPDOWNS
+        // =========================
+
+        // ORIGINAL JAVASCRIPT
+        // const dropdowns = document.querySelectorAll(".dropdown");
+
+        // Updated jQuery for Mobile Dropdowns
+        const dropdowns = $(".dropdown");
+
+        dropdowns.each(function () {
+            const link = $(this).children("a");
+            const content = $(this).children(".dropdown-content");
+
+            link.on("click", function (e) {
+                // Only trigger the toggle if the screen is small
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    e.stopPropagation(); // Prevents the 'click outside' script from firing immediately
+
+                    // Close other open dropdowns first (optional, for accordion style)
+                    $(".dropdown-content").not(content).removeClass("active");
+
+                    content.toggleClass("active");
+                }
+            });
+        });
+
+        // =========================
+        // THEME TOGGLE
+        // =========================
+
+        // ORIGINAL JAVASCRIPT
+        // const toggle = document.getElementById('theme-toggle');
+        // const icon = document.getElementById('theme-icon');
+
+        // JQUERY SELECTORS
+        const toggle = $('#theme-toggle');
+        const icon = $('#theme-icon');
+
+        toggle.on('click', function () {
+
+            const isDark =
+                $('html').attr('data-theme') === 'dark';
+
+            const theme = isDark ? 'light' : 'dark';
+
+            // ORIGINAL JAVASCRIPT
+            // document.documentElement.setAttribute('data-theme', theme);
+
+            // JQUERY ATTRIBUTE METHOD
+            $('html').attr('data-theme', theme);
+
+            localStorage.setItem('theme', theme);
+
+            // ORIGINAL JAVASCRIPT
+            // icon.innerText = theme === 'dark' ? '☀️' : '🌙';
+
+            // JQUERY TEXT METHOD
+            icon.text(theme === 'dark' ? '☀️' : '🌙');
+        });
+
+        if (localStorage.getItem('theme') === 'dark') {
+
+            // ORIGINAL JAVASCRIPT
+            // document.documentElement.setAttribute('data-theme', 'dark');
+
+            $('html').attr('data-theme', 'dark');
+
+            // ORIGINAL JAVASCRIPT
+            // icon.innerText = '☀️';
+
+            icon.text('☀️');
+        }
+
 
 
     </script>
