@@ -1,0 +1,826 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | Afrik Denou</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+        /* --- Dark Mode Variables --- */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --content-bg: #ffffff;
+            --caption-bg: #f9f9f9;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --content-bg: #1e1e1e;
+            --caption-bg: #252525;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* --- Theme Toggle --- */
+        .theme-toggle-container {
+            display: flex;
+            align-items: center;
+            margin-left: 15px;
+        }
+
+        #theme-toggle {
+            background: var(--gold);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
+
+            #theme-toggle:hover {
+                transform: scale(1.1);
+            }
+
+      
+
+
+
+
+
+        /* Bottom Menu Adjustment */
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+            .footer-nav a, .footer-nav .dropdown > a {
+                color: var(--white);
+                margin: 5px 10px;
+                text-decoration: none;
+                font-size: 14px;
+                font-weight: bold;
+            }
+
+            .footer-nav .dropdown-content {
+                bottom: 30px;
+                top: auto;
+            }
+
+        /* =========================
+   DROPDOWN MENUS
+========================= */
+
+        /* Dropdown container */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Dropdown menu */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #222;
+            color: #fff;
+            min-width: 160px;
+            padding: 8px 0;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            z-index: 999;
+        }
+
+        /* SHOW DROPDOWN ON HOVER */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Dropdown links */
+        .dropdown-content a {
+            color: #fff !important;
+            padding: 10px 15px;
+            display: block;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+            /* Hover effect inside dropdown */
+            .dropdown-content a:hover {
+                background: #444;
+            }
+
+        /* =========================
+   TOP NAV DROPDOWN
+========================= */
+
+        .nav .dropdown-content {
+            top: 100%;
+            left: 0;
+        }
+
+        /* =========================
+   FOOTER DROPDOWN
+========================= */
+
+        .footer-nav .dropdown {
+            position: relative;
+        }
+
+        /* Opens upward */
+        .footer-nav .dropdown-content {
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #111;
+            margin-bottom: 0;
+        }
+
+        /* Invisible hover bridge */
+        .footer-nav .dropdown::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 100%;
+            width: 100%;
+            height: 15px;
+        }
+
+        /* =========================
+   GOLD HOVER EFFECT
+========================= */
+
+        .nav a:hover,
+        .footer-nav a:hover,
+        .nav .dropdown > a:hover,
+        .footer-nav .dropdown > a:hover {
+            color: var(--gold) !important;
+        }
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <header class="top-bar">
+
+        <div style="display: flex; align-items: center;">
+
+            <img src="images/logo.jpeg" alt="Afrik Denou Logo" class="logo">
+
+
+
+            <div class="theme-toggle-container">
+
+                <button id="theme-toggle" aria-label="Toggle Dark Mode">
+
+                    <span id="theme-icon">🌙</span>
+
+                </button>
+            </div>
+        </div>
+        <div class="menu-toggle" id="mobile-menu">☰</div>
+
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <div class="dropdown">
+                <a href="#">About ▾</a>
+                <div class="dropdown-content">
+                    <a href="about.html">About</a>
+                    <a href="resume.html">Resume</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#">BIS 23 901D ▾</a>
+                <div class="dropdown-content">
+                    <a href="handsonproject.html">Hands on Project</a>
+                    <a href="form.html">Form Validation</a>
+                    <a href="calculator.html">MPG Calculator</a>
+                    <a href="risen&quiz.html"> Risen & Quiz|</a>
+                    <a href="task.html">Task Manager</a>
+                    <a href="workstation.html">Work Station</a>
+                    <a href="debugging.html">Debugging</a>
+                    <a href="mortgage.html">Mortgage</a>
+                    <a href="csshtml.html">CSS HTML</a>
+                    <a href="invoice.html">Invoice</a>
+                </div>
+            </div>
+            <a href="services.html">Our Services</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+
+
+
+
+
+
+
+
+
+    <!-- ================= CREATIVE MEDIA PRODUCTION SECTION ================= -->
+    <section style="max-width:1200px; margin:auto; padding:60px 20px;">
+
+        <!-- HERO SECTION -->
+        <div style="text-align:center; margin-bottom:70px;">
+
+            <img src="images/creative-production-banner.jpg"
+                 alt="Afrik Denou Creative Production"
+                 style="width:100%;
+             max-height:500px;
+             object-fit:cover;
+             border-radius:18px;
+             box-shadow:0 8px 25px rgba(0,0,0,0.15);">
+
+            <h1 style="font-size:48px;
+        margin-top:35px;
+        margin-bottom:20px;
+        font-weight:bold;">
+
+                Creative Media Production
+
+            </h1>
+
+            <p style="font-size:20px;
+        max-width:900px;
+        margin:auto;
+        line-height:1.8;">
+
+                Leveraging years of experience in animated film coordination,
+                puppet theater, and professional video editing to create
+                visually compelling stories that connect African narratives
+                with global audiences.
+
+            </p>
+
+        </div>
+
+        <!-- INTRO -->
+        <div style="display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:40px;
+    align-items:center;
+    margin-bottom:80px;">
+
+            <div>
+
+                <img src="images/animation-studio.jpg"
+                     alt="Animation Production Studio"
+                     style="width:100%;
+                 border-radius:18px;
+                 object-fit:cover;
+                 box-shadow:0 6px 20px rgba(0,0,0,0.15);">
+
+            </div>
+
+            <div>
+
+                <h2 style="font-size:34px; margin-bottom:25px;">
+                    Animation & Storytelling
+                </h2>
+
+                <p style="line-height:1.9; margin-bottom:20px;">
+
+                    Founded in Burkina Faso in 2005, Afrik Denou develops
+                    creative productions that combine traditional African
+                    storytelling with modern animation technologies.
+
+                </p>
+
+                <p style="line-height:1.9; margin-bottom:20px;">
+
+                    Our productions include stop-motion animation,
+                    puppet theater, 2D animation, visual storytelling,
+                    and educational media content designed for
+                    international audiences, festivals, broadcasters,
+                    and digital streaming platforms.
+
+                </p>
+
+                <p style="line-height:1.9;">
+
+                    Through artistic innovation and cross-border
+                    collaboration, we create authentic content with
+                    strong cultural identity and global commercial potential.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- SERVICES -->
+        <div style="margin-bottom:80px;">
+
+            <div style="text-align:center; margin-bottom:50px;">
+
+                <h2 style="font-size:38px; margin-bottom:15px;">
+                    Our Creative Services
+                </h2>
+
+                <p style="max-width:750px;
+            margin:auto;
+            line-height:1.8;">
+
+                    Professional production services designed to support
+                    film development, digital storytelling, and
+                    international creative collaboration.
+
+                </p>
+
+            </div>
+
+            <div style="display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+        gap:30px;">
+
+                <!-- SERVICE 1 -->
+                <div style="background:var(--content-bg);
+            padding:35px;
+            border-radius:18px;
+            box-shadow:0 6px 18px rgba(0,0,0,0.08);">
+
+                    <img src="images/video-editing.jpg"
+                         alt="Video Editing"
+                         style="width:100%;
+                     height:220px;
+                     object-fit:cover;
+                     border-radius:14px;
+                     margin-bottom:25px;">
+
+                    <h3 style="margin-bottom:18px; font-size:28px;">
+                        Video Editing & Post-Production
+                    </h3>
+
+                    <p style="line-height:1.8;">
+
+                        Professional editing services for animation,
+                        documentary projects, promotional campaigns,
+                        educational media, and branded visual content.
+                        We focus on storytelling structure, pacing,
+                        sound integration, and cinematic presentation.
+
+                    </p>
+
+                </div>
+
+                <!-- SERVICE 2 -->
+                <div style="background:var(--content-bg);
+            padding:35px;
+            border-radius:18px;
+            box-shadow:0 6px 18px rgba(0,0,0,0.08);">
+
+                    <img src="images/animation-coordination.jpg"
+                         alt="Animation Coordination"
+                         style="width:100%;
+                     height:220px;
+                     object-fit:cover;
+                     border-radius:14px;
+                     margin-bottom:25px;">
+
+                    <h3 style="margin-bottom:18px; font-size:28px;">
+                        Animation Project Coordination
+                    </h3>
+
+                    <p style="line-height:1.8;">
+
+                        Coordinating animation productions from concept
+                        development through production and distribution.
+                        Our workflow includes scheduling, creative
+                        supervision, artist collaboration, and
+                        production management aligned with
+                        international standards.
+
+                    </p>
+
+                </div>
+
+                <!-- SERVICE 3 -->
+                <div style="background:var(--content-bg);
+            padding:35px;
+            border-radius:18px;
+            box-shadow:0 6px 18px rgba(0,0,0,0.08);">
+
+                    <img src="images/digital-content.jpg"
+                         alt="Digital Content Strategy"
+                         style="width:100%;
+                     height:220px;
+                     object-fit:cover;
+                     border-radius:14px;
+                     margin-bottom:25px;">
+
+                    <h3 style="margin-bottom:18px; font-size:28px;">
+                        Digital Content Strategy
+                    </h3>
+
+                    <p style="line-height:1.8;">
+
+                        Strategic development of visual media designed
+                        for educational platforms, festivals,
+                        broadcasters, streaming markets, and
+                        international audiences. We help shape
+                        culturally authentic stories into scalable
+                        digital content.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CREATIVE APPROACH -->
+        <div style="display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:40px;
+    align-items:center;
+    margin-bottom:80px;">
+
+            <div>
+
+                <h2 style="font-size:36px;
+            margin-bottom:25px;">
+
+                    Our Creative Approach
+
+                </h2>
+
+                <p style="line-height:1.9; margin-bottom:20px;">
+
+                    Afrik Denou believes that animation and visual storytelling
+                    can preserve culture, inspire communities, and create
+                    meaningful global connections.
+
+                </p>
+
+                <p style="line-height:1.9; margin-bottom:20px;">
+
+                    By integrating traditional puppetry with modern production
+                    technologies, we develop innovative media experiences
+                    that celebrate African heritage while remaining accessible
+                    to international audiences.
+
+                </p>
+
+                <p style="line-height:1.9;">
+
+                    Our productions are built through collaboration with
+                    artists, animators, designers, writers, and cultural
+                    institutions across multiple countries.
+
+                </p>
+
+            </div>
+
+            <div>
+
+                <img src="images/puppet-performance.jpg"
+                     alt="Puppet Theater Performance"
+                     style="width:100%;
+                 border-radius:18px;
+                 object-fit:cover;
+                 box-shadow:0 6px 20px rgba(0,0,0,0.15);">
+
+            </div>
+
+        </div>
+
+        <!-- GALLERY PREVIEW -->
+        <div style="margin-bottom:80px;">
+
+            <div style="text-align:center; margin-bottom:40px;">
+
+                <h2 style="font-size:38px; margin-bottom:15px;">
+                    Production Highlights
+                </h2>
+
+                <p style="line-height:1.8;">
+                    Behind the scenes of animation production,
+                    puppet theater, and international festival screenings.
+                </p>
+
+            </div>
+
+            <div style="display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+        gap:25px;">
+
+                <div>
+                    <img src="images/festival-screening.jpg"
+                         alt="Festival Screening"
+                         style="width:100%;
+                     height:250px;
+                     object-fit:cover;
+                     border-radius:16px;">
+
+                    <p style="margin-top:12px; text-align:center;">
+                        Festival Screening – International Animation Showcase
+                    </p>
+                </div>
+
+                <div>
+                    <img src="images/behind-scenes.jpg"
+                         alt="Behind The Scenes"
+                         style="width:100%;
+                     height:250px;
+                     object-fit:cover;
+                     border-radius:16px;">
+
+                    <p style="margin-top:12px; text-align:center;">
+                        Behind The Scenes – Production Coordination
+                    </p>
+                </div>
+
+                <div>
+                    <img src="images/stop-motion.jpg"
+                         alt="Stop Motion Production"
+                         style="width:100%;
+                     height:250px;
+                     object-fit:cover;
+                     border-radius:16px;">
+
+                    <p style="margin-top:12px; text-align:center;">
+                        Stop-Motion Animation Production
+                    </p>
+                </div>
+
+                <div>
+                    <img src="images/storyboarding.jpg"
+                         alt="Storyboarding"
+                         style="width:100%;
+                     height:250px;
+                     object-fit:cover;
+                     border-radius:16px;">
+
+                    <p style="margin-top:12px; text-align:center;">
+                        Storyboarding & Visual Development
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CTA -->
+        <div style="background:var(--caption-bg);
+    padding:70px 40px;
+    border-radius:22px;
+    text-align:center;">
+
+            <h2 style="font-size:42px;
+        margin-bottom:20px;">
+
+                Let’s Build Meaningful Stories Together
+
+            </h2>
+
+            <p style="max-width:850px;
+        margin:auto;
+        line-height:1.9;
+        font-size:18px;
+        margin-bottom:35px;">
+
+                Afrik Denou welcomes collaborations with producers,
+                cultural institutions, educational organizations,
+                festivals, broadcasters, and creative partners interested
+                in high-quality animated storytelling and African narratives.
+
+            </p>
+
+            <a href="contact.html"
+               style="display:inline-block;
+           background:var(--gold);
+           color:#000;
+           padding:16px 35px;
+           border-radius:50px;
+           text-decoration:none;
+           font-weight:bold;
+           font-size:18px;">
+
+                Start a Collaboration
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+    <footer class="footer">
+        <p>© 2026 Afrik Denou. All Rights Reserved.</p>
+
+        <nav class="footer-nav">
+            <a href="index.html">Home</a>
+
+            <div class="dropdown">
+                <a href="#">About ▾</a>
+                <div class="dropdown-content">
+                    <a href="about.html">About</a>
+                    <a href="resume.html">Resume</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <a href="#">BIS 23 901D ▾</a>
+                <div class="dropdown-content">
+                    <a href="handsonproject.html">Hands on Project</a>
+                    <a href="form.html">Form Validation</a>
+                    <a href="calculator.html">MPG Calculator</a>
+                    <a href="risen&quiz.html"> Risen & Quiz|</a>
+                    <a href="task.html">Task Manager</a>
+                    <a href="workstation.html">Work Station</a>
+                    <a href="debugging.html">Debugging</a>
+                    <a href="mortgage.html">Mortgage</a>
+                    <a href="csshtml.html">CSS HTML</a>
+                    <a href="invoice.html">Invoice</a>
+                </div>
+            </div>
+
+            <a href="services.html">Our Services</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script>
+
+        // =========================
+        // MOBILE MENU
+        // =========================
+
+        // ORIGINAL JAVASCRIPT
+        // const menu = document.getElementById("mobile-menu");
+        // const nav = document.querySelector(".nav");
+
+        // JQUERY SELECTORS
+        const menu = $("#mobile-menu");
+        const nav = $(".nav");
+
+        // ORIGINAL JAVASCRIPT
+        // menu.addEventListener("click", () => {
+        //     nav.classList.toggle("active");
+        // });
+
+        // JQUERY EVENT + CSS CLASS METHOD
+        menu.on("click", function () {
+            nav.toggleClass("active");
+        });
+
+        // =========================
+        // CLOSE MENU WHEN CLICKING OUTSIDE
+        // =========================
+
+        // ORIGINAL JAVASCRIPT
+        /*
+        document.addEventListener("click", (e) => {
+
+            if (
+                !nav.contains(e.target) &&
+                !menu.contains(e.target)
+            ) {
+                nav.classList.remove("active");
+            }
+        });
+        */
+
+        // JQUERY VERSION
+        $(document).on("click", function (e) {
+
+            if (
+                !$(e.target).closest(".nav").length &&
+                !$(e.target).closest("#mobile-menu").length
+            ) {
+                nav.removeClass("active");
+            }
+        });
+
+        // =========================
+        // MOBILE DROPDOWNS
+        // =========================
+
+        // ORIGINAL JAVASCRIPT
+        // const dropdowns = document.querySelectorAll(".dropdown");
+
+        // JQUERY SELECTOR
+        const dropdowns = $(".dropdown");
+
+        dropdowns.each(function () {
+
+            // ORIGINAL JAVASCRIPT
+            // const link = drop.querySelector("a");
+            // const content = drop.querySelector(".dropdown-content");
+
+            // JQUERY DOM TRAVERSAL
+            const link = $(this).children("a");
+            const content = $(this).children(".dropdown-content");
+
+            if (content.length) {
+
+                // ORIGINAL JAVASCRIPT
+                /*
+                link.addEventListener("click", (e) => {
+
+                    if (window.innerWidth <= 768) {
+
+                        e.preventDefault();
+
+                        content.classList.toggle("active");
+                    }
+                });
+                */
+
+                // JQUERY VERSION
+                link.on("click", function (e) {
+
+                    if ($(window).width() <= 768) {
+
+                        e.preventDefault();
+
+                        content.toggleClass("active");
+                    }
+                });
+            }
+        });
+
+        // =========================
+        // THEME TOGGLE
+        // =========================
+
+        // ORIGINAL JAVASCRIPT
+        // const toggle = document.getElementById('theme-toggle');
+        // const icon = document.getElementById('theme-icon');
+
+        // JQUERY SELECTORS
+        const toggle = $('#theme-toggle');
+        const icon = $('#theme-icon');
+
+        toggle.on('click', function () {
+
+            const isDark =
+                $('html').attr('data-theme') === 'dark';
+
+            const theme = isDark ? 'light' : 'dark';
+
+            // ORIGINAL JAVASCRIPT
+            // document.documentElement.setAttribute('data-theme', theme);
+
+            // JQUERY ATTRIBUTE METHOD
+            $('html').attr('data-theme', theme);
+
+            localStorage.setItem('theme', theme);
+
+            // ORIGINAL JAVASCRIPT
+            // icon.innerText = theme === 'dark' ? '☀️' : '🌙';
+
+            // JQUERY TEXT METHOD
+            icon.text(theme === 'dark' ? '☀️' : '🌙');
+        });
+
+        if (localStorage.getItem('theme') === 'dark') {
+
+            // ORIGINAL JAVASCRIPT
+            // document.documentElement.setAttribute('data-theme', 'dark');
+
+            $('html').attr('data-theme', 'dark');
+
+            // ORIGINAL JAVASCRIPT
+            // icon.innerText = '☀️';
+
+            icon.text('☀️');
+        }
+
+
+
+    </script>
+</body>
+</html>

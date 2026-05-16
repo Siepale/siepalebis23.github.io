@@ -3,217 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mortgage | Afrik Denou</title>
+    <title>RISEN & W3Schools Quiz| Afrik Denou</title>
 
     <link rel="stylesheet" href="css/styles.css">
 
     <style>
-                /* --- Dark Mode Variables --- */
-                :root {
-                    --bg-color: #ffffff;
-                    --text-color: #333333;
-                    --content-bg: #ffffff;
-                    --caption-bg: #f9f9f9;
-                }
-
-                [data-theme="dark"] {
-                    --bg-color: #121212;
-                    --text-color: #e0e0e0;
-                    --content-bg: #1e1e1e;
-                    --caption-bg: #252525;
-                }
-
-                body {
-                    background-color: var(--bg-color);
-                    color: var(--text-color);
-                    transition: background-color 0.3s, color 0.3s;
-                    font-family: Arial, Helvetica, sans-serif;
-                }
-
-                /* --- Theme Toggle --- */
-                .theme-toggle-container {
-                    display: flex;
-                    align-items: center;
-                    margin-left: 15px;
-                }
-
-                #theme-toggle {
-                    background: var(--gold);
-                    border: none;
-                    width: 40px;
-                    height: 40px;
-                    border-radius: 50%;
-                    cursor: pointer;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    transition: transform 0.2s;
-                }
-
-                    #theme-toggle:hover {
-                        transform: scale(1.1);
-                    }
-
-
-
-        * {
-            box-sizing: border-box;
+        /* --- Dark Mode Variables --- */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --content-bg: #ffffff;
+            --caption-bg: #f9f9f9;
         }
 
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --content-bg: #1e1e1e;
+            --caption-bg: #252525;
+        }
 
-                /* TITLE */
-                h1 {
-                    width: 100%;
-                    max-width: 720px;
-                    text-align: center;
-                    color: #666666;
-                    font-size: 3rem; /* Adjusted for better mobile scaling */
-                    margin: 20px auto;
-                }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
 
-                /* MAIN CALCULATOR CONTAINER (Replaces mainTable) */
-                .calc-container {
-                    display: flex;
-                    flex-direction: row;
-                    width: 100%;
-                    max-width: 720px;
-                    margin: 0 auto;
-                    border: 1px solid #666;
-                    background-color: #CCFFCC;
-                    border-collapse: collapse;
-                }
+        /* --- Theme Toggle --- */
+        .theme-toggle-container {
+            display: flex;
+            align-items: center;
+            margin-left: 15px;
+        }
 
-                .infoCell {
-                    width: 70%;
-                    padding: 25px 28px;
-                    background-color: #CCFFCC;
-                    color: #447744;
-                    font-family: Georgia, Times, serif;
-                    text-align: justify;
-                    line-height: 1.45;
-                    font-size: 1.5rem;
-                    vertical-align: middle;
-                    border-right: 1px solid #666;
-                }
+        #theme-toggle {
+            background: var(--gold);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
 
-                .calcCell {
-                    flex: 1;
-                    padding: 20px 20px;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    margin-top: 12px;
-                }
+            #theme-toggle:hover {
+                transform: scale(1.1);
+            }
 
-                /* Mobile Stacking for Calculator */
-                @media screen and (max-width: 600px) {
-                    .calc-container {
-                        flex-direction: column;
-                    }
-
-                    .infoCell {
-                        border-right: none;
-                        border-bottom: 1px solid #666;
-                    }
-
-                    h1 {
-                        font-size: 1.5rem;
-                    }
-                }
-
-                .calcBox {
-                    width: 100%;
-                    max-width: 320px;
-                    padding: 15px 10px;
-                    border: 2px solid #8C8C8C;
-                    background-color: #555555;
-                }
-
-                /* Form Table styling for responsiveness */
-                .formTable {
-                    width: 100%;
-                    color: white;
-                }
-
-                    .formTable td {
-                        padding: 2px 5px;
-                    }
-
-                        .formTable td:first-child {
-                            white-space: nowrap;
-                            text-align: left;
-                        }
-
-                input[type="text"], select {
-                    width: 100%;
-                    height: 30px;
-                    padding: 0 5px;
-                }
-
-                .button-group {
-                    display: flex;
-                    justify-content: space-between;
-                    gap: 10px;
-                    padding: 0 28px;
-                }
-
-                .buttonStyle {
-                    width: 80px;
-                    height: 28px;
-                    border: 1px solid #000;
-                    background-color: #FFFFFF;
-                    cursor: pointer;
-                    font-size: 0.85rem;
-                }
-
-                .center-btn {
-                    text-align: center;
-                }
-
-                .res-text {
-                    font-size: 0.9rem;
-                }
-
-                /* YEARS DROPDOWN */
-
-                select {
-                    width: 60px;
-                    height: 24px;
-                    background-color: #FFFFFF;
-                    border: 1px solid #000;
-                    /* Makes arrow appear inside square area */
-                    padding-left: 5px;
-                    padding-right: 22px;
-                    appearance: none;
-                    -webkit-appearance: none;
-                    -moz-appearance: none;
-                    background-image: linear-gradient(45deg, transparent 50%, black 50%), linear-gradient(135deg, black 50%, transparent 50%), linear-gradient(to left, #D9D9D9 28px, transparent 28px);
-                    background-position: calc(100% - 12px) 9px, calc(100% - 7px) 9px, 100% 0;
-                    background-size: 5px 5px, 5px 5px, 28px 100%;
-                    background-repeat: no-repeat;
-                }
-
-                /* BUTTONS */
-
-                .buttonStyle {
-                    width: 80px;
-                    height: 28px;
-                    border: 1px solid #000;
-                    /* Slight gray effect */
-                    background-color: #E0E0E0;
-                    cursor: pointer;
-                    font-size: 0.85rem;
-                    /* Optional subtle depth */
-                    box-shadow: inset 0 0 2px #999;
-                }
-
-                    .buttonStyle:hover {
-                        background-color: #D3D3D3;
-                    }
+      
 
 
-              /* Bottom Menu Adjustment */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* Bottom Menu Adjustment */
         .footer-nav {
             display: flex;
             justify-content: center;
@@ -324,6 +185,10 @@
         }
 
 
+
+
+
+
     </style>
 </head>
 <body>
@@ -376,93 +241,134 @@
         </nav>
     </header>
 
-    <div class="hero">
-        <img src="images/house.png" alt="house" class="hero-image">
-    </div>
-
-    <h1>Home Mortgage Calculator</h1>
-    <!-- Use DIV instead of TABLE for the outer structure -->
-    <div class="calc-container">
-        <!-- LEFT SIDE -->
-        <div class="infoCell">
-            To use the Home Mortgage Calculator enter the amount of the mortgage, the interest of the loan, and the number of years. Then click on the "Calculate" button to see an estimate of your monthly payment.
-        </div>
-
-        <!-- RIGHT SIDE -->
-        <div class="calcCell">
-            <div class="calcBox">
-                <form name="Form1">
 
 
-                    <table class="formTable">
-                        <tr>
-                            <td>Mortgage:</td>
-                            <td><input type="text" name="Amount"></td>
-                        </tr>
-                        <tr>
-                            <td>Interest (e.g. 7.9):</td>
-                            <td><input type="text" name="Rate"></td>
-                        </tr>
-                        <tr>
-                            <td>Years:</td>
-                            <td>
-                                <select name="Years">
-                                    <option value="30">30</option>
-                                    <option value="25">25</option>
-                                    <option value="20">20</option>
-                                    <option value="15">15</option>
-                                    <option value="10">10</option>
-                                    <option value="5">5</option>
-                                    <option value="0" selected>0</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
 
-                            <td class="center-btn">
+    <!-- =========================
+         MAIN CONTENT PAGE
+    ========================= -->
 
-                                <input type="button"
-                                       class="buttonStyle"
-                                       value="Calculate"
-                                       onclick="mortCalc(Form1)">
+    <main style="max-width:1100px;margin:40px auto;padding:20px;">
 
-                            </td>
+        <!-- =========================
+             PAGE TITLE
+        ========================= -->
+        <section style="text-align:center;margin-bottom:30px;">
+            <h1>Assignments Dashboard</h1>
+            <p>RISEN Framework + W3Schools Quiz Submissions</p>
+        </section>
 
-                            <td>
+        <!-- =========================
+             RISEN FRAMEWORK
+        ========================= -->
+        <section style="background:var(--content-bg);padding:20px;border-radius:12px;margin-bottom:30px;">
 
-                                <input type="reset"
-                                       class="buttonStyle"
-                                       value="Reset">
+            <h2>RISEN Framework Assignment</h2>
 
-                            </td>
-
-                        </tr>
-                        <tr>
-                            <td> Your monthly payment:</td>
-                            <td><input type="text" name="Payment" readonly></td>
-                        </tr>
-                    </table>
-                </form>
+            <div style="background:var(--caption-bg);padding:15px;border-radius:10px;margin-top:15px;">
+                <h3>Objective</h3>
+                <p>
+                    Use the RISEN Framework (Role, Input, Steps, Examples, Nuance)
+                    to improve AI prompt engineering and evaluate results.
+                </p>
             </div>
-        </div>
-    </div>
+
+            <div style="background:var(--caption-bg);padding:15px;border-radius:10px;margin-top:15px;">
+                <h3>Steps</h3>
+                <p>
+                    1. Create a basic AI prompt<br>
+                    2. Improve it using RISEN structure<br>
+                    3. Generate AI response<br>
+                    4. Compare outputs<br>
+                    5. Upload 5 screenshots
+                </p>
+            </div>
+
+            <div style="background:var(--caption-bg);padding:15px;border-radius:10px;margin-top:15px;">
+                <h3>Upload Results</h3>
+
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:10px;">
+
+                    <div>
+                        <input type="file" accept="image/*">
+                        <p>Step 1</p>
+                    </div>
+
+                    <div>
+                        <input type="file" accept="image/*">
+                        <p>Step 2</p>
+                    </div>
+
+                    <div>
+                        <input type="file" accept="image/*">
+                        <p>Step 3</p>
+                    </div>
+
+                    <div>
+                        <input type="file" accept="image/*">
+                        <p>Step 4</p>
+                    </div>
+
+                    <div>
+                        <input type="file" accept="image/*">
+                        <p>Step 5</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+        <!-- =========================
+             W3SCHOOLS QUIZZES
+        ========================= -->
+        <section style="background:var(--content-bg);padding:20px;border-radius:12px;">
+
+            <h2>W3Schools Quiz Submissions</h2>
+
+            <div style="background:var(--caption-bg);padding:15px;border-radius:10px;margin-top:15px;">
+                <h3>Instructions</h3>
+                <p>
+                    Complete the required W3Schools modules and upload your quiz results below.
+                </p>
+            </div>
+
+            <!-- QUIZ 1 -->
+            <div style="background:var(--caption-bg);padding:15px;border-radius:10px;margin-top:15px;">
+                <h3>JavaScript Arrays & Array Methods</h3>
+
+                <p>
+                    <a href="https://www.w3schools.com/js/js_arrays.asp" target="_blank">
+                        Open Learning Module
+                    </a>
+                </p>
+
+                <input type="file" accept="image/*,application/pdf">
+                <p>Upload Arrays Quiz Result</p>
+            </div>
+
+            <!-- QUIZ 2 -->
+            <div style="background:var(--caption-bg);padding:15px;border-radius:10px;margin-top:15px;">
+                <h3>jQuery Quiz (Due 5.15.2026)</h3>
+
+                <p>
+                    <a href="https://www.w3schools.com/quiztest/quiztest.asp?qtest=JQUERY" target="_blank">
+                        Open jQuery Quiz
+                    </a>
+                </p>
+
+                <input type="file" accept="image/*,application/pdf">
+                <p>Upload jQuery Quiz Result</p>
+            </div>
+
+        </section>
+
+    </main>
 
 
-    <pre>
 
 
 
-
-
-
-
-
-
-
-
-
-
-</pre>
 
 
 
@@ -655,25 +561,9 @@
 
 
 
-    // Existing logic for calculator
-    function mortCalc(Form1) {
-    let principal = parseFloat(Form1.Amount.value);
-    let yearlyRate = parseFloat(Form1.Rate.value);
-    let years = parseInt(Form1.Years.value);
 
-    if (isNaN(principal) || isNaN(yearlyRate) || years <= 0) {
-    alert("Please enter valid numeric values.");
-    return;
-    }
 
-    let monthlyRate = (yearlyRate / 100) / 12;
-    let totalPayments = years * 12;
-    let x = Math.pow(1 + monthlyRate, totalPayments);
-    let monthlyPayment = (principal * x * monthlyRate) / (x - 1);
 
-    Form1.Payment.value = !isNaN(monthlyPayment) && monthlyPayment !== Infinity ?
-    "$" + monthlyPayment.toFixed(2) : "Error";
-    }
 
     </script>
 </body>

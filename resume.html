@@ -1,0 +1,896 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume | Afrik Denou</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+        /* --- Dark Mode Variables --- */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --content-bg: #ffffff;
+            --caption-bg: #f9f9f9;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --content-bg: #1e1e1e;
+            --caption-bg: #252525;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* --- Theme Toggle --- */
+        .theme-toggle-container {
+            display: flex;
+            align-items: center;
+            margin-left: 15px;
+        }
+
+        #theme-toggle {
+            background: var(--gold);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
+
+            #theme-toggle:hover {
+                transform: scale(1.1);
+            }
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* Bottom Menu Adjustment */
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+            .footer-nav a, .footer-nav .dropdown > a {
+                color: var(--white);
+                margin: 5px 10px;
+                text-decoration: none;
+                font-size: 14px;
+                font-weight: bold;
+            }
+
+            .footer-nav .dropdown-content {
+                bottom: 30px;
+                top: auto;
+            }
+
+        /* =========================
+   DROPDOWN MENUS
+========================= */
+
+        /* Dropdown container */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Dropdown menu */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #222;
+            color: #fff;
+            min-width: 160px;
+            padding: 8px 0;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            z-index: 999;
+        }
+
+        /* SHOW DROPDOWN ON HOVER */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Dropdown links */
+        .dropdown-content a {
+            color: #fff !important;
+            padding: 10px 15px;
+            display: block;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+            /* Hover effect inside dropdown */
+            .dropdown-content a:hover {
+                background: #444;
+            }
+
+        /* =========================
+   TOP NAV DROPDOWN
+========================= */
+
+        .nav .dropdown-content {
+            top: 100%;
+            left: 0;
+        }
+
+        /* =========================
+   FOOTER DROPDOWN
+========================= */
+
+        .footer-nav .dropdown {
+            position: relative;
+        }
+
+        /* Opens upward */
+        .footer-nav .dropdown-content {
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #111;
+            margin-bottom: 0;
+        }
+
+        /* Invisible hover bridge */
+        .footer-nav .dropdown::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 100%;
+            width: 100%;
+            height: 15px;
+        }
+
+        /* =========================
+   GOLD HOVER EFFECT
+========================= */
+
+        .nav a:hover,
+        .footer-nav a:hover,
+        .nav .dropdown > a:hover,
+        .footer-nav .dropdown > a:hover {
+            color: var(--gold) !important;
+        }
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <header class="top-bar">
+
+        <div style="display: flex; align-items: center;">
+
+            <img src="images/logo.jpeg" alt="Afrik Denou Logo" class="logo">
+
+
+
+            <div class="theme-toggle-container">
+
+                <button id="theme-toggle" aria-label="Toggle Dark Mode">
+
+                    <span id="theme-icon">🌙</span>
+
+                </button>
+            </div>
+        </div>
+        <div class="menu-toggle" id="mobile-menu">☰</div>
+
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <div class="dropdown">
+                <a href="#">About ▾</a>
+                <div class="dropdown-content">
+                    <a href="about.html">About</a>
+                    <a href="resume.html">Resume</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#">BIS 23 901D ▾</a>
+                <div class="dropdown-content">
+                    <a href="handsonproject.html">Hands on Project</a>
+                    <a href="form.html">Form Validation</a>
+                    <a href="calculator.html">MPG Calculator</a>
+                    <a href="risen&quiz.html"> Risen & Quiz|</a>
+                    <a href="task.html">Task Manager</a>
+                    <a href="workstation.html">Work Station</a>
+                    <a href="debugging.html">Debugging</a>
+                    <a href="mortgage.html">Mortgage</a>
+                    <a href="csshtml.html">CSS HTML</a>
+                    <a href="invoice.html">Invoice</a>
+                </div>
+            </div>
+            <a href="services.html">Our Services</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+
+    <!-- ================= RESUME CONTENT ================= -->
+    <div style="max-width:1100px; margin:auto; padding:50px 20px;">
+
+        <!-- HERO -->
+        <div style="text-align:center; margin-bottom:50px;">
+
+            <img src="images/p7.jpeg"
+                 alt="Sie Lazare Pale"
+                 style="width:100%;
+             max-height:400px;
+             object-fit:cover;
+             border-radius:16px;
+             margin-bottom:30px;">
+
+            <h1 style="font-size:42px; margin-bottom:10px;">
+                Sie Lazare Pale
+            </h1>
+
+            <p style="font-size:18px;">
+                Computer Information Systems Student | Animation Director | Creative Producer
+            </p>
+
+        </div>
+
+        <!-- CONTACT -->
+        <div style="background:var(--content-bg);
+    padding:30px;
+    border-radius:14px;
+    margin-bottom:40px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);">
+
+            <h2 style="margin-bottom:20px;">Contact Information</h2>
+
+            <div style="display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+        gap:20px;">
+
+                <div>
+                    <strong>Address:</strong><br>
+                    1309 Clinton Avenue, Apt. 4N<br>
+                    Bronx, NY 10456
+                </div>
+
+                <div>
+                    <strong>Phone:</strong><br>
+                    (646) 724-3703
+                </div>
+
+                <div>
+                    <strong>Email:</strong><br>
+                    <a href="mailto:pslazi@gmail.com"
+                       style="color:var(--gold); text-decoration:none;">
+                        pslazi@gmail.com
+                    </a>
+                </div>
+
+                <div>
+                    <strong>School Email:</strong><br>
+                    <a href="mailto:sie.pale@stu.bcc.cuny.edu"
+                       style="color:var(--gold); text-decoration:none;">
+                        sie.pale@stu.bcc.cuny.edu
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- OBJECTIVE -->
+        <div style="margin-bottom:40px;">
+
+            <h2 style="margin-bottom:20px;">Objective</h2>
+
+            <div style="background:var(--content-bg);
+        padding:30px;
+        border-radius:14px;
+        box-shadow:0 4px 10px rgba(0,0,0,0.08);">
+
+                <p>
+                    Computer Science Systems student seeking a Data Intelligence internship
+                    that offers engaging and challenging work, where I can apply analytical,
+                    data management, and system-level thinking to support research, insights,
+                    and scalable data solutions.
+                </p>
+
+                <p>
+                    Eager to collaborate with cross-functional teams and contribute to
+                    data-driven tools and processes that enhance organizational impact.
+                </p>
+
+            </div>
+        </div>
+
+        <!-- EDUCATION -->
+        <div style="margin-bottom:40px;">
+
+            <h2 style="margin-bottom:20px;">Education</h2>
+
+            <div style="display:grid;
+        gap:25px;">
+
+                <div style="background:var(--content-bg);
+            padding:25px;
+            border-radius:14px;
+            box-shadow:0 4px 10px rgba(0,0,0,0.08);">
+
+                    <h3>Bronx Community College / CUNY</h3>
+
+                    <p><strong>Associate of Science in Computer Information Systems</strong></p>
+
+                    <p>Expected Graduation: Fall 2026</p>
+
+                    <p>Overall GPA: 3.514</p>
+
+                    <ul>
+                        <li>Certified HTML Developer — December 10, 2025</li>
+                        <li>Certified CSS Developer — December 10, 2025</li>
+                        <li>Level 4: Excel Black Belt Certificate — December 07, 2025</li>
+                    </ul>
+                </div>
+
+                <div style="background:var(--content-bg);
+            padding:25px;
+            border-radius:14px;
+            box-shadow:0 4px 10px rgba(0,0,0,0.08);">
+
+                    <h3>IMAGINE Institute / Burkina Faso</h3>
+
+                    <p>
+                        Certificate in Animation Film Techniques — May 25, 2008
+                    </p>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- EXPERIENCE -->
+        <div style="margin-bottom:40px;">
+
+            <h2 style="margin-bottom:20px;">Work Experience</h2>
+
+            <div style="display:grid; gap:25px;">
+
+                <div style="background:var(--content-bg);
+            padding:30px;
+            border-radius:14px;
+            box-shadow:0 4px 10px rgba(0,0,0,0.08);">
+
+                    <h3>Head of Animation Film Department</h3>
+
+                    <p><strong>IMAGINE Institute / Burkina Faso</strong></p>
+
+                    <p>2011 — 2017</p>
+
+                    <ul>
+                        <li>Organized animation training programs.</li>
+                        <li>Animation film production trainer.</li>
+                        <li>
+                            Coordinated production training between
+                            CFI France and IMAGINE Institute.
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div style="background:var(--content-bg);
+            padding:30px;
+            border-radius:14px;
+            box-shadow:0 4px 10px rgba(0,0,0,0.08);">
+
+                    <h3>Director & Production Coordinator</h3>
+
+                    <p><strong>Afrik Denou</strong></p>
+
+                    <p>2005 — Present</p>
+
+                    <ul>
+                        <li>Managing animation and puppet theater projects.</li>
+                        <li>Leading international creative collaborations.</li>
+                        <li>Overseeing production coordination and storytelling development.</li>
+                    </ul>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- PROJECTS -->
+        <div style="margin-bottom:40px;">
+
+            <h2 style="margin-bottom:20px;">Projects & Computer Work Experience</h2>
+
+            <div style="background:var(--content-bg);
+        padding:30px;
+        border-radius:14px;
+        box-shadow:0 4px 10px rgba(0,0,0,0.08);">
+
+                <ul>
+                    <li>Created short animated films using digital production tools.</li>
+                    <li>Managed storyboarding, editing, and visual design workflows.</li>
+                    <li>Experience with software installation and file management.</li>
+                    <li>Hands-on experience in multimedia production and editing.</li>
+                </ul>
+
+            </div>
+        </div>
+
+        <!-- SKILLS -->
+        <div style="margin-bottom:40px;">
+
+            <h2 style="margin-bottom:20px;">Skills</h2>
+
+            <div style="display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+        gap:20px;">
+
+                <div style="background:var(--content-bg);
+            padding:25px;
+            border-radius:14px;">
+
+                    <h3>Languages</h3>
+
+                    <p>English • French • Jula • Moré • Wolof</p>
+                </div>
+
+                <div style="background:var(--content-bg);
+            padding:25px;
+            border-radius:14px;">
+
+                    <h3>Digital Media</h3>
+
+                    <p>Photoshop • Adobe Premiere Pro</p>
+                </div>
+
+                <div style="background:var(--content-bg);
+            padding:25px;
+            border-radius:14px;">
+
+                    <h3>Microsoft Office</h3>
+
+                    <p>Word • Publisher • PowerPoint • Excel</p>
+                </div>
+
+                <div style="background:var(--content-bg);
+            padding:25px;
+            border-radius:14px;">
+
+                    <h3>Creative Skills</h3>
+
+                    <p>Animation • Video Editing • Storyboarding</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ADDITIONAL -->
+        <div style="margin-bottom:40px;">
+
+            <h2 style="margin-bottom:20px;">Additional Information</h2>
+
+            <div style="background:var(--content-bg);
+        padding:30px;
+        border-radius:14px;">
+
+                <ul>
+                    <li>Strong attention to detail and creativity.</li>
+                    <li>Team-oriented and eager to learn.</li>
+                    <li>Passionate about media, technology, and digital production.</li>
+                </ul>
+
+            </div>
+        </div>
+
+        <!-- FILMOGRAPHY -->
+        <div style="margin-bottom:50px;">
+
+            <h2 style="margin-bottom:25px;">Filmography</h2>
+
+            <div style="display:grid; gap:20px;">
+
+                <div style="background:var(--content-bg);
+            padding:25px;
+            border-radius:14px;">
+
+                    <h3>2017</h3>
+
+                    <p>
+                        <strong>MENSONGE</strong> — Selected at the Francophone Residency
+                        of Writing Animation Film in Meknes and MIFA Animation Pitch 2017.
+                    </p>
+
+                </div>
+
+                <div style="background:var(--content-bg);
+            padding:25px;
+            border-radius:14px;">
+
+                    <h3>2016</h3>
+
+                    <p><strong>Le JT</strong> (3mn25)</p>
+
+                    <a href="https://vimeo.com/166271048"
+                       target="_blank"
+                       style="color:var(--gold);">
+                        Watch Film
+                    </a>
+
+                    <br><br>
+
+                    <p><strong>Le Coût du Mythe</strong> (4mn5)</p>
+
+                    <a href="https://vimeo.com/135358137"
+                       target="_blank"
+                       style="color:var(--gold);">
+                        Watch Film
+                    </a>
+
+                </div>
+
+                <div style="background:var(--content-bg);
+            padding:25px;
+            border-radius:14px;">
+
+                    <h3>2014</h3>
+
+                    <p><strong>Les Jumeaux de Samba</strong></p>
+
+                    <a href="https://vimeo.com/120047259"
+                       target="_blank"
+                       style="color:var(--gold);">
+                        Watch Film
+                    </a>
+
+                </div>
+
+                <div style="background:var(--content-bg);
+            padding:25px;
+            border-radius:14px;">
+
+                    <h3>2013</h3>
+
+                    <p><strong>Film panorama Lazare Sié Palé</strong></p>
+
+                    <a href="https://www.youtube.com/watch?v=AmKJMMA8FcQ"
+                       target="_blank"
+                       style="color:var(--gold);">
+                        Watch Video
+                    </a>
+
+                </div>
+
+                <div style="background:var(--content-bg);
+            padding:25px;
+            border-radius:14px;">
+
+                    <h3>2012</h3>
+
+                    <p><strong>Mon Rêve</strong></p>
+
+                    <a href="https://vimeo.com/134866576"
+                       target="_blank"
+                       style="color:var(--gold);">
+                        Watch Film
+                    </a>
+
+                    <br><br>
+
+                    <p><strong>La Promesse</strong></p>
+
+                    <a href="http://www.annecy.org/a-propos/archives/2012/carrefour-de-la-creation-2012/projets-selectionnes-2012/fiche-projet:proj-20127021"
+                       target="_blank"
+                       style="color:var(--gold);">
+                        View Project
+                    </a>
+
+                </div>
+
+                <div style="background:var(--content-bg);
+            padding:25px;
+            border-radius:14px;">
+
+                    <h3>2011</h3>
+
+                    <p><strong>L'eau, c'est la vie</strong></p>
+
+                    <a href="https://www.youtube.com/watch?v=ukzm6Ea4tIg"
+                       target="_blank"
+                       style="color:var(--gold);">
+                        Watch Film
+                    </a>
+
+                    <br><br>
+
+                    <p><strong>Un Regard</strong></p>
+
+                    <a href="https://youtu.be/v2l7hviKgTQ?list=UUtF9DkDORXJy95D6VFcHDug"
+                       target="_blank"
+                       style="color:var(--gold);">
+                        Watch Film
+                    </a>
+
+                </div>
+
+                <div style="background:var(--content-bg);
+            padding:25px;
+            border-radius:14px;">
+
+                    <h3>2010</h3>
+
+                    <p><strong>Le Parrain</strong></p>
+
+                    <a href="https://youtu.be/L_6aEdPa-fg?list=UUtF9DkDORXJy95D6VFcHDug"
+                       target="_blank"
+                       style="color:var(--gold);">
+                        Watch Film Part 1
+                    </a>
+
+                    <br><br>
+
+                    <a href="https://youtu.be/fBHqHqem6WA?list=UUtF9DkDORXJy95D6VFcHDug"
+                       target="_blank"
+                       style="color:var(--gold);">
+                        Watch Film Part 2
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CTA -->
+        <div style="text-align:center;
+    padding:50px 30px;
+    background:var(--caption-bg);
+    border-radius:16px;">
+
+            <h2 style="margin-bottom:15px;">
+                Creative Technology & Storytelling
+            </h2>
+
+            <p style="max-width:700px; margin:auto;">
+                Combining technical systems knowledge with artistic storytelling
+                to create meaningful digital experiences and animated productions.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <footer class="footer">
+        <p>© 2026 Afrik Denou. All Rights Reserved.</p>
+
+        <nav class="footer-nav">
+            <a href="index.html">Home</a>
+
+            <div class="dropdown">
+                <a href="#">About ▾</a>
+                <div class="dropdown-content">
+                    <a href="about.html">About</a>
+                    <a href="resume.html">Resume</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <a href="#">BIS 23 901D ▾</a>
+                <div class="dropdown-content">
+                    <a href="handsonproject.html">Hands on Project</a>
+                    <a href="form.html">Form Validation</a>
+                    <a href="calculator.html">MPG Calculator</a>
+                    <a href="risen&quiz.html"> Risen & Quiz|</a>
+                    <a href="task.html">Task Manager</a>
+                    <a href="workstation.html">Work Station</a>
+                    <a href="debugging.html">Debugging</a>
+                    <a href="mortgage.html">Mortgage</a>
+                    <a href="csshtml.html">CSS HTML</a>
+                    <a href="invoice.html">Invoice</a>
+                </div>
+            </div>
+
+            <a href="services.html">Our Services</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script>
+
+        // =========================
+        // MOBILE MENU
+        // =========================
+
+        // ORIGINAL JAVASCRIPT
+        // const menu = document.getElementById("mobile-menu");
+        // const nav = document.querySelector(".nav");
+
+        // JQUERY SELECTORS
+        const menu = $("#mobile-menu");
+        const nav = $(".nav");
+
+        // ORIGINAL JAVASCRIPT
+        // menu.addEventListener("click", () => {
+        //     nav.classList.toggle("active");
+        // });
+
+        // JQUERY EVENT + CSS CLASS METHOD
+        menu.on("click", function () {
+            nav.toggleClass("active");
+        });
+
+        // =========================
+        // CLOSE MENU WHEN CLICKING OUTSIDE
+        // =========================
+
+        // ORIGINAL JAVASCRIPT
+        /*
+        document.addEventListener("click", (e) => {
+
+            if (
+                !nav.contains(e.target) &&
+                !menu.contains(e.target)
+            ) {
+                nav.classList.remove("active");
+            }
+        });
+        */
+
+        // JQUERY VERSION
+        $(document).on("click", function (e) {
+
+            if (
+                !$(e.target).closest(".nav").length &&
+                !$(e.target).closest("#mobile-menu").length
+            ) {
+                nav.removeClass("active");
+            }
+        });
+
+        // =========================
+        // MOBILE DROPDOWNS
+        // =========================
+
+        // ORIGINAL JAVASCRIPT
+        // const dropdowns = document.querySelectorAll(".dropdown");
+
+        // JQUERY SELECTOR
+        const dropdowns = $(".dropdown");
+
+        dropdowns.each(function () {
+
+            // ORIGINAL JAVASCRIPT
+            // const link = drop.querySelector("a");
+            // const content = drop.querySelector(".dropdown-content");
+
+            // JQUERY DOM TRAVERSAL
+            const link = $(this).children("a");
+            const content = $(this).children(".dropdown-content");
+
+            if (content.length) {
+
+                // ORIGINAL JAVASCRIPT
+                /*
+                link.addEventListener("click", (e) => {
+
+                    if (window.innerWidth <= 768) {
+
+                        e.preventDefault();
+
+                        content.classList.toggle("active");
+                    }
+                });
+                */
+
+                // JQUERY VERSION
+                link.on("click", function (e) {
+
+                    if ($(window).width() <= 768) {
+
+                        e.preventDefault();
+
+                        content.toggleClass("active");
+                    }
+                });
+            }
+        });
+
+        // =========================
+        // THEME TOGGLE
+        // =========================
+
+        // ORIGINAL JAVASCRIPT
+        // const toggle = document.getElementById('theme-toggle');
+        // const icon = document.getElementById('theme-icon');
+
+        // JQUERY SELECTORS
+        const toggle = $('#theme-toggle');
+        const icon = $('#theme-icon');
+
+        toggle.on('click', function () {
+
+            const isDark =
+                $('html').attr('data-theme') === 'dark';
+
+            const theme = isDark ? 'light' : 'dark';
+
+            // ORIGINAL JAVASCRIPT
+            // document.documentElement.setAttribute('data-theme', theme);
+
+            // JQUERY ATTRIBUTE METHOD
+            $('html').attr('data-theme', theme);
+
+            localStorage.setItem('theme', theme);
+
+            // ORIGINAL JAVASCRIPT
+            // icon.innerText = theme === 'dark' ? '☀️' : '🌙';
+
+            // JQUERY TEXT METHOD
+            icon.text(theme === 'dark' ? '☀️' : '🌙');
+        });
+
+        if (localStorage.getItem('theme') === 'dark') {
+
+            // ORIGINAL JAVASCRIPT
+            // document.documentElement.setAttribute('data-theme', 'dark');
+
+            $('html').attr('data-theme', 'dark');
+
+            // ORIGINAL JAVASCRIPT
+            // icon.innerText = '☀️';
+
+            icon.text('☀️');
+        }
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
